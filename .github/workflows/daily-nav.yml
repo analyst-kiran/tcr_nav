@@ -1,0 +1,53 @@
+name: Daily NAV update
+
+on:
+  schedule:
+    - cron: "20 18 * * *"   # 23:50 IST — after AMFI's 11 pm NAV deadline
+    - cron: "40 1 * * *"    # 07:10 IST — picks up late NAVs (overseas FoFs etc.)
+    - cron: "10 8 * * *"    # 13:40 IST — safety net if the earlier runs were skipped
+  workflow_dispatch: {}      # "Run workflow" button on the Actions tab
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: nav-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Fetch new NAVs and recompute
+        run: python scripts/update.py
+
+      - name: Save the NAV store
+        run: |
+          git config user.name "tcr-nav bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then echo "no new NAVs"; exit 0; fi
+          git commit -m "NAVs to $(python -c 'import json;print(json.load(open("data/state.json"))["latest_nav_date"])')"
+          git push
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - id: deploy
+        uses: actions/deploy-pages@v4
