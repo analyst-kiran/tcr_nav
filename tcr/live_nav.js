@@ -1,5 +1,5 @@
 // ═══ LIVE NAV ════════════════════════════════════════════════════════════════
-// Daily AMFI NAVs computed by the tcr-nav GitHub job (window.TCR_NAV from nav_data.js).
+// Daily AMFI NAVs computed by the tcr_nav GitHub job (window.TCR_NAV from nav_data.js).
 // Before each run, every vendor fund row that can be matched to an AMFI scheme gets the latest
 // NAV, NAV date, trailing returns and calendar-year returns. Risk ratios, corpus, ratings,
 // benchmarks and everything else still come from the uploaded monthly files.

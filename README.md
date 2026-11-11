@@ -1,4 +1,4 @@
-# tcr-nav
+# tcr_nav
 
 Daily Indian mutual fund NAVs for the TCR Rating Model, collected automatically by GitHub.
 

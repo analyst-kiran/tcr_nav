@@ -14,7 +14,7 @@ BEGIN, END = "// ═══ LIVE NAV ═", "// ═══ end LIVE NAV ═══"
 
 def patch(html: str, user: str) -> str:
     js = (HERE / "live_nav.js").read_text(encoding="utf-8")
-    js = js.replace("__LIVE_URL__", f"https://{user}.github.io/tcr-nav/nav_data.js")
+    js = js.replace("__LIVE_URL__", f"https://{user}.github.io/tcr_nav/nav_data.js")
 
     # 1. drop any earlier copy of the patch
     html = re.sub(re.escape(BEGIN) + r".*?" + re.escape(END) + r"\n?", "", html, flags=re.S)
