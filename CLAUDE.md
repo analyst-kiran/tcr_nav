@@ -51,10 +51,10 @@ forward with ETF NAV ratios (AMFI data). The vendor's trailing and calendar retu
   alongside rolling returns.
 
 ## Owner's roadmap (in order)
-1. Benchmarks: productionise the ETF roll-forward (daily, in the GitHub job) and feed TCR.
+1. ~~Benchmarks~~ DONE (ETF roll-forward live in the job and in TCR).
 2. Ratios: compute vendor-method ratios for funds the vendor leaves at 0, on monthly import
    only, using the RF backed out from that month's file (or an RF the owner types in).
 3. Rolling returns from the NAV history (the main reason for collecting NAVs).
-4. TCR: view old rankings by date (latest or calendar pick). Design not yet chosen:
-   saved snapshots vs recompute-any-date.
+4. TCR: view old rankings by date. DECIDED: option B, recompute any date from NAV history
+   (calendar picker; ratios/corpus from the nearest monthly file; benchmarks via anchors+ETFs).
 5. Further TCR changes, which the owner will specify.
