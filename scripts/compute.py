@@ -134,8 +134,41 @@ def main():
     OUT_JS.parent.mkdir(parents=True, exist_ok=True)
     js = json.dumps(payload, separators=(",", ":"), ensure_ascii=False)
     OUT_JS.write_text("window.TCR_NAV=" + js + ";\n", encoding="utf-8")
+    publish_trackers(asof_all)
     L.log(f"published {len(out)} schemes, latest NAV {payload['latest_nav_date']}, "
           f"{OUT_JS.stat().st_size/1e6:.1f} MB")
+
+
+
+OUT_PX = L.ROOT / "docs" / "bench_px.js"
+
+
+def publish_trackers(asof: pd.Timestamp):
+    """docs/bench_px.js: split-adjusted daily NAVs of benchmark trackers (last 12 years) and the
+    benchmark→tracker recipes. TCR anchors each benchmark at the vendor's exact levels and uses
+    these to move between and beyond them."""
+    if not L.BENCH_MAP.exists():
+        return
+    bm = json.loads(L.BENCH_MAP.read_text())
+    px = L.load_store(list(range(asof.year - 12, asof.year + 1)), root=L.PROXY_DIR)
+    if px.empty:
+        return
+    px["date"] = pd.to_datetime(px["date"])
+    px = px[px["date"] <= asof]
+    epoch = pd.Timestamp("2000-01-01")
+    series = {}
+    for code, g in px.groupby("code"):
+        s = L.unsplit(g.set_index("date")["nav"].sort_index())
+        s = s[~s.index.duplicated(keep="last")]
+        days = (s.index - epoch).days
+        d = [int(days[0])] + [int(x) for x in (days[1:] - days[:-1])]  # day deltas
+        series[str(code)] = {"d": d, "v": [float(f"{v:.6g}") for v in s.values]}
+    payload = {"epoch": "2000-01-01", "asof": asof.strftime("%Y-%m-%d"), "vendor_asof": bm.get("vendor_asof"),
+               "map": {k: {"recipe": v["recipe"], "proxy": v["proxy"], "err": v["test_err_pct_per_30d"]}
+                       for k, v in bm["benchmarks"].items()},
+               "series": series}
+    OUT_PX.write_text("window.TCR_BENCH=" + json.dumps(payload, separators=(",", ":")) + ";\n", encoding="utf-8")
+    L.log(f"published {len(series)} tracker series, {OUT_PX.stat().st_size/1e6:.1f} MB")
 
 
 if __name__ == "__main__":

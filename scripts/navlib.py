@@ -20,6 +20,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 NAV_DIR = DATA / "nav"
+PROXY_DIR = DATA / "proxy"          # NAVs of the ETFs / funds that track benchmarks
+BENCH_MAP = DATA / "benchmark_map.json"
 SCHEMES_CSV = DATA / "schemes.csv"
 STATE_JSON = DATA / "state.json"
 
@@ -145,16 +147,16 @@ def fetch_mfapi(code: int, since: date | None = None) -> pd.DataFrame:
 
 
 # ── Store ─────────────────────────────────────────────────────────────────────
-def _month_files(years=None):
-    files = sorted(NAV_DIR.glob("*/*.parquet"))
+def _month_files(years=None, root=None):
+    files = sorted((root or NAV_DIR).glob("*/*.parquet"))
     if years is not None:
         ys = {int(y) for y in years}
         files = [f for f in files if int(f.parent.name) in ys]
     return files
 
 
-def load_store(years: list[int] | None = None) -> pd.DataFrame:
-    files = _month_files(years)
+def load_store(years: list[int] | None = None, root=None) -> pd.DataFrame:
+    files = _month_files(years, root)
     if not files:
         return pd.DataFrame({"code": pd.Series(dtype="int32"), "date": pd.Series(dtype="object"),
                              "nav": pd.Series(dtype="float64")})
@@ -163,7 +165,7 @@ def load_store(years: list[int] | None = None) -> pd.DataFrame:
     return df
 
 
-def write_months(df: pd.DataFrame, months: set[str] | None = None):
+def write_months(df: pd.DataFrame, months: set[str] | None = None, root=None):
     """Write rows into data/nav/<YYYY>/<YYYY-MM>.parquet, replacing those month files.
     Monthly files keep each day's git commit small (only the current month changes)."""
     df = df.copy()
@@ -173,7 +175,7 @@ def write_months(df: pd.DataFrame, months: set[str] | None = None):
     for ym, g in df.groupby(df["date"].dt.strftime("%Y-%m")):
         if months is not None and ym not in months:
             continue
-        d = NAV_DIR / ym[:4]
+        d = (root or NAV_DIR) / ym[:4]
         d.mkdir(parents=True, exist_ok=True)
         g = g.assign(date=g["date"].dt.date)[["code", "date", "nav"]]
         tmp = d / f"{ym}.parquet.tmp"
@@ -207,3 +209,23 @@ def save_state(**kw):
     s = json.loads(STATE_JSON.read_text()) if STATE_JSON.exists() else {}
     s.update(kw)
     STATE_JSON.write_text(json.dumps(s, indent=2, default=str))
+
+
+def proxy_codes() -> set[int]:
+    if not BENCH_MAP.exists():
+        return set()
+    m = json.loads(BENCH_MAP.read_text())["benchmarks"]
+    return {int(c) for v in m.values() for _, c in v["recipe"]}
+
+
+def unsplit(s: pd.Series) -> pd.Series:
+    """Undo unit splits/consolidations (one-day NAV jumps of ×1/k or ×k), common in ETFs."""
+    s = s[s > 0].sort_index().copy()
+    r = s / s.shift()
+    for d, x in r[(r < 0.7) | (r > 1.5)].items():
+        for k in (2, 4, 5, 10, 20, 25, 50, 100):
+            hit = next((f for f in (1 / k, k) if abs(x / f - 1) < 0.04), None)
+            if hit:
+                s[s.index < d] *= hit
+                break
+    return s

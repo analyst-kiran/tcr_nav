@@ -108,6 +108,22 @@ def main() -> int:
         L.write_months(pd.concat([base, new], ignore_index=True), touched)
 
     schemes.to_csv(L.SCHEMES_CSV, index=False)
+
+    # Benchmark trackers (ETFs etc.): same AMFI pull, codes from data/benchmark_map.json
+    import seed_proxies
+    seed_proxies.main()
+    pc = L.proxy_codes()
+    if pc:
+        src = [x for x in (hist, latest) if x is not None]
+        px = pd.concat(src, ignore_index=True) if src else None
+        if px is not None and len(px):
+            px = px[px["code"].isin(pc)][["code", "date", "nav"]]
+            pm = {d.strftime("%Y-%m") for d in px["date"]}
+            if pm:
+                base_px = L.load_store(sorted({int(m[:4]) for m in pm}), root=L.PROXY_DIR)
+                L.write_months(pd.concat([base_px, px], ignore_index=True), pm, root=L.PROXY_DIR)
+                L.log(f"trackers: {px['code'].nunique()} of {len(pc)} updated")
+
     after = L.load_store([today.year])
     latest_d = max(after["date"]) if len(after) else last
     L.save_state(updated_at=datetime.now(IST).isoformat(timespec="seconds"),

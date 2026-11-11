@@ -27,7 +27,7 @@ anything derived from them that identifies the owner.
   no ratios (zeros) for ~58% of funds. Their SD looks like 3Y monthly, annualised
   (corr 0.998), but the exact window is not yet pinned down.
 
-## Benchmarks: researched, not yet in production
+## Benchmarks: in production (ETF roll-forward)
 No free official daily index feed (NSE/BSE refuse automated access; do not bypass bot checks).
 Approach tested: anchor each benchmark at the vendor's exact month-end level, then roll
 forward with ETF NAV ratios (AMFI data). The vendor's trailing and calendar returns imply
@@ -39,6 +39,16 @@ forward with ETF NAV ratios (AMFI data). The vendor's trailing and calendar retu
   CRISIL hybrids = Nifty 50 ETF + debt leg (~0.10–0.15%/30d); Arbitrage ≈ arbitrage fund.
 * 21 of the 24 benchmarks TCR uses are covered, median error ~0.02%/30 days. No passive tracker
   exists for Nifty Services Sector, Nifty 100 ESG or Nifty Transportation & Logistics.
+* Production: `data/benchmark_map.json` (built by `scripts/build_bench_map.py` from vendor files,
+  run locally), tracker NAVs in `data/proxy/` (seeded by `scripts/seed_proxies.py`, appended
+  daily by update.py), published as `docs/bench_px.js`. `tcr/live_nav.js` anchors each benchmark
+  at the vendor-implied levels (exact there), follows the tracker between anchors (residual spread
+  geometrically), and uses tracker + last-year drift after the last anchor.
+* VENDOR QUIRK: benchmark rows' "2 YEARS" is an ABSOLUTE return; fund rows' "2 YEARS" is CAGR.
+  Anchors read it as absolute; live output publishes benchmark 2Y as CAGR (like funds).
+  Verified on 1,171 values: everything else is reproduced exactly at the vendor date.
+* Correction & recovery cycle analysis (idea from debpal/BharatFinTrack, MIT) is wanted later,
+  alongside rolling returns.
 
 ## Owner's roadmap (in order)
 1. Benchmarks: productionise the ETF roll-forward (daily, in the GitHub job) and feed TCR.

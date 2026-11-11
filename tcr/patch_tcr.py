@@ -37,6 +37,8 @@ def patch(html: str, user: str) -> str:
     assert html.count(btn) == 1
     html = html.replace(btn, '<button class="icon-btn" id="live-btn" onclick="toggleLive()" '
                              'title="Live NAV">NAV …</button>\n    ' + btn)
+    # 5. header: "Data 02 NOV" → "Files 02 NOV" (the vendor files' date; the NAV button shows the live date)
+    html = html.replace("innerHTML=`Data <b>${eh(String(dt).toUpperCase())}</b>", "innerHTML=`Files <b>${eh(String(dt).toUpperCase())}</b>")
     css = ('<style id="live-css">#live-btn{width:auto;padding:0 8px;font-size:.72rem;font-weight:600;white-space:nowrap}'
            '#live-btn[data-state=on]{background:rgba(46,160,90,.35);border-color:rgba(120,220,150,.6)}'
            '#live-btn[data-state=paused]{opacity:.7}#live-btn[data-state=off]{background:rgba(200,60,60,.3)}</style>')
