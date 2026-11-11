@@ -2,3 +2,4 @@ __pycache__/
 *.tmp
 docs/nav_data.js
 docs/bench_px.js
+docs/hist/

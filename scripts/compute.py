@@ -135,6 +135,7 @@ def main():
     js = json.dumps(payload, separators=(",", ":"), ensure_ascii=False)
     OUT_JS.write_text("window.TCR_NAV=" + js + ";\n", encoding="utf-8")
     publish_trackers(asof_all)
+    publish_history(schemes)
     L.log(f"published {len(out)} schemes, latest NAV {payload['latest_nav_date']}, "
           f"{OUT_JS.stat().st_size/1e6:.1f} MB")
 
@@ -169,6 +170,40 @@ def publish_trackers(asof: pd.Timestamp):
                "series": series}
     OUT_PX.write_text("window.TCR_BENCH=" + json.dumps(payload, separators=(",", ":")) + ";\n", encoding="utf-8")
     L.log(f"published {len(series)} tracker series, {OUT_PX.stat().st_size/1e6:.1f} MB")
+
+
+HIST_DIR = L.ROOT / "docs" / "hist"
+
+
+def publish_history(schemes: pd.DataFrame):
+    """docs/hist/<year>.js — every tracked scheme's daily NAVs for that year, so TCR can compute
+    any date, rolling returns, drawdowns and ratios in the browser. Format per scheme:
+    [day deltas (first = days since 2000-01-01), NAVs]. Past years never change (browser caches)."""
+    HIST_DIR.mkdir(parents=True, exist_ok=True)
+    keep = set(schemes["code"])
+    epoch = pd.Timestamp("2000-01-01")
+    years = sorted({int(f.parent.name) for f in L.NAV_DIR.glob("*/*.parquet")})
+    index = {}
+    for y in years:
+        st = L.load_store([y])
+        st = st[st["code"].isin(keep)]
+        if st.empty:
+            continue
+        st["date"] = pd.to_datetime(st["date"])
+        out = {}
+        for code, g in st.sort_values("date").groupby("code"):
+            g = g.drop_duplicates("date", keep="last")
+            d = (g["date"] - epoch).dt.days.to_numpy()
+            out[str(code)] = [[int(d[0])] + [int(x) for x in (d[1:] - d[:-1])],
+                              [float(f"{v:.7g}") for v in g["nav"].to_numpy()]]
+        (HIST_DIR / f"{y}.js").write_text(
+            f"(window.TCR_HIST=window.TCR_HIST||{{}})[{y}]=" + json.dumps(out, separators=(",", ":")) + ";\n",
+            encoding="utf-8")
+        index[y] = len(out)
+    (HIST_DIR / "index.js").write_text("window.TCR_HIST_INDEX=" + json.dumps(
+        {"epoch": "2000-01-01", "years": index, "generated": datetime.now(IST).isoformat(timespec="seconds")}) + ";\n")
+    total = sum(f.stat().st_size for f in HIST_DIR.glob("*.js")) / 1e6
+    L.log(f"published history {years[0]}–{years[-1]}: {total:.1f} MB uncompressed")
 
 
 if __name__ == "__main__":

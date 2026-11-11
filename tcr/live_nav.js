@@ -128,7 +128,7 @@ function liveVendorDay(row){
   const n=LDAY(d.getFullYear(),d.getMonth(),d.getDate());
   return d.getDate()===1?n-1:n; // "01/11" exports are as of the month-end before
 }
-function liveAnchors(trRow,cyRow){
+function liveAnchors(trRow,cyRow,P){
   const M=liveVendorDay(trRow),L0=toN(trRow['NAV']);if(M==null||!fin(L0)||L0<=0)return null;
   const pts=new Map([[M,L0]]);
   for(const[k,off,long]of LIVE_TRP){
@@ -137,10 +137,19 @@ function liveAnchors(trRow,cyRow){
     pts.set(st,long?L0/Math.pow(1+r/100,(M-st+1)/365):L0/(1+r/100));
   }
   if(cyRow){
+    // Calendar year y = level on/before 1 Jan y → level on/before 31 Dec y. Between 31 Dec and the
+    // next 1 Jan (a trading day in some years) the tracker's one-day move bridges the gap.
     const y0=ldate(M).y;let r=toN(cyRow[String(y0)]);
     if(fin(r)){
       let x=L0/(1+r/100);pts.set(LDAY(y0,0,1),x);
-      for(let y=y0-1;y>y0-12;y--){r=toN(cyRow[String(y)]);if(!fin(r))break;x/=(1+r/100);pts.set(LDAY(y,0,1),x);}
+      for(let y=y0-1;y>y0-12;y--){
+        r=toN(cyRow[String(y)]);if(!fin(r))break;
+        const j=LDAY(y+1,0,1),d=LDAY(y,11,31);
+        const pj=P?lon(P,j):NaN,pd=P?lon(P,d):NaN;
+        const dec=fin(pj)&&fin(pd)&&pj>0?x*pd/pj:x;
+        pts.set(d,dec);
+        x=dec/(1+r/100);pts.set(LDAY(y,0,1),x);
+      }
     }
   }
   const a=[...pts.entries()].sort((p,q)=>p[0]-q[0]);
@@ -163,17 +172,19 @@ function liveLevel(A,P,n){
   if(fin(r)&&fin(rr))return V[i]*r*Math.pow(V[i+1]/(V[i]*rr),f);
   return V[i]*Math.pow(V[i+1]/V[i],f); // no tracker data here: geometric interpolation
 }
-function liveBenchAll(T){
+// full=true (calendar mode): also index rows without a tracker (geometric between the vendor's
+// exact levels), and calendar years for the 10 years up to T.
+function liveBenchAll(T,full){
   const B=window.TCR_BENCH;if(!B||!trRaw)return{};
-  const key=T+'|'+trRaw.length+'|'+(cyRaw?cyRaw.length:0);
+  const key=T+'|'+(full?1:0)+'|'+trRaw.length+'|'+(cyRaw?cyRaw.length:0);
   if(LIVE_BKEY===key)return LIVE_BRES;
   const cyBy={};for(const r of cyRaw||[])if(r['SCHEME NAME'])cyBy[r['SCHEME NAME']]=r;
   const res={},stale=[];
   for(const r of trRaw){
     const nm=r['SCHEME NAME'];if(!nm||fin(toN(r['CORPUS']))||res[nm])continue;
-    const m=B.map[nm];if(!m){if(isBenchmarkRow(r))stale.push(nm);continue;}
-    const A=liveAnchors(r,cyBy[nm]);const P=liveRecipe(m.recipe);
-    if(!A||!P||T<=A.M){continue;}
+    const m=B.map[nm];if(!m){if(isBenchmarkRow(r))stale.push(nm);if(!full)continue;}
+    const P=m?liveRecipe(m.recipe):null;const A=liveAnchors(r,cyBy[nm],P);
+    if(!A||(!P&&!full)||(!full&&T<=A.M)){continue;}
     const LT=liveLevel(A,P,T);if(!fin(LT))continue;
     const tr={},cy={};
     for(const[k,off,long]of LIVE_TRP){
@@ -182,20 +193,22 @@ function liveBenchAll(T){
       const yrs=off.years||0;
       tr[k]=+(((long?Math.pow(LT/Ls,365/(T-st+1)):yrs?Math.pow(LT/Ls,1/yrs):LT/Ls)-1)*100).toFixed(2);
     }
-    const yT=ldate(T).y,yM=ldate(A.M).y;
+    const yT=ldate(T).y,yM=full?yT-9:ldate(A.M).y;
     for(let y=yM;y<=yT;y++){
       const a=liveLevel(A,P,LDAY(y,0,1)),b=y===yT?LT:liveLevel(A,P,LDAY(y,11,31));
       if(fin(a)&&fin(b)&&a>0)cy[String(y)]=+((b/a-1)*100).toFixed(2);
     }
-    res[nm]={level:+LT.toFixed(2),tr,cy,proxy:m.proxy,err:m.err};
+    res[nm]={level:+LT.toFixed(2),tr,cy,proxy:m?m.proxy:null,err:m?m.err:null,approx:!m};
   }
-  LIVE_INFO.bench=Object.keys(res).length;LIVE_INFO.benchStale=stale;
+  if(!full){LIVE_INFO.bench=Object.keys(res).length;LIVE_INFO.benchStale=stale;}
   LIVE_BKEY=key;return LIVE_BRES=res;
 }
 
 function liveApply(raw,kind){
   if(!LIVE_ON||!window.TCR_NAV||!raw||!raw.length)return raw;
   if(!LIVE_MAP)LIVE_MAP=new Map();
+  if(kind==='tr')LIVE_INFO.riskFilled=0;
+  if(typeof LIVE_T!=='undefined'&&LIVE_T!=null&&LIVE_HIST_READY)return liveRowsAt(raw,kind,LIVE_T);
   const S=window.TCR_NAV.schemes,iso=window.TCR_NAV.latest_nav_date,T=lday(iso);
   const BR=liveBenchAll(T);
   let n=0;const miss=[];
@@ -210,7 +223,7 @@ function liveApply(raw,kind){
     const c=liveMatch(r);if(!c){miss.push(nm);return r;}
     const f=S[c],o={...r,'NAV':f.nav,'NAV DATE':liveDMY(f.nav_date)};
     for(const[k,v]of Object.entries(kind==='tr'?f.tr:f.cy))if(v!=null&&k in r)o[k]=v;
-    o.__live=c;n++;return o;
+    o.__live=c;n++;return liveFillRisk(o,c);
   });
   out.asOn=raw.asOn;LIVE_INFO[kind]=n;
   if(kind==='tr')LIVE_INFO.unmatched=miss;
@@ -222,12 +235,20 @@ function liveBadge(){
   const D=window.TCR_NAV;
   if(!D){b.textContent='NAV ✕';b.title='Live NAV feed not reachable (offline?) — using the uploaded files only';b.dataset.state='off';return;}
   const d=new Date(D.latest_nav_date+'T00:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short'});
+  if(LIVE_ON&&typeof LIVE_T!=='undefined'&&LIVE_T!=null){
+    const pd=new Date(liveISO(LIVE_T)+'T00:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'2-digit'});
+    b.textContent='As of '+pd;b.dataset.state='past';
+    b.title=`Calendar mode — every fund and benchmark rebuilt as of ${liveISO(LIVE_T)} from AMFI NAV history; risk ratios recomputed for that date (vendor method).\nCorpus, ratings, categories, alpha/beta come from the uploaded files. Funds launched later and unmatched funds are left out.\nClick to change.`;
+    return;
+  }
   b.textContent=(LIVE_ON?'NAV ':'NAV off ')+d;b.dataset.state=LIVE_ON?'on':'paused';
   b.title=LIVE_ON
     ?`Live NAV on — everything rolled to ${D.latest_nav_date} (data refreshed ${D.generated.replace('T',' ').slice(0,16)} IST).\n`+
      (LIVE_INFO.funds?`Funds: ${LIVE_INFO.funds} updated (NAV, trailing & calendar returns)`+(LIVE_INFO.unmatched.length?`, ${LIVE_INFO.unmatched.length} not matched (kept from file).\n`:'.\n'):'')+
      (LIVE_INFO.bench?`Benchmarks: ${LIVE_INFO.bench} rolled forward with their ETFs`+(LIVE_INFO.benchStale.length?`; ${LIVE_INFO.benchStale.length} have no tracker and stay at the file date.\n`:'.\n'):(window.TCR_BENCH?'':'Benchmark trackers not loaded — benchmarks stay at the file date.\n'))+
-     `Risk ratios, corpus and ratings are from the uploaded files.\nClick to switch off.`
+     (LIVE_INFO.riskFilled?`Risk ratios: ${LIVE_INFO.riskFilled} funds the file leaves blank were filled (vendor method, RF ${liveRF()}%).\n`:'')+
+     (typeof LIVE_HIST_READY!=='undefined'&&!LIVE_HIST_READY?'Loading NAV history for rolling returns, ratios and drawdowns…\n':'')+
+     `Corpus and ratings are from the uploaded files.\nClick for date, risk-free rate and rolling settings.`
     :'Live NAV off — every number is from the uploaded files. Click to switch on.';
 }
 async function toggleLive(){
