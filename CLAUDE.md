@@ -62,4 +62,19 @@ forward with ETF NAV ratios (AMFI data). The vendor's trailing and calendar retu
    Rebuilding at the vendor date reproduces the file 99–100% (funds) / 100% (benchmarks).
    CY_ASON is set to the shown date during runs (the file title's date would mark years complete).
 4b. ~~Correction & recovery cycles~~ DONE (fund drawer section; falls ≥10%, max fall 3Y/5Y vs benchmark).
-5. Further TCR changes, which the owner will specify.
+5. DONE this round (tcr/live_engine.js):
+   * Captures: panel "Capture source" = Investwell Top Schemes (default, latest) or NAV/TCR formula
+     (36 months vs category benchmark, all funds; always used for past dates). Investwell's own method
+     could not be reproduced (no variant matched exactly); NAV values land close (usually within a few pts).
+   * Calendar periods: Y / H / Q / M (9/10/12/36 complete + running), funds and benchmarks from history.
+   * Benchmark trackers now splice up to 2 older trackers of the same index (data/benchmark_map.json
+     "history"), so series reach back far enough for captures/drawdowns (Smallcap 250 ETF alone had ~1y).
+   * Score history: quiet runModel at 60 month-ends + quarter-ends since 2015 (patch adds an early
+     return before rendering when LIVE_SILENT); ~35 s, cached in IndexedDB per files+settings.
+     Drawer: score now / 1Y avg / all-time avg / deviation / σ / rank, why (pillar Δ × TCR weights
+     T20 C40 R20 Cons20), sparkline. Signals pop-up: rising stars, turnarounds, fading, backtest.
+   * Backtest (Nov 2026 run): top quartile beats category avg by +0.49 pts/yr (58% of cases);
+     strong in Multi Asset, Flexi Cap, BAF; zero/negative in Large/Mid/Small Cap, Value, Technology.
+   * Benchmark sources pop-up documents the benchmark data flow.
+6. NEXT: manager-change flag, AUM-flow signals (whitelist AUM history), behaviour in the last fall,
+   capture trend, style drift; weight tuning from the backtest.

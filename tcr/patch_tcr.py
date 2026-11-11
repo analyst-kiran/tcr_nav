@@ -32,6 +32,11 @@ def patch(html: str, user: str) -> str:
     html = html.replace(old, "    await LIVE_READY;\n"
                              "    const cyCl=cleanData(liveApply(cyRaw,'cy')),trCl=cleanData(liveApply(trRaw,'tr'));liveBadge();")
 
+    # 3b. quiet runs (score history): stop after scoring, before drawing
+    old_r = "    buildHeatMaps();\n    setLoadMsg('Rendering…');await tick();"
+    assert html.count(old_r) == 1, "render hook not found"
+    html = html.replace(old_r, "    if(typeof LIVE_SILENT!=='undefined'&&LIVE_SILENT)return;\n" + old_r)
+
     # 4. header button + style
     btn = '<button class="icon-btn" id="dark-btn"'
     assert html.count(btn) == 1
@@ -50,7 +55,15 @@ def patch(html: str, user: str) -> str:
            'padding:4px 6px;border:1px solid var(--border);border-radius:5px;background:var(--bg);color:var(--text);font:inherit}'
            '#live-panel input[type=checkbox]{flex:0 0 auto;appearance:auto;-webkit-appearance:checkbox;width:16px;height:16px;opacity:1;position:static;display:inline-block;margin:0}#live-panel .lp-btn{padding:4px 10px;border:1px solid var(--border);border-radius:5px;'
            'background:var(--card2);color:var(--text);cursor:pointer;font:inherit}#live-panel .lp-go{width:100%;margin-top:6px;background:var(--navy);color:#fff}'
-           '#live-panel .lp-note{font-size:.72rem;color:var(--muted);margin-top:6px}</style>')
+           '#live-panel .lp-note{font-size:.72rem;color:var(--muted);margin-top:6px}'
+           '#live-modal{position:fixed;inset:0;z-index:10000;background:rgba(10,15,30,.45);display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto}'
+           '#live-modal .lm-box{background:var(--card);color:var(--text);border-radius:10px;box-shadow:var(--shadow);width:min(1150px,100%);max-height:calc(100vh - 80px);display:flex;flex-direction:column;font:13px var(--sans)}'
+           '#live-modal .lm-h{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border);font-size:1rem}'
+           '#live-modal .lm-h button{border:0;background:none;color:var(--text);font-size:1.1rem;cursor:pointer}#live-modal .lm-b{padding:12px 16px;overflow:auto}'
+           '#live-modal h4{margin:16px 0 6px;font-size:.9rem}#live-modal .lm-s{font-weight:400;color:var(--muted);font-size:.75rem}#live-modal .lm-p{color:var(--text2);line-height:1.45;margin:6px 0}'
+           '#live-modal .lm-t{width:100%;border-collapse:collapse;font-size:.78rem}#live-modal .lm-t th{text-align:left;color:var(--muted);font-weight:600;border-bottom:1px solid var(--border);padding:5px 6px;position:sticky;top:0;background:var(--card)}'
+           '#live-modal .lm-t td{border-bottom:1px solid var(--border);padding:5px 6px}#live-modal .lm-dim td{color:var(--muted)}#live-modal .lm-up{color:var(--green)}#live-modal .lm-dn{color:var(--red)}'
+           '#live-modal a{color:var(--blue);text-decoration:none}#live-modal .lp-btn{padding:5px 12px;border:1px solid var(--border);border-radius:5px;background:var(--card2);color:var(--text);cursor:pointer}</style>')
     html = html.replace("</head>", css + "\n</head>", 1)
     return html
 

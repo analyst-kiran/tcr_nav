@@ -109,10 +109,25 @@ function lon(s,n){ // value on/before day n
   let lo=0,hi=a.length-1;while(lo<hi){const m=(lo+hi+1)>>1;if(a[m]<=n)lo=m;else hi=m-1;}
   return s.vals[lo];
 }
-function liveRecipe(recipe){ // daily-rebalanced blend of trackers
+// Splice older trackers of the same index in front of the main one (scaled at the joining day),
+// so the series reaches back as far as any tracker does.
+function liveSplice(main,olds){
+  let cur=main;
+  for(const c of[...(olds||[])].reverse()){
+    const o=liveSeries(String(c));if(!o||!cur||o.days[0]>=cur.days[0])continue;
+    const j=cur.days[0],ov=lon(o,j);if(!fin(ov)||ov<=0)continue;
+    const k=cur.vals[0]/ov,n=lidx0(o,j);
+    const days=new Int32Array(n+cur.days.length),vals=new Float64Array(n+cur.days.length);
+    for(let i=0;i<n;i++){days[i]=o.days[i];vals[i]=o.vals[i]*k;}
+    days.set(cur.days,n);vals.set(cur.vals,n);cur={days,vals};
+  }
+  return cur;
+}
+function lidx0(s,n){let c=0;while(c<s.days.length&&s.days[c]<n)c++;return c;} // count of days before n
+function liveRecipe(recipe,history){ // daily-rebalanced blend of trackers
   const legs=recipe.map(([w,c])=>[w,liveSeries(String(c))]);
   if(legs.some(([,s])=>!s))return null;
-  if(legs.length===1)return legs[0][1];
+  if(legs.length===1)return history&&history.length?liveSplice(legs[0][1],history):legs[0][1];
   const start=Math.max(...legs.map(([,s])=>s.days[0]));
   const all=[...new Set(legs.flatMap(([,s])=>Array.from(s.days)))].filter(d=>d>=start).sort((a,b)=>a-b);
   const vals=new Float64Array(all.length);let lvl=1,prev=legs.map(([,s])=>lon(s,start));
@@ -183,7 +198,7 @@ function liveBenchAll(T,full){
   for(const r of trRaw){
     const nm=r['SCHEME NAME'];if(!nm||fin(toN(r['CORPUS']))||res[nm])continue;
     const m=B.map[nm];if(!m){if(isBenchmarkRow(r))stale.push(nm);if(!full)continue;}
-    const P=m?liveRecipe(m.recipe):null;const A=liveAnchors(r,cyBy[nm],P);
+    const P=m?liveRecipe(m.recipe,m.history):null;const A=liveAnchors(r,cyBy[nm],P);
     if(!A||(!P&&!full)||(!full&&T<=A.M)){continue;}
     const LT=liveLevel(A,P,T);if(!fin(LT))continue;
     const tr={},cy={};

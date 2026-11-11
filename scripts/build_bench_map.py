@@ -223,7 +223,15 @@ def main():
             rows.append((b, "none", "", None))
             continue
         per30, kind, recipe = best
-        out[b] = {"kind": kind, "recipe": [[round(w, 6), int(c)] for w, c in recipe],
+        # Older trackers of the same index (ETFs first, then Direct index funds), used only to extend
+        # the series back in time; the vendor's exact levels keep their fees from creeping in.
+        hist = []
+        if len(recipe) == 1:
+            used = recipe[0][1]
+            same = [c for c in by_key(EK, k) + by_key(IK, k) if c != used and c in S]
+            hist = sorted(same, key=lambda c: S[c].index[0])
+            hist = [int(c) for c in hist if S[c].index[0] < S[used].index[0]][:2]  # the two oldest are enough
+        out[b] = {"kind": kind, "recipe": [[round(w, 6), int(c)] for w, c in recipe], "history": hist,
                   "proxy": " + ".join(f"{w:.0%} {NAME[c]}" if len(recipe) > 1 else NAME[c] for w, c in recipe),
                   "test_err_pct_per_30d": round(per30, 4)}
         rows.append((b, kind, out[b]["proxy"], round(per30, 4)))

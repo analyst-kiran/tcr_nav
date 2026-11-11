@@ -165,7 +165,7 @@ def publish_trackers(asof: pd.Timestamp):
         d = [int(days[0])] + [int(x) for x in (days[1:] - days[:-1])]  # day deltas
         series[str(code)] = {"d": d, "v": [float(f"{v:.6g}") for v in s.values]}
     payload = {"epoch": "2000-01-01", "asof": asof.strftime("%Y-%m-%d"), "vendor_asof": bm.get("vendor_asof"),
-               "map": {k: {"recipe": v["recipe"], "proxy": v["proxy"], "err": v["test_err_pct_per_30d"]}
+               "map": {k: {"recipe": v["recipe"], "history": v.get("history", []), "proxy": v["proxy"], "err": v["test_err_pct_per_30d"]}
                        for k, v in bm["benchmarks"].items()},
                "series": series}
     OUT_PX.write_text("window.TCR_BENCH=" + json.dumps(payload, separators=(",", ":")) + ";\n", encoding="utf-8")

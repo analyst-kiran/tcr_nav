@@ -215,7 +215,7 @@ def proxy_codes() -> set[int]:
     if not BENCH_MAP.exists():
         return set()
     m = json.loads(BENCH_MAP.read_text())["benchmarks"]
-    return {int(c) for v in m.values() for _, c in v["recipe"]}
+    return {int(c) for v in m.values() for _, c in v["recipe"]} | {int(c) for v in m.values() for c in v.get("history", [])}
 
 
 def unsplit(s: pd.Series) -> pd.Series:
