@@ -12,7 +12,7 @@ anything derived from them that identifies the owner.
   history report's full scheme name. NAVAll short names can't tell Direct from Regular.
 * `data/nav/YYYY/YYYY-MM.parquet`: code, date, nav. ~1,770 schemes, 2006 → today, from
   mfapi.in full history (the Kaggle dump was rejected: about a third of days missing).
-* `scripts/compute.py` → `docs/nav_data.js` (deployed to GitHub Pages, not committed):
+* `scripts/compute.py` → `docs/nav_data.js`, `docs/bench_px.js`, `docs/hist/<year>.js` (Pages only):
   https://analyst-kiran.github.io/tcr_nav/nav_data.js
 * `tcr/live_nav.js` + `tcr/patch_tcr.py`: patch for the TCR html. It loads the feed, matches
   vendor rows to AMFI codes by NAV on the vendor's NAV date plus a name/AMC check, and
@@ -52,9 +52,14 @@ forward with ETF NAV ratios (AMFI data). The vendor's trailing and calendar retu
 
 ## Owner's roadmap (in order)
 1. ~~Benchmarks~~ DONE (ETF roll-forward live in the job and in TCR).
-2. Ratios: compute vendor-method ratios for funds the vendor leaves at 0, on monthly import
-   only, using the RF backed out from that month's file (or an RF the owner types in).
-3. Rolling returns from the NAV history (the main reason for collecting NAVs).
-4. TCR: view old rankings by date. DECIDED: option B, recompute any date from NAV history
-   (calendar picker; ratios/corpus from the nearest monthly file; benchmarks via anchors+ETFs).
+2. ~~Ratios~~ DONE. Vendor method pinned (99.3–100% exact): 36 month-end returns ending the
+   month-end BEFORE the as-of month; SD = sample SD×√12; Mean = avg×12; Sharpe = (Mean−RF)/SD;
+   Sortino = (Mean−RF)/(sample SD of months below the fund's mean ×√12). RF = median(Mean−Sharpe×SD)
+   of the file (5.63% in Oct 2026) or user override. Blank ratios filled from ≥12 months.
+3. ~~Rolling returns~~ DONE: `tcr/live_engine.js` builds RR_RAW (1/2/3/5/7/10Y, daily starts,
+   N-year window, default 5) and calls TCR's own computeRollingRatings() → Rolling tab.
+4. ~~Calendar~~ DONE (option B): NAV button → panel (as-of date, live on/off, RF, rolling window).
+   Rebuilding at the vendor date reproduces the file 99–100% (funds) / 100% (benchmarks).
+   CY_ASON is set to the shown date during runs (the file title's date would mark years complete).
+4b. ~~Correction & recovery cycles~~ DONE (fund drawer section; falls ≥10%, max fall 3Y/5Y vs benchmark).
 5. Further TCR changes, which the owner will specify.

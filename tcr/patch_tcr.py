@@ -48,7 +48,7 @@ def patch(html: str, user: str) -> str:
            '#live-panel .lp-h{font-weight:700;margin-bottom:8px}#live-panel .lp-row{display:flex;align-items:center;gap:8px;margin:7px 0}'
            '#live-panel .lp-row>span{width:96px;color:var(--muted);font-size:.78rem}#live-panel input,#live-panel select{flex:1;min-width:0;'
            'padding:4px 6px;border:1px solid var(--border);border-radius:5px;background:var(--bg);color:var(--text);font:inherit}'
-           '#live-panel input[type=checkbox]{flex:0}#live-panel .lp-btn{padding:4px 10px;border:1px solid var(--border);border-radius:5px;'
+           '#live-panel input[type=checkbox]{flex:0 0 auto;appearance:auto;-webkit-appearance:checkbox;width:16px;height:16px;opacity:1;position:static;display:inline-block;margin:0}#live-panel .lp-btn{padding:4px 10px;border:1px solid var(--border);border-radius:5px;'
            'background:var(--card2);color:var(--text);cursor:pointer;font:inherit}#live-panel .lp-go{width:100%;margin-top:6px;background:var(--navy);color:#fff}'
            '#live-panel .lp-note{font-size:.72rem;color:var(--muted);margin-top:6px}</style>')
     html = html.replace("</head>", css + "\n</head>", 1)
