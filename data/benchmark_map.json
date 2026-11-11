@@ -1,0 +1,1408 @@
+{
+ "built": "2026-11-11",
+ "vendor_asof": "2026-10-31",
+ "benchmarks": {
+  "BSE Healthcare": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     150445
+    ]
+   ],
+   "proxy": "Motilal Oswal BSE Healthcare ETF",
+   "test_err_pct_per_30d": 0.028
+  },
+  "BSE India Sector Leaders": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     153838
+    ]
+   ],
+   "proxy": "Bandhan BSE India Sector Leaders Index Fund - Direct Plan - Growth",
+   "test_err_pct_per_30d": 0.0365
+  },
+  "BSE Power": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153744
+    ]
+   ],
+   "proxy": "Groww BSE Power ETF",
+   "test_err_pct_per_30d": 0.0809
+  },
+  "BSE Select IPO": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153384
+    ]
+   ],
+   "proxy": "Mirae Asset BSE Select IPO ETF",
+   "test_err_pct_per_30d": 0.0159
+  },
+  "NSE Nifty Auto": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     149463
+    ]
+   ],
+   "proxy": "ICICI Prudential Nifty Auto ETF",
+   "test_err_pct_per_30d": 0.065
+  },
+  "NSE Nifty Commodities": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     151207
+    ]
+   ],
+   "proxy": "ICICI Prudential Nifty Commodities ETF",
+   "test_err_pct_per_30d": 0.0564
+  },
+  "NSE Nifty Consumption": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     149041
+    ]
+   ],
+   "proxy": "SBI Nifty Consumption ETF",
+   "test_err_pct_per_30d": 0.0402
+  },
+  "NSE Nifty Consumption TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     149041
+    ]
+   ],
+   "proxy": "SBI Nifty Consumption ETF",
+   "test_err_pct_per_30d": 0.0228
+  },
+  "NSE Nifty Energy": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153931
+    ]
+   ],
+   "proxy": "Motilal Oswal Nifty Energy ETF",
+   "test_err_pct_per_30d": 0.0572
+  },
+  "NSE NIFTY EV & NEW AGE AUTOMOTIVE TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     152715
+    ]
+   ],
+   "proxy": "Mirae Asset Nifty EV and New Age Automotive ETF",
+   "test_err_pct_per_30d": 0.0353
+  },
+  "NSE Nifty Financial Services Ex-Bank TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     150879
+    ]
+   ],
+   "proxy": "ICICI Prudential Nifty Financial Services Ex-BaNk ETF",
+   "test_err_pct_per_30d": 0.0147
+  },
+  "NSE Nifty Financial Services TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     149105
+    ]
+   ],
+   "proxy": "Mirae Asset Nifty Financial Services ETF",
+   "test_err_pct_per_30d": 0.0172
+  },
+  "NSE Nifty FMCG": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     149072
+    ]
+   ],
+   "proxy": "ICICI Prudential Nifty FMCG ETF",
+   "test_err_pct_per_30d": 0.0605
+  },
+  "NSE Nifty FMCG TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     149072
+    ]
+   ],
+   "proxy": "ICICI Prudential Nifty FMCG ETF",
+   "test_err_pct_per_30d": 0.016
+  },
+  "NSE Nifty Healthcare TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     148957
+    ]
+   ],
+   "proxy": "ICICI Prudential Nifty Healthcare ETF",
+   "test_err_pct_per_30d": 0.0121
+  },
+  "NSE Nifty India Defence TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     152846
+    ]
+   ],
+   "proxy": "Motilal Oswal Nifty India Defence ETF",
+   "test_err_pct_per_30d": 0.036
+  },
+  "NSE Nifty India Digital TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     149959
+    ]
+   ],
+   "proxy": "Tata Nifty India Digital Exchange Traded Fund",
+   "test_err_pct_per_30d": 0.1239
+  },
+  "NSE Nifty India New Age Consumption TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153191
+    ]
+   ],
+   "proxy": "Mirae Asset Nifty India New Age Consumption ETF",
+   "test_err_pct_per_30d": 0.0306
+  },
+  "NSE Nifty IT": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     148408
+    ]
+   ],
+   "proxy": "Nippon India ETF Nifty IT",
+   "test_err_pct_per_30d": 0.1297
+  },
+  "NSE Nifty IT TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     152155
+    ]
+   ],
+   "proxy": "Mirae Asset Nifty IT ETF",
+   "test_err_pct_per_30d": 0.0043
+  },
+  "NSE Nifty Metal": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     152769
+    ]
+   ],
+   "proxy": "ICICI Prudential Nifty Metal ETF",
+   "test_err_pct_per_30d": 0.0444
+  },
+  "NSE Nifty Microcap 250 TRI": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     151814
+    ]
+   ],
+   "proxy": "Motilal Oswal Nifty Microcap 250 Index Fund- Direct- Growth Option",
+   "test_err_pct_per_30d": 0.1176
+  },
+  "NSE Nifty MidSmall Financial Services TRI": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     153027
+    ]
+   ],
+   "proxy": "Motilal Oswal Nifty MidSmall Financial Services Index Fund - Direct Plan- Growth",
+   "test_err_pct_per_30d": 0.0644
+  },
+  "NSE Nifty MidSmall Healthcare TRI": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     152564
+    ]
+   ],
+   "proxy": "Tata Nifty MidSmall Healthcare Index Fund - Direct Plan - Growth",
+   "test_err_pct_per_30d": 0.0383
+  },
+  "NSE Nifty MidSmall IT & Telecom TRI": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     153029
+    ]
+   ],
+   "proxy": "Motilal Oswal Nifty MidSmall IT and Telecom Index Fund - Direct Plan- Growth",
+   "test_err_pct_per_30d": 0.0532
+  },
+  "NSE Nifty MNC": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     150531
+    ]
+   ],
+   "proxy": "Kotak Nifty MNC ETF",
+   "test_err_pct_per_30d": 0.085
+  },
+  "NSE Nifty NON-CYCLICAL Consumer TRI": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     152637
+    ]
+   ],
+   "proxy": "Groww Nifty Non-Cyclical Consumer Index Fund - Direct Plan Growth",
+   "test_err_pct_per_30d": 0.0454
+  },
+  "NSE Nifty Pharma": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     149008
+    ]
+   ],
+   "proxy": "Nippon India Nifty Pharma ETF",
+   "test_err_pct_per_30d": 0.0289
+  },
+  "NSE Nifty Realty": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153899
+    ]
+   ],
+   "proxy": "Groww Nifty Realty ETF",
+   "test_err_pct_per_30d": 0.0338
+  },
+  "NSE Nifty Smallcap 100": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153837
+    ]
+   ],
+   "proxy": "Zerodha CASE Nifty Smallcap 100 ETF",
+   "test_err_pct_per_30d": 0.0864
+  },
+  "NSE Nifty Smallcap 50": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     148815
+    ]
+   ],
+   "proxy": "Aditya Birla Sun Life Nifty Smallcap 50 Index Fund-Direct Growth",
+   "test_err_pct_per_30d": 0.0761
+  },
+  "NSE Nifty SMALLCAP 50 TRI": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     148815
+    ]
+   ],
+   "proxy": "Aditya Birla Sun Life Nifty Smallcap 50 Index Fund-Direct Growth",
+   "test_err_pct_per_30d": 0.0933
+  },
+  "BSE 100": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     134014
+    ]
+   ],
+   "proxy": "SBI BSE 100 ETF",
+   "test_err_pct_per_30d": 0.0622
+  },
+  "BSE 200 Equal Weight": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153379
+    ]
+   ],
+   "proxy": "Mirae Asset BSE 200 Equal Weight ETF",
+   "test_err_pct_per_30d": 0.0311
+  },
+  "BSE 500": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     143247
+    ]
+   ],
+   "proxy": "ICICI Prudential BSE 500 ETF",
+   "test_err_pct_per_30d": 0.0438
+  },
+  "BSE Sensex": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     139840
+    ]
+   ],
+   "proxy": "BANDHAN BSE Sensex ETF",
+   "test_err_pct_per_30d": 0.0565
+  },
+  "NSE Nifty 100 ESG Sector Leaders TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     148572
+    ]
+   ],
+   "proxy": "Mirae Asset Nifty 100 ESG Sector Leaders ETF",
+   "test_err_pct_per_30d": 0.0387
+  },
+  "NSE Nifty 100 LOW VOLATILITY 30 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     150000
+    ]
+   ],
+   "proxy": "Kotak Nifty 100 Low Volatility 30 ETF",
+   "test_err_pct_per_30d": 0.0113
+  },
+  "NSE Nifty 50": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153699
+    ]
+   ],
+   "proxy": "Groww Nifty 50 ETF",
+   "test_err_pct_per_30d": 0.0651
+  },
+  "NSE Nifty 50 Arbitrage": {
+   "kind": "composite",
+   "recipe": [
+    [
+     1.0,
+     152849
+    ]
+   ],
+   "proxy": "WhiteOak Capital Arbitrage Fund Direct Plan Growth",
+   "test_err_pct_per_30d": 0.0216
+  },
+  "NSE Nifty 50 Arbitrage TRI": {
+   "kind": "composite",
+   "recipe": [
+    [
+     1.0,
+     153090
+    ]
+   ],
+   "proxy": "Samco Arbitrage Fund - Direct Plan - Growth",
+   "test_err_pct_per_30d": 0.6742
+  },
+  "NSE Nifty 50 Equal Weight TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153532
+    ]
+   ],
+   "proxy": "MOTILAL OSWAL NIFTY 50 EQUAL WEIGHT ETF",
+   "test_err_pct_per_30d": 0.0127
+  },
+  "NSE Nifty 50 Shariah": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     140094
+    ]
+   ],
+   "proxy": "Nippon India ETF Nifty 50 Shariah BeES",
+   "test_err_pct_per_30d": 0.0659
+  },
+  "NSE Nifty 50 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     121366
+    ]
+   ],
+   "proxy": "ICICI Prudential Nifty 50 ETF",
+   "test_err_pct_per_30d": 0.002
+  },
+  "NSE Nifty 500 Equal Weight TRI": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     152842
+    ]
+   ],
+   "proxy": "Nippon India Nifty 500 Equal Weight Index Fund - Direct Plan - Growth Option",
+   "test_err_pct_per_30d": 0.0442
+  },
+  "NSE Nifty Alpha 50 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     149397
+    ]
+   ],
+   "proxy": "Kotak Nifty Alpha 50 ETF",
+   "test_err_pct_per_30d": 0.1445
+  },
+  "NSE Nifty Alpha Low-Volatility 30": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     148456
+    ]
+   ],
+   "proxy": "ICICI Prudential Nifty Alpha Low- Volatility 30 ETF",
+   "test_err_pct_per_30d": 0.0592
+  },
+  "NSE Nifty Large Midcap 250": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153841
+    ]
+   ],
+   "proxy": "Edelweiss Nifty LargeMidcap 250 ETF - Growth",
+   "test_err_pct_per_30d": 0.0433
+  },
+  "NSE Nifty Large Midcap 250 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153841
+    ]
+   ],
+   "proxy": "Edelweiss Nifty LargeMidcap 250 ETF - Growth",
+   "test_err_pct_per_30d": 0.0904
+  },
+  "NSE Nifty Top 10 Equal Weight TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     152812
+    ]
+   ],
+   "proxy": "DSP Nifty Top 10 Equal Weight ETF",
+   "test_err_pct_per_30d": 0.0104
+  },
+  "NSE Nifty Midcap 100": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     114456
+    ]
+   ],
+   "proxy": "Motilal Oswal Nifty Midcap 100 ETF",
+   "test_err_pct_per_30d": 0.0431
+  },
+  "NSE Nifty Midcap 100 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     114456
+    ]
+   ],
+   "proxy": "Motilal Oswal Nifty Midcap 100 ETF",
+   "test_err_pct_per_30d": 0.007
+  },
+  "NSE Nifty Midcap 150": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     151374
+    ]
+   ],
+   "proxy": "HDFC NIFTY Midcap 150 ETF - Growth Option",
+   "test_err_pct_per_30d": 0.0364
+  },
+  "NSE Nifty Midcap 150 Momentum 50 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153694
+    ]
+   ],
+   "proxy": "Motilal Oswal Nifty Midcap150 Momentum 50 ETF",
+   "test_err_pct_per_30d": 0.0722
+  },
+  "NSE Nifty Midcap 150 Quality 50 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     149403
+    ]
+   ],
+   "proxy": "DSP Nifty Midcap 150 Quality 50 ETF",
+   "test_err_pct_per_30d": 0.0255
+  },
+  "NSE Nifty Midcap 150 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153398
+    ]
+   ],
+   "proxy": "Kotak Nifty Midcap 150 ETF",
+   "test_err_pct_per_30d": 0.0074
+  },
+  "NSE Nifty Midcap 50": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     149757
+    ]
+   ],
+   "proxy": "Kotak Nifty Midcap 50 ETF",
+   "test_err_pct_per_30d": 0.0363
+  },
+  "NSE Nifty Next 50": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     150477
+    ]
+   ],
+   "proxy": "HDFC NIFTY NEXT 50 ETF - Growth Option",
+   "test_err_pct_per_30d": 0.0471
+  },
+  "NSE Nifty Next 50 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     147906
+    ]
+   ],
+   "proxy": "Mirae Asset Nifty Next 50 ETF",
+   "test_err_pct_per_30d": 0.0054
+  },
+  "NSE Nifty Smallcap 100 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153837
+    ]
+   ],
+   "proxy": "Zerodha CASE Nifty Smallcap 100 ETF",
+   "test_err_pct_per_30d": 0.061
+  },
+  "NSE Nifty Smallcap 250": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     152546
+    ]
+   ],
+   "proxy": "Motilal Oswal Nifty Smallcap 250 ETF",
+   "test_err_pct_per_30d": 0.0229
+  },
+  "NSE Nifty Smallcap 250 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153923
+    ]
+   ],
+   "proxy": "Groww Nifty Smallcap250 ETF",
+   "test_err_pct_per_30d": 0.0245
+  },
+  "BSE 500 Momentum 50": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     153736
+    ]
+   ],
+   "proxy": "Aditya Birla Sun Life BSE 500 Momentum 50 Index Fund-Direct Growth",
+   "test_err_pct_per_30d": 0.0279
+  },
+  "BSE 500 Quality 50": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     153740
+    ]
+   ],
+   "proxy": "Aditya Birla Sun Life BSE 500 Quality 50 Index Fund - Direct Growth",
+   "test_err_pct_per_30d": 0.0779
+  },
+  "NSE Nifty 100": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     123004
+    ]
+   ],
+   "proxy": "ICICI Prudential Nifty 100 ETF",
+   "test_err_pct_per_30d": 0.0398
+  },
+  "NSE Nifty 100 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     152667
+    ]
+   ],
+   "proxy": "Zerodha CASE Nifty 100 ETF",
+   "test_err_pct_per_30d": 0.0064
+  },
+  "NSE Nifty 200": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153329
+    ]
+   ],
+   "proxy": "Groww Nifty 200 ETF",
+   "test_err_pct_per_30d": 0.0414
+  },
+  "NSE Nifty 200 Momentum 30 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     150657
+    ]
+   ],
+   "proxy": "HDFC NIFTY200 MOMENTUM 30 ETF - Growth Option",
+   "test_err_pct_per_30d": 0.0412
+  },
+  "NSE Nifty 200 Quality 30 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153657
+    ]
+   ],
+   "proxy": "Kotak Nifty200 Quality 30 ETF",
+   "test_err_pct_per_30d": 0.0156
+  },
+  "NSE Nifty 200 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153329
+    ]
+   ],
+   "proxy": "Groww Nifty 200 ETF",
+   "test_err_pct_per_30d": 0.0308
+  },
+  "NSE Nifty 500": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     152106
+    ]
+   ],
+   "proxy": "Motilal Oswal Nifty 500 ETF",
+   "test_err_pct_per_30d": 0.0533
+  },
+  "NSE Nifty 500 Momentum 50 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153452
+    ]
+   ],
+   "proxy": "Groww Nifty 500 Momentum 50 ETF",
+   "test_err_pct_per_30d": 0.0667
+  },
+  "NSE Nifty 500 Multicap 50:25:25 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     152811
+    ]
+   ],
+   "proxy": "Mirae Asset Nifty500 Multicap 50:25:25 ETF",
+   "test_err_pct_per_30d": 0.0169
+  },
+  "NSE Nifty 500 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     152106
+    ]
+   ],
+   "proxy": "Motilal Oswal Nifty 500 ETF",
+   "test_err_pct_per_30d": 0.0143
+  },
+  "NSE Nifty 8-13 yr G-Sec Index": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153811
+    ]
+   ],
+   "proxy": "Zerodha CASE Nifty 8-13 Yr G-Sec ETF",
+   "test_err_pct_per_30d": 0.0358
+  },
+  "NSE Nifty Bank": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     151857
+    ]
+   ],
+   "proxy": "Mirae Asset Nifty Bank ETF",
+   "test_err_pct_per_30d": 0.0469
+  },
+  "NSE Nifty Bank TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     151857
+    ]
+   ],
+   "proxy": "Mirae Asset Nifty Bank ETF",
+   "test_err_pct_per_30d": 0.0114
+  },
+  "NSE Nifty MidSmallcap400 Momentum Quality 100 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     152634
+    ]
+   ],
+   "proxy": "Mirae Asset Nifty MidSmallcap400 Momentum Quality 100 ETF",
+   "test_err_pct_per_30d": 0.0496
+  },
+  "NSE Nifty PSE": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153608
+    ]
+   ],
+   "proxy": "Motilal Oswal Nifty PSE ETF",
+   "test_err_pct_per_30d": 0.1177
+  },
+  "NSE Nifty500 Multicap India Manufacturing 50:30:20 TRI": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     152588
+    ]
+   ],
+   "proxy": "Tata Nifty500 Multicap India Manufacturing 50:30:20 Index Fund -Direct Plan-Growth",
+   "test_err_pct_per_30d": 0.0512
+  },
+  "NSE NIFTY500 MULTICAP INFRASTRUCTURE 50:30:20 TRI": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     152595
+    ]
+   ],
+   "proxy": "Tata Nifty500 Multicap Infrastructure 50:30:20 Index Fund - Direct Plan - Growth",
+   "test_err_pct_per_30d": 0.0805
+  },
+  "NSE Nifty500 Multicap Momentum Quality 50 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     152981
+    ]
+   ],
+   "proxy": "Edelweiss Nifty500 Multicap Momentum Quality 50 ETF - Growth",
+   "test_err_pct_per_30d": 0.0494
+  },
+  "BSE Low Volatility": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     149921
+    ]
+   ],
+   "proxy": "Motilal Oswal BSE Low Volatility ETF",
+   "test_err_pct_per_30d": 0.1103
+  },
+  "BSE Quality": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     150520
+    ]
+   ],
+   "proxy": "Motilal Oswal BSE Quality ETF",
+   "test_err_pct_per_30d": 0.0914
+  },
+  "BSE Enhanced Value": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     150517
+    ]
+   ],
+   "proxy": "Motilal Oswal BSE Enhanced Value ETF",
+   "test_err_pct_per_30d": 0.1455
+  },
+  "NSE Nifty 50 Value 20": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     139455
+    ]
+   ],
+   "proxy": "ICICI Prudential Nifty50 Value 20 ETF",
+   "test_err_pct_per_30d": 0.0559
+  },
+  "NSE Nifty 50 Value 20 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     135744
+    ]
+   ],
+   "proxy": "Kotak Nifty 50 Value 20 ETF - Payout of Income Distribution cum capital withdrawal option",
+   "test_err_pct_per_30d": 0.0218
+  },
+  "NSE Nifty 500 Value 50 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153414
+    ]
+   ],
+   "proxy": "Axis Nifty500 Value 50 ETF",
+   "test_err_pct_per_30d": 0.0366
+  },
+  "BSE Housing": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     151764
+    ]
+   ],
+   "proxy": "UTI BSE Housing Index Fund - Direct Plan - Growth Option",
+   "test_err_pct_per_30d": 0.0556
+  },
+  "BSE PSU": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     152755
+    ]
+   ],
+   "proxy": "Kotak BSE PSU Index Fund - Direct Plan - Growth",
+   "test_err_pct_per_30d": 0.1233
+  },
+  "BSE Select Business Groups": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     153132
+    ]
+   ],
+   "proxy": "Tata BSE Select Business Groups Index Fund - Direct Growth",
+   "test_err_pct_per_30d": 0.0707
+  },
+  "NSE Nifty Capital Markets TRI": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     152951
+    ]
+   ],
+   "proxy": "Tata Nifty Capital Markets Index Fund - Direct Plan Growth Option",
+   "test_err_pct_per_30d": 0.0441
+  },
+  "NSE Nifty India Manufacturing": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153572
+    ]
+   ],
+   "proxy": "Motilal Oswal Nifty India Manufacturing ETF",
+   "test_err_pct_per_30d": 0.0308
+  },
+  "NSE Nifty India Manufacturing TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153810
+    ]
+   ],
+   "proxy": "Nippon India Nifty India Manufacturing ETF",
+   "test_err_pct_per_30d": 0.0182
+  },
+  "NSE Nifty India Tourism TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153618
+    ]
+   ],
+   "proxy": "Motilal Oswal Nifty India Tourism ETF",
+   "test_err_pct_per_30d": 0.0471
+  },
+  "NSE Nifty Infrastructure": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     150526
+    ]
+   ],
+   "proxy": "ICICI Prudential Nifty Infrastructure ETF",
+   "test_err_pct_per_30d": 0.0377
+  },
+  "NSE Nifty Infrastructure TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     150526
+    ]
+   ],
+   "proxy": "ICICI Prudential Nifty Infrastructure ETF",
+   "test_err_pct_per_30d": 0.0419
+  },
+  "NSE Nifty MNC TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     150531
+    ]
+   ],
+   "proxy": "Kotak Nifty MNC ETF",
+   "test_err_pct_per_30d": 0.0253
+  },
+  "NSE Nifty Private Bank TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     147614
+    ]
+   ],
+   "proxy": "Tata Nifty Private Bank Exchange Traded Fund",
+   "test_err_pct_per_30d": 0.0083
+  },
+  "NSE Nifty PSU Bank": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     152929
+    ]
+   ],
+   "proxy": "Mirae Asset Nifty PSU Bank ETF",
+   "test_err_pct_per_30d": 0.0473
+  },
+  "NSE Nifty PSU Bank TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     151888
+    ]
+   ],
+   "proxy": "DSP Nifty PSU Bank ETF",
+   "test_err_pct_per_30d": 0.0103
+  },
+  "NSE Nifty Total Market TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153332
+    ]
+   ],
+   "proxy": "ANGEL ONE NIFTY TOTAL MARKET ETF",
+   "test_err_pct_per_30d": 0.0217
+  },
+  "NASDAQ -100": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     114984
+    ]
+   ],
+   "proxy": "Motilal Oswal Nasdaq 100 ETF (MOFN100)",
+   "test_err_pct_per_30d": 0.8535
+  },
+  "NYSE FANG+": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     148927
+    ]
+   ],
+   "proxy": "Mirae Asset NYSE FANG + ETF",
+   "test_err_pct_per_30d": 0.6552
+  },
+  "S&P 500": {
+   "kind": "indexfund",
+   "recipe": [
+    [
+     1.0,
+     148381
+    ]
+   ],
+   "proxy": "Motilal Oswal S&P 500 Index Fund - Direct Plan Growth",
+   "test_err_pct_per_30d": 1.2044
+  },
+  "S&P 500 Top 50 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     149169
+    ]
+   ],
+   "proxy": "Mirae Asset S&P 500 Top 50 ETF",
+   "test_err_pct_per_30d": 1.1227
+  },
+  "NSE Nifty500 Flexicap Quality 30 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     153874
+    ]
+   ],
+   "proxy": "DSP Nifty500 Flexicap Quality 30 ETF",
+   "test_err_pct_per_30d": 0.0348
+  },
+  "Hybrid 20 Debt+80 Equity Aggressive Index": {
+   "kind": "composite",
+   "recipe": [
+    [
+     0.8,
+     115284
+    ],
+    [
+     0.2,
+     120282
+    ]
+   ],
+   "proxy": "80% Invesco India Nifty 50 Exchange Traded Fund + 20% LIC MF Gilt Fund-Direct Plan-Growth",
+   "test_err_pct_per_30d": 0.2404
+  },
+  "Hybrid 25 Debt+75 Equity Aggressive Index": {
+   "kind": "composite",
+   "recipe": [
+    [
+     0.75,
+     115284
+    ],
+    [
+     0.25,
+     120282
+    ]
+   ],
+   "proxy": "75% Invesco India Nifty 50 Exchange Traded Fund + 25% LIC MF Gilt Fund-Direct Plan-Growth",
+   "test_err_pct_per_30d": 0.2123
+  },
+  "Hybrid 30 Debt+70 Equity Aggressive Index": {
+   "kind": "composite",
+   "recipe": [
+    [
+     0.7,
+     115284
+    ],
+    [
+     0.3,
+     118299
+    ]
+   ],
+   "proxy": "70% Invesco India Nifty 50 Exchange Traded Fund + 30% CANARA ROBECO GILT FUND - DIRECT PLAN - GROWTH OPTION",
+   "test_err_pct_per_30d": 0.1922
+  },
+  "Hybrid 35 Debt+65 Equity Aggressive Index": {
+   "kind": "composite",
+   "recipe": [
+    [
+     0.65,
+     115284
+    ],
+    [
+     0.35,
+     120590
+    ]
+   ],
+   "proxy": "65% Invesco India Nifty 50 Exchange Traded Fund + 35% ICICI Prudential Gilt Fund - Direct Plan - Growth",
+   "test_err_pct_per_30d": 0.169
+  },
+  "Hybrid 65 Debt+35 Equity Moderate Index": {
+   "kind": "composite",
+   "recipe": [
+    [
+     0.35,
+     115284
+    ],
+    [
+     0.65,
+     151014
+    ]
+   ],
+   "proxy": "35% Invesco India Nifty 50 Exchange Traded Fund + 65% HSBC Gilt Fund - Direct Growth",
+   "test_err_pct_per_30d": 0.1403
+  },
+  "1/3 NIFTY+1/3 Nifty 1D Rate+1/3 Gold": {
+   "kind": "composite",
+   "recipe": [
+    [
+     0.333333,
+     115284
+    ],
+    [
+     0.333333,
+     153045
+    ],
+    [
+     0.333333,
+     152476
+    ]
+   ],
+   "proxy": "33% Invesco India Nifty 50 Exchange Traded Fund + 33% Mirae Asset Nifty 1D Rate Liquid ETF - Growth + 33% Zerodha CASE Gold ETF",
+   "test_err_pct_per_30d": 0.4739
+  },
+  "65% Nifty 200 TRI+20% NIFTY 1D Rate+15% Gold": {
+   "kind": "composite",
+   "recipe": [
+    [
+     0.65,
+     153329
+    ],
+    [
+     0.2,
+     151908
+    ],
+    [
+     0.15,
+     152476
+    ]
+   ],
+   "proxy": "65% Groww Nifty 200 ETF + 20% Mirae Asset Nifty 1D Rate Liquid ETF-IDCW + 15% Zerodha CASE Gold ETF",
+   "test_err_pct_per_30d": 0.2686
+  },
+  "65% Nifty 50+20% Nifty 1D Rate+15% of Gold": {
+   "kind": "composite",
+   "recipe": [
+    [
+     0.65,
+     115284
+    ],
+    [
+     0.2,
+     153045
+    ],
+    [
+     0.15,
+     152476
+    ]
+   ],
+   "proxy": "65% Invesco India Nifty 50 Exchange Traded Fund + 20% Mirae Asset Nifty 1D Rate Liquid ETF - Growth + 15% Zerodha CASE Gold ETF",
+   "test_err_pct_per_30d": 0.489
+  },
+  "Hybrid 50 Debt+50 Equity Balanced Index": {
+   "kind": "composite",
+   "recipe": [
+    [
+     0.5,
+     115284
+    ],
+    [
+     0.5,
+     119605
+    ]
+   ],
+   "proxy": "50% Invesco India Nifty 50 Exchange Traded Fund + 50% Aditya Birla Sun Life Gilt Fund - Growth - Direct Plan",
+   "test_err_pct_per_30d": 0.0978
+  },
+  "Hybrid 85 Debt+15 Equity Conservative Index": {
+   "kind": "composite",
+   "recipe": [
+    [
+     0.15,
+     115284
+    ],
+    [
+     0.85,
+     153206
+    ]
+   ],
+   "proxy": "15% Invesco India Nifty 50 Exchange Traded Fund + 85% Bajaj Finserv Gilt Fund - Direct - Growth",
+   "test_err_pct_per_30d": 0.1618
+  },
+  "Hybrid 70 Debt+30 Equity Moderate Index": {
+   "kind": "composite",
+   "recipe": [
+    [
+     0.3,
+     115284
+    ],
+    [
+     0.7,
+     151014
+    ]
+   ],
+   "proxy": "30% Invesco India Nifty 50 Exchange Traded Fund + 70% HSBC Gilt Fund - Direct Growth",
+   "test_err_pct_per_30d": 0.1675
+  },
+  "Nifty 50 Arbitrage (75%) + Nifty 50 (25%)": {
+   "kind": "composite",
+   "recipe": [
+    [
+     0.75,
+     153090
+    ],
+    [
+     0.25,
+     115284
+    ]
+   ],
+   "proxy": "75% Samco Arbitrage Fund - Direct Plan - Growth + 25% Invesco India Nifty 50 Exchange Traded Fund",
+   "test_err_pct_per_30d": 0.1368
+  },
+  "NSE Nifty 200 Alpha 30 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     152134
+    ]
+   ],
+   "proxy": "Mirae Asset Nifty 200 Alpha 30 ETF",
+   "test_err_pct_per_30d": 0.0921
+  },
+  "NSE NIFTY SMALLCAP250 MOMENTUM QUALITY 100 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     152455
+    ]
+   ],
+   "proxy": "Mirae Asset Nifty Smallcap 250 Momentum Quality 100 ETF",
+   "test_err_pct_per_30d": 0.0591
+  },
+  "NSE Nifty200 Value 30 TRI": {
+   "kind": "etf",
+   "recipe": [
+    [
+     1.0,
+     152932
+    ]
+   ],
+   "proxy": "ICICI Prudential Nifty200 Value 30 ETF",
+   "test_err_pct_per_30d": 0.0356
+  }
+ }
+}
