@@ -92,5 +92,17 @@ forward with ETF NAV ratios (AMFI data). The vendor's trailing and calendar retu
      Result: top quartile +0.41 pts/12M (57%); 27% land in future top quartile (random 25%).
      Score rising ≥10 over 3M → +1.26 pts next 12M; falling 5–10 → −0.97 (score momentum matters
      more than score level). Methodology text in tcr/methodology.html (injected by patch_tcr.py).
-7. NEXT: AUM-flow signal (whitelist AUM history), capture trend, weight tuning from the backtest,
+7. Adviser-objective backtest (Nov 12): owner rejected trailing-led weights (churn; retail-like).
+   Panel of 38k fund-months (scratch only), category percentiles, outcomes next 3Y/12M, forward max
+   fall, 12M rating stability. Findings: nothing predicts 3Y well (rank corr ≤0.09); current score's
+   top−bottom 3Y spread −0.07 pts/yr; best single separators: worst rolling 1Y vs category (+0.40),
+   TCR Consistency (+0.29), Trailing (+0.27); TCR Risk is inverse for returns (−0.39); down-month hit
+   rate and pain predict smaller future falls (+0.64 pts) at a return cost; rolling 3Y measures most
+   stable (96% stay top-40% after 12M vs 89% for TCR score). Candidate consistency "Kx" =
+   50% TCR consistency + 30% worst rolling 1Y vs category + 20% rolling 3Y quartile points; best mix
+   I = T20 C30 R10 Kx40 (spread +0.07, top20 +0.17, same stability). Not yet wired; owner decides.
+   UI: 🧬 Behaviour tab (tri-state style filters within left-side categories), drawer readings folded
+   into TCR's Rolling and Corrections sections, ⚠ Watch box only when something happened, score
+   chart hover dates. Fund-intelligence block and repeated FM line removed.
+8. NEXT: AUM-flow signal (whitelist AUM history), capture trend, weight tuning from the backtest,
    survivorship (closed funds are missing from mfapi universe — consider adding them for backtests).

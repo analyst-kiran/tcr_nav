@@ -192,7 +192,7 @@ function liveDrawerSection(name){
     +'</div>';
   const rows=f.cycles.slice(-6).reverse().map(x=>`<tr><td>${dt(x.peak)}</td><td>${dt(x.trough)}</td><td style="color:var(--red)">${x.fall.toFixed(1)}%</td><td>${mon(x.peak,x.trough)}</td><td>${mon(x.trough,x.recovered)}</td></tr>`).join('');
   const tbl=rows?`<table style="width:100%;font-size:.66rem;margin-top:8px;border-collapse:collapse"><tr style="color:var(--muted);text-align:left"><th>Peak</th><th>Bottom</th><th>Fall</th><th>Falling</th><th>Recovery</th></tr>${rows}</table>`:'<div style="font-size:.66rem;color:var(--muted);margin-top:6px">No fall of 10% or more in the data.</div>';
-  return`<div class="drw-sec"><div class="drw-sec-lbl">📉 Corrections &amp; recoveries <span style="font-weight:400;color:var(--muted)">(NAV to ${liveISO(T)}${bn?' · vs '+eh(bn):''})</span></div>${grid}${tbl}</div>`;
+  return`<div class="drw-sec"><div class="drw-sec-lbl">📉 Corrections &amp; recoveries <span style="font-weight:400;color:var(--muted)">(NAV to ${liveISO(T)}${bn?' · vs '+eh(bn):''})</span></div>${grid}${liveProtection(name)}${tbl}</div>`;
 }
 
 // ── settings panel (opens from the NAV button) ──
@@ -363,12 +363,13 @@ function liveScoreSection(name){
   const col=v=>v>=0?'var(--green)':'var(--red)',sgn=v=>(v>=0?'+':'')+v.toFixed(1);
   const why=parts.map(p=>`<span style="margin-right:10px">${p.lbl} <b style="color:${col(p.c)}">${sgn(p.c)}</b> <span style="color:var(--muted)">(pillar ${sgn(p.d)})</span></span>`).join('');
   const rk=now.v[5]?`#${now.v[5]} of ${now.v[6]}`:'—',rk1=yr[0]&&yr[0].v[5]?`#${yr[0].v[5]} of ${yr[0].v[6]}`:'—';
-  // sparkline
+  // sparkline (hover a point for its date, score and rank)
+  const dtl=n=>{const t=ldate(n);return t.d+' '+MON3[t.m].charAt(0)+MON3[t.m].slice(1).toLowerCase()+' '+t.y;};
   const W=330,Hh=60,xs=pts.map(p=>p.d),x0=xs[0],x1=xs[xs.length-1]||x0+1;
   const vs=pts.map(p=>p.v[0]),lo=Math.max(0,Math.min(...vs)-5),hi=Math.min(100,Math.max(...vs)+5);
   const X=d=>(d-x0)/(x1-x0||1)*W,Y=v=>Hh-4-((v-lo)/((hi-lo)||1))*(Hh-8);
   const path=pts.map((p,i)=>(i?'L':'M')+X(p.d).toFixed(1)+' '+Y(p.v[0]).toFixed(1)).join(' ');
-  const svg=`<svg viewBox="0 0 ${W} ${Hh}" width="100%" height="${Hh}" style="margin-top:6px"><line x1="0" x2="${W}" y1="${Y(aAll)}" y2="${Y(aAll)}" stroke="var(--muted2)" stroke-dasharray="3 3" stroke-width="1"/><path d="${path}" fill="none" stroke="var(--blue)" stroke-width="1.6"/><circle cx="${X(L)}" cy="${Y(now.v[0])}" r="3" fill="var(--blue)"/><text x="2" y="10" font-size="9" fill="var(--muted)">${hi.toFixed(0)}</text><text x="2" y="${Hh-2}" font-size="9" fill="var(--muted)">${lo.toFixed(0)}</text><text x="${W-2}" y="${Y(aAll)-3}" font-size="9" fill="var(--muted)" text-anchor="end">all-time avg</text></svg>`;
+  const svg=`<svg viewBox="0 0 ${W} ${Hh}" width="100%" height="${Hh}" style="margin-top:6px"><line x1="0" x2="${W}" y1="${Y(aAll)}" y2="${Y(aAll)}" stroke="var(--muted2)" stroke-dasharray="3 3" stroke-width="1"/><path d="${path}" fill="none" stroke="var(--blue)" stroke-width="1.6"/><circle cx="${X(L)}" cy="${Y(now.v[0])}" r="3" fill="var(--blue)"/>${pts.map(p=>`<circle cx="${X(p.d).toFixed(1)}" cy="${Y(p.v[0]).toFixed(1)}" r="6" fill="transparent" style="cursor:crosshair"><title>${dtl(p.d)} · score ${p.v[0].toFixed(1)}${p.v[5]?' · rank #'+p.v[5]+' of '+p.v[6]:''}</title></circle>`).join('')}<text x="2" y="10" font-size="9" fill="var(--muted)">${hi.toFixed(0)}</text><text x="2" y="${Hh-2}" font-size="9" fill="var(--muted)">${lo.toFixed(0)}</text><text x="${W-2}" y="${Y(aAll)-3}" font-size="9" fill="var(--muted)" text-anchor="end">all-time avg</text></svg>`;
   const dt=n=>{const t=ldate(n);return MON3[t.m].charAt(0)+MON3[t.m].slice(1).toLowerCase()+'-'+String(t.y).slice(2);};
   return`<div class="drw-sec"><div class="drw-sec-lbl">📈 Score history <span style="font-weight:400;color:var(--muted)">(${dt(all[0].d)} → ${dt(L)}, ${all.length} points)</span></div>
   <div class="d-mini-grid">${dMini('Score now',now.v[0].toFixed(1))}${dMini('1Y average',a1.toFixed(1))}${dMini('All-time avg',aAll.toFixed(1))}
@@ -664,21 +665,102 @@ runModel=async function(keepView){
   }
   try{await _liveRunModel(keepView);}finally{CY_ASON=savedAsOn;SLOTS.mo=savedMo;TS_CAPTURE=savedCap[0];TS_CAPTURE_NK=savedCap[1];}
   if(LIVE_SILENT)return;
+  LIVE_INTEL_C={};
   try{
     const T=LIVE_T??(window.TCR_NAV?lday(window.TCR_NAV.latest_nav_date):0);
     const key=[LIVE_ON,T,LIVE_RR_LB,LIVE_HIST_READY,trRaw?trRaw.length:0].join('|');
     if(LIVE_HIST_READY&&LIVE_ON&&key!==LIVE_RR_KEY){
       LIVE_RR_KEY=key;liveFeedRolling();
-      if(document.getElementById('dashboard').style.display!=='none'){rebuildTabs();renderCurrentTab();}
+      LIVE_INTEL_C={};if(document.getElementById('dashboard').style.display!=='none'){rebuildTabs();renderCurrentTab();}
     }
   }catch(e){console.warn('[live] rolling',e);}
   liveBadge();
 };
+
+// ── drawer helpers: plain-English readings, shown only where they add something ──
+let LIVE_INTEL_C={};
+function liveIntelC(name){const T=LIVE_T??lday(window.TCR_NAV.latest_nav_date),k=name+'|'+T+'|'+LIVE_RR_LB;if(!(k in LIVE_INTEL_C))LIVE_INTEL_C[k]=liveIntel(name);return LIVE_INTEL_C[k];}
+function liveRollingExtra(name){
+  if(!LIVE_HIST_READY||!window.TCR_NAV)return'';const I=liveIntelC(name);if(!I||!I.r1)return'';
+  const p=v=>fin(v)?v.toFixed(1)+'%':'—',c=v=>fin(v)&&v<0?'var(--red)':'var(--green)';
+  const row=(lbl,x)=>x?`<tr><td>${lbl}</td><td style="color:${c(x.med)}">${p(x.med)}</td><td style="color:${c(x.worst)}">${p(x.worst)}</td><td>${x.pos.toFixed(0)}%</td><td>${x.beat!=null?x.beat.toFixed(0)+'%':'—'}</td></tr>`:'';
+  const r1=I.r1,r3=I.r3;
+  let read=`Bought at any month-end in the last ${LIVE_RR_LB} years and held 1 year: ${p(r1.med)} typical return, ${r1.pos.toFixed(0)}% of entry points made money`+(r1.beat!=null?`, ${r1.beat.toFixed(0)}% beat the benchmark`:'')+'.';
+  if(r3)read+=r3.worst>0?` Held 3 years, no entry point lost money (worst ${p(r3.worst)} a year).`:` Held 3 years, the worst entry point returned ${p(r3.worst)} a year.`;
+  return`<table style="width:100%;font-size:.68rem;margin-top:8px;border-collapse:collapse"><tr style="color:var(--muted);text-align:left"><th>Holding</th><th>Median</th><th>Worst</th><th>Positive</th><th>Beat bench</th></tr>${row('1 year',r1)}${row('3 years',r3)}</table>
+  <div style="font-size:.68rem;color:var(--text2);margin-top:6px;line-height:1.5">${read}</div>`;
+}
+function liveProtection(name){
+  const I=liveIntelC(name);if(!I)return'';const out=[];
+  if(I.pain&&I.bpain){const b=I.pain.pain<I.bpain.pain;out.push(`<b>Pain index ${I.pain.pain.toFixed(1)}%</b> (benchmark ${I.bpain.pain.toFixed(1)}%): over 3 years the fund sat on average ${I.pain.pain.toFixed(1)}% below its previous high: ${b?'a smoother ride than':'a rougher ride than'} its benchmark.`);}
+  if(I.down)out.push(`Fell less than its benchmark in <b>${I.down.less} of ${I.down.down}</b> down months (last 3 years)${I.down.pos?`, and rose in ${I.down.pos} of them`:''}.`);
+  if(I.conc&&I.bconc){const f=I.conc.cagr-I.conc.exBest10,b=I.bconc.cagr-I.bconc.exBest10;if(f>b+3)out.push(`Relies on a few big days: its 10 best days are worth ${f.toFixed(1)} pts of 3-year CAGR, vs ${b.toFixed(1)} for the benchmark.`);}
+  return out.length?`<div style="font-size:.68rem;color:var(--text2);margin-top:8px;line-height:1.55">${out.map(x=>'<div style="margin-bottom:3px">'+x+'</div>').join('')}</div>`:'';
+}
+function liveWatch(name){ // only when something happened
+  if(!LIVE_HIST_READY||!window.TCR_NAV)return'';const I=liveIntelC(name);if(!I)return'';const w=[];
+  if(I.mgr&&!I.mgr.none)w.push(`Fund manager changed (${I.mgr.when}): ${eh(I.mgr.from)} → ${eh(I.mgr.to)}. Past record may not carry over.`);
+  const st=I.style;if(st&&st.d1!=null&&st.d1>=30&&st.now.r2>=0.85&&st.y1&&st.y1.r2>=0.85)w.push(`Behaves differently than a year ago: effective large/mid/small mix ${st.y1.L}/${st.y1.M}/${st.y1.S} → ${st.now.L}/${st.now.M}/${st.now.S}.`);
+  const h=liveTSHistory(name),rep=h.length?h[h.length-1].v:null,m=LIVE_MANDATE[RES[name]?.homeCat];
+  if(rep&&m){const chk=Array.isArray(m[0])?m:[m];const bad=chk.filter(([i,min])=>fin(rep[i])&&rep[i]<min);if(bad.length)w.push('Below SEBI minimum: '+bad.map(([i,min])=>['','large','mid','small'][i]+' cap '+rep[i].toFixed(1)+'% (min '+min+'%)').join(', ')+'.');}
+  return w.length?`<div class="drw-sec" style="border-left:3px solid var(--orange);padding-left:10px"><div class="drw-sec-lbl" style="color:var(--orange)">⚠ Watch</div>${w.map(x=>`<div style="font-size:.7rem;margin-bottom:3px">${x}</div>`).join('')}</div>`:'';
+}
+
+// ── 🧬 Behaviour tab: filter funds by behaviour within the categories selected on the left ──
+const LIVE_STYLES=[['Consistent compounder','good'],['Defensive','good'],['Recovery specialist','good'],['High beta','watch'],['Return concentrated','watch'],['Inconsistent','watch'],['Style drift','watch']];
+let LIVE_SF={};   // style → 1 must have, -1 must not have
+function liveStyleCycle(st){LIVE_SF[st]=LIVE_SF[st]===1?-1:LIVE_SF[st]===-1?0:1;if(!LIVE_SF[st])delete LIVE_SF[st];renderCurrentTab();}
+function liveRenderBehaviour(){
+  document.getElementById('tbl-title').textContent='Behaviour';
+  const rows=[];
+  for(const r of(typeof filtered!=='undefined'?filtered:allResults)){
+    const I=liveIntelC(r.name);if(!I)continue;const tags=liveTags(r.name,I),set=new Set(tags.map(t=>t[0]));
+    let ok=true;for(const[st,v]of Object.entries(LIVE_SF)){if(v===1&&!set.has(st))ok=false;if(v===-1&&set.has(st))ok=false;}
+    if(ok)rows.push({r,I,tags,set});
+  }
+  rows.sort((a,b)=>(b.r.composite||0)-(a.r.composite||0));
+  const chip=([st,kind])=>{const v=LIVE_SF[st]||0,bg=v===1?'var(--greenlt)':v===-1?'var(--redlt)':'var(--card2)',fg=v===1?'var(--green)':v===-1?'var(--red)':'var(--text2)';
+    return`<button onclick="liveStyleCycle('${st}')" title="Click: must have → must not have → any" style="margin:2px 4px 2px 0;padding:3px 10px;border-radius:12px;border:1px solid var(--border);background:${bg};color:${fg};font:600 .7rem var(--sans);cursor:pointer">${v===1?'✓ ':v===-1?'✕ ':''}${st}</button>`;};
+  const cols=LIVE_STYLES.map(s=>s[0]);
+  document.getElementById('tbl-head').innerHTML=`<tr><th colspan="${7+cols.length}" style="text-align:left;font-weight:400;white-space:normal;padding:8px 10px;background:var(--card)">
+    <div style="font-size:.7rem;color:var(--muted);margin-bottom:4px">Categories follow your selection on the left. Click a style to require it (✓), exclude it (✕) or ignore it. Hover a ✓ for the evidence.</div>
+    <span style="font-size:.68rem;color:var(--green);margin-right:6px">Strengths</span>${LIVE_STYLES.filter(s=>s[1]==='good').map(chip).join('')}
+    <span style="font-size:.68rem;color:var(--orange);margin:0 6px 0 10px">Watch</span>${LIVE_STYLES.filter(s=>s[1]==='watch').map(chip).join('')}</th></tr>
+    <tr><th>Fund</th><th>Category</th><th>Rating</th><th>Score</th>${cols.map(c=>`<th style="white-space:normal;max-width:90px">${c}</th>`).join('')}<th>1Y windows beating bench</th><th>Pain 3Y (bench)</th><th>Down months fell less</th></tr>`;
+  const RSC=typeof RS!=='undefined'?RS:{};
+  document.getElementById('tbl-body').innerHTML=rows.map(({r,I,tags,set})=>{
+    const rs=RSC[r.rating]||{};
+    return`<tr><td class="fund-cell" style="cursor:pointer" onclick="openDrawer(${JSON.stringify(r.name).replace(/"/g,'&quot;')})">${eh(sn?sn(r.name):r.name)}</td><td>${eh(r.catLbl||r.cat)}</td>
+      <td><span class="rbadge" style="color:${rs.fg||'inherit'};background:${rs.bg||'transparent'}">${r.rating}</span></td><td>${fin(r.composite)?r.composite.toFixed(1):'—'}</td>
+      ${cols.map(c=>{const t=tags.find(x=>x[0]===c);return`<td style="text-align:center">${t?`<span title="${eh(t[1])}" style="cursor:help;color:${LIVE_STYLES.find(x=>x[0]===c)[1]==='good'?'var(--green)':'var(--orange)'};font-weight:700">✓</span>`:''}</td>`;}).join('')}
+      <td>${I.r1&&I.r1.beat!=null?I.r1.beat.toFixed(0)+'%':'—'}</td><td>${I.pain?I.pain.pain.toFixed(1)+'%':'—'}${I.bpain?` <span style="color:var(--muted)">(${I.bpain.pain.toFixed(1)})</span>`:''}</td><td>${I.down?I.down.less+'/'+I.down.down:'—'}</td></tr>`;
+  }).join('')||`<tr><td colspan="${7+cols.length}" style="padding:16px;color:var(--muted)">No funds match these styles in the selected categories.</td></tr>`;
+  document.getElementById('tbl-footer').innerHTML=`<div style="font-size:.67rem;color:var(--text2);line-height:1.6;width:100%">${rows.length} funds · daily NAVs to ${liveISO(LIVE_T??lday(window.TCR_NAV.latest_nav_date))}. <b>Consistent compounder</b>: positive in ≥85% of 1Y windows, beat the benchmark in ≥60%, shallower falls than the benchmark. <b>Defensive</b>: fell less than the benchmark in most down months. <b>Recovery specialist</b>: recovered its last big fall faster than the benchmark. <b>High beta</b>: upside capture ≥110 and downside ≥105. <b>Return concentrated</b>: relies on its best days more than the benchmark. <b>Inconsistent</b>: beat the benchmark in under 25% of 1Y windows. <b>Style drift</b>: effective size mix moved ≥30 pts in a year.</div>`;
+}
+const _liveRebuildTabs=rebuildTabs;
+rebuildTabs=function(){
+  const was=currentTab;_liveRebuildTabs();
+  if(!(LIVE_ON&&LIVE_HIST_READY&&window.TCR_NAV))return;
+  const c=document.getElementById('vtab-list');if(!c)return;
+  if(was==='behaviour')currentTab='behaviour';
+  c.insertAdjacentHTML('beforeend',`<button class="vtab${currentTab==='behaviour'?' active':''}" data-tab="behaviour" onclick="switchTab('behaviour')">🧬 Behaviour</button>`);
+  if(currentTab==='behaviour')c.querySelectorAll('.vtab').forEach(t=>t.classList.toggle('active',t.dataset.tab==='behaviour'));
+};
+const _liveRenderTab=renderCurrentTab;
+renderCurrentTab=function(){
+  if(currentTab!=='behaviour')return _liveRenderTab();
+  try{liveRenderBehaviour();}catch(e){console.warn('[live] behaviour',e);}
+  const t=document.querySelector('.tbl-scroll table');if(t){t.classList.add('main-tbl');t.classList.remove('freeze-name-only','freeze-score');}
+  try{fitFrozenCols();updateDock();}catch(e){}
+};
+
 const _liveOpenDrawer=openDrawer;
 openDrawer=function(name){
   _liveOpenDrawer(name);
   try{
-    const body=document.getElementById('drw-body'),h1=liveScoreSection(name)+liveIntelSection(name),h2=liveDrawerSection(name);
+    const body=document.getElementById('drw-body'),h1=liveWatch(name)+liveScoreSection(name),h2=liveDrawerSection(name);
+    const rr=[...body.querySelectorAll('.drw-sec')].find(el=>/rolling return/i.test(el.textContent||''));
+    const rx=liveRollingExtra(name);if(rx){if(rr)rr.insertAdjacentHTML('beforeend',rx);else body.insertAdjacentHTML('beforeend','<div class="drw-sec"><div class="drw-sec-lbl">🔄 Rolling returns</div>'+rx+'</div>');}
     // score history right after TCR's pillar block; corrections at the end
     const pil=[...body.children].find(el=>/pillar scores/i.test(el.textContent||''));
     if(h1){if(pil)pil.insertAdjacentHTML('afterend',h1);else body.insertAdjacentHTML('beforeend',h1);}
