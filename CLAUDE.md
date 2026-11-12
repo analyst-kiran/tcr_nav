@@ -104,5 +104,13 @@ forward with ETF NAV ratios (AMFI data). The vendor's trailing and calendar retu
    UI: 🧬 Behaviour tab (tri-state style filters within left-side categories), drawer readings folded
    into TCR's Rolling and Corrections sections, ⚠ Watch box only when something happened, score
    chart hover dates. Fund-intelligence block and repeated FM line removed.
-8. NEXT: AUM-flow signal (whitelist AUM history), capture trend, weight tuning from the backtest,
+8. 5-year backtest + Score mix (Nov 12): at a 5Y hold NO measure predicts returns (top-20% land in
+   top half 46–50%); TCR Consistency is the only small positive (+0.27 pts/yr). Protection measures
+   (downside capture vs category avg, pain 3Y, down months beating category, time >5% under high 5Y)
+   predict ~1.1 pts smaller 5Y max fall at no 5Y return cost. Classic top-20% falls MORE (−0.47).
+   TCR Risk fails because Sortino has past return in the numerator + upside capture rewards
+   aggression. Score mix (Actions → ⚖ Score mix, password 1201 — client-side soft lock only):
+   classic / stable (T20 C30 R10 KX40) / protective (T15 C25 P30 K30) / custom; liveRescore() runs
+   inside runModel before the silent-return hook, so history/signals follow the mix.
+9. NEXT: AUM-flow signal (whitelist AUM history), capture trend, weight tuning from the backtest,
    survivorship (closed funds are missing from mfapi universe — consider adding them for backtests).

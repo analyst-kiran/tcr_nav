@@ -35,7 +35,15 @@ def patch(html: str, user: str) -> str:
     # 3b. quiet runs (score history): stop after scoring, before drawing
     old_r = "    buildHeatMaps();\n    setLoadMsg('Rendering…');await tick();"
     assert html.count(old_r) == 1, "render hook not found"
-    html = html.replace(old_r, "    if(typeof LIVE_SILENT!=='undefined'&&LIVE_SILENT)return;\n" + old_r)
+    html = html.replace(old_r, "    if(typeof liveRescore==='function')try{liveRescore();}catch(e){console.warn('[live] mix',e);}\n"
+                               "    if(typeof LIVE_SILENT!=='undefined'&&LIVE_SILENT)return;\n" + old_r)
+
+    # 3d. Actions menu: password-protected score mix
+    edit_btn = '<button class="mi" role="menuitem" id="btn-edit-data"'
+    assert html.count(edit_btn) == 1
+    html = re.sub(r'\n?<button class="mi" role="menuitem" id="btn-score-mix".*?</button>', "", html, flags=re.S)
+    i = html.index(edit_btn); j = html.index("</button>", i) + len("</button>")
+    html = html[:j] + '\n        <button class="mi" role="menuitem" id="btn-score-mix" onclick="hdrMenu();liveMixDialog()">⚖ Score mix<small>Change how pillars combine (password)</small></button>' + html[j:]
 
     # 3c. methodology: live data, signals and diagnostics explained next to the scoring rules
     meth_anchor = '<table class="ltbl" style="margin-top:14px">'

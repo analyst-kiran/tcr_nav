@@ -300,7 +300,7 @@ async function liveIDBget(k){try{const db=await liveIDB();return await new Promi
 async function liveIDBput(k,v){try{const db=await liveIDB();await new Promise(r=>{const t=db.transaction('sh','readwrite');t.objectStore('sh').put(v,k);t.oncomplete=r;t.onerror=r;});}catch(e){}}
 function liveSHSig(){ // what the scores depend on: the uploaded files and the live settings
   const f=(LOADED_FILES||[]).map(x=>x.file.name+':'+x.file.size).sort().join('|');
-  return['v2',f,trRaw?trRaw.length:0,cyRaw?cyRaw.length:0,LIVE_GRAN,LIVE_CAP,LIVE_RF_USER??'',INCLUDE_PASSIVE?1:0,INCLUDE_FOF?1:0].join('#');
+  return['v2',LIVE_MIX,JSON.stringify(LIVE_MIX==='custom'?LIVE_MIXW:''),f,trRaw?trRaw.length:0,cyRaw?cyRaw.length:0,LIVE_GRAN,LIVE_CAP,LIVE_RF_USER??'',INCLUDE_PASSIVE?1:0,INCLUDE_FOF?1:0].join('#');
 }
 function liveSHDates(){
   const L=lday(window.TCR_NAV.latest_nav_date),t=ldate(L),out=[];
@@ -648,6 +648,96 @@ function liveBacktest(){
   <h4>By category</h4><table class="lm-t">${th}${cats.map(([k,x])=>row(eh(k),x)).join('')}</table>`;
 }
 
+
+// ── ⚖ Score mix (Actions menu, password): alternative pillar designs tested in the backtest ──
+// Classic = TCR as built. Stable = Consistency rebuilt with rolling returns, more weight on it.
+// Protective = a Protection pillar (downside behaviour) instead of Risk. Custom = your weights.
+const LIVE_MIXES={
+  classic:{label:'Classic (TCR as built)',w:{T:.20,C:.40,R:.20,K:.20}},
+  stable:{label:'Stable: Consistency + rolling',w:{T:.20,C:.30,R:.10,KX:.40}},
+  protective:{label:'Protective: Protection replaces Risk',w:{T:.15,C:.25,P:.30,K:.30}},
+};
+let LIVE_MIX=lsGet('tcr_mix','classic'),LIVE_MIXW=(()=>{try{return JSON.parse(lsGet('tcr_mixw','null'))}catch(e){return null}})();
+const liveMixW=()=>LIVE_MIX==='custom'&&LIVE_MIXW?LIVE_MIXW:(LIVE_MIXES[LIVE_MIX]||LIVE_MIXES.classic).w;
+function liveMonthVal(s,y,m){ // NAV at month-end, only if the fund published in that month
+  const d=LDAY(y,m+1,0),i=lidx(s,d);return i>=0&&s.days[i]>=LDAY(y,m,1)?s.vals[i]:NaN;}
+let LIVE_MIXM=null;
+function liveMixMeasures(T){ // per fund, category percentiles of the extra measures, as of T
+  const key=T+'|'+(allResults||[]).length;if(LIVE_MIXM&&LIVE_MIXM.key===key)return LIVE_MIXM.v;
+  const t=ldate(T),eY=t.y,eM=t.m-1; // last complete month-end before T's month... use the month-end on/before T
+  const meY=ldate(LDAY(t.y,t.m+1,0)).y,lastM=LDAY(t.y,t.m+1,0)<=T?t.m:t.m-1;
+  const N=96,mkey=k=>{const mm=lastM-k,y=t.y+Math.floor(mm/12),m=((mm%12)+12)%12;return[y,m];};   // k=0 → latest month-end ≤ T
+  const byCat={};for(const r of allResults)if(r.kind==='active'&&LIVE_MAP)(byCat[r.cat]=byCat[r.cat]||[]).push(r);
+  const out={};
+  for(const rs of Object.values(byCat)){
+    const F=rs.map(r=>{const c=LIVE_MAP.get(r.name),s=c?liveFund(c):null;return{n:r.name,v:s?Array.from({length:N+1},(_,k)=>{const[y,m]=mkey(k);return liveMonthVal(s,y,m);}):null};}).filter(x=>x.v);
+    if(F.length<5)continue;
+    const med=a=>{const b=a.filter(fin).sort((x,y)=>x-y);return b.length?b[b.length>>1]:NaN;},avg=a=>{const b=a.filter(fin);return b.length?b.reduce((x,y)=>x+y,0)/b.length:NaN;};
+    // rolling windows: start k (months back) → return over 12 / 36 months
+    const ret=(v,k,h)=>fin(v[k])&&fin(v[k-h])&&v[k]>0?(h===12?v[k-h]/v[k]-1:Math.pow(v[k-h]/v[k],12/h)-1):NaN;
+    const m={};F.forEach(f=>m[f.n]={w1:[],q3:[],dm:0,dl:0,fr:[],cr:[]});
+    for(let k=12;k<=60;k++){const r=F.map(f=>ret(f.v,k,12)),md=med(r);F.forEach((f,i)=>{if(fin(r[i]))m[f.n].w1.push(r[i]-md);});}
+    for(let k=36;k<=84;k++){const r=F.map(f=>ret(f.v,k,36)),ok=r.filter(fin).sort((a,b)=>a-b);
+      F.forEach((f,i)=>{if(!fin(r[i]))return;const p=ok.filter(x=>x<r[i]).length/((ok.length-1)||1);m[f.n].q3.push(p>=.75?100:p>=.5?75:p>=.25?40:0);});}
+    for(let k=1;k<=36;k++){const r=F.map(f=>fin(f.v[k-1])&&fin(f.v[k])?f.v[k-1]/f.v[k]-1:NaN),ca=avg(r);
+      F.forEach((f,i)=>{if(!fin(r[i])||!fin(ca))return;const x=m[f.n];x.fr.push(r[i]);x.cr.push(ca);if(ca<0){x.dm++;if(r[i]>ca)x.dl++;}});}
+    for(const f of F){const x=m[f.n],v=f.v;
+      const seg=(n)=>v.slice(0,n+1).reverse().filter(fin);
+      const s3=seg(36),s5=seg(60);let pk=-Infinity,pain=0,uw=0,n3=0,n5=0;
+      for(const y of s3){pk=Math.max(pk,y);pain+=1-y/pk;n3++;}pk=-Infinity;for(const y of s5){pk=Math.max(pk,y);if(y/pk-1<-0.05)uw++;n5++;}
+      const down=x.fr.map((r,i)=>[r,x.cr[i]]).filter(([,c])=>c<0),annz=a=>Math.exp(a.reduce((p,[r])=>p+Math.log1p(r),0)/a.length*12)-1,annc=a=>Math.exp(a.reduce((p,[,c])=>p+Math.log1p(c),0)/a.length*12)-1;
+      out[f.n]={worst1:x.w1.length>=24?Math.min(...x.w1):NaN,rr3q:x.q3.length>=24?avg(x.q3):NaN,dhit:x.dm>=4&&x.fr.length>=30?x.dl/x.dm:NaN,
+        dcap:down.length>=4&&x.fr.length>=30?-(annz(down)/annc(down)):NaN,pain:n3>=33?-(pain/n3):NaN,uw:n5>=54?-(uw/n5):NaN,cat:rs[0].cat};}
+  }
+  // category percentiles
+  const pc={};const cats={};for(const[n,o]of Object.entries(out))(cats[o.cat]=cats[o.cat]||[]).push(n);
+  for(const ns of Object.values(cats))for(const k of['worst1','rr3q','dhit','dcap','pain','uw']){const vals=ns.map(n=>out[n][k]);ns.forEach(n=>{(pc[n]=pc[n]||{})[k]=fin(out[n][k])?lpct(out[n][k],vals)*100:NaN;});}
+  LIVE_MIXM={key,v:pc};return pc;
+}
+function liveRescore(){
+  if(LIVE_MIX==='classic'||!LIVE_ON||!LIVE_HIST_READY||!window.TCR_NAV||!allResults)return;
+  const T=LIVE_T??lday(window.TCR_NAV.latest_nav_date),M=liveMixMeasures(T),W=liveMixW();
+  const byCat={};for(const r of allResults)if(fin(r.composite))(byCat[r.cat]=byCat[r.cat]||[]).push(r);
+  const wav=pairs=>{let a=0,b=0;for(const[v,w]of pairs)if(fin(v)&&w>0){a+=v*w;b+=w;}return b?a/b:NaN;};
+  for(const rs of Object.values(byCat)){
+    const kv=rs.map(r=>r.consistency);
+    for(const r of rs){const m=M[r.name]||{};r.consClassic??=r.consistency;
+      const kp=fin(r.consClassic)?lpct(r.consClassic,rs.map(x=>x.consClassic??x.consistency))*100:NaN;
+      r._kx=wav([[kp,.5],[m.worst1,.3],[m.rr3q,.2]]);r._prot=wav([[m.dcap,.30],[m.pain,.25],[m.dhit,.25],[m.uw,.20]]);}
+    const kx=rs.map(r=>r._kx),pr=rs.map(r=>r._prot);
+    for(const r of rs){r.consistencyX=fin(r._kx)?lpct(r._kx,kx)*100:NaN;r.protection=fin(r._prot)?lpct(r._prot,pr)*100:NaN;
+      if(W.KX)r.consistency=r.consistencyX; else r.consistency=r.consClassic;
+      r.composite=(!fin(r.trailing)&&!fin(r.calendar))?NaN:wav([[r.trailing,W.T||0],[r.calendar,W.C||0],[r.risk,W.R||0],[r.consClassic,W.K||0],[r.consistencyX,W.KX||0],[r.protection,W.P||0]]);}
+    const peers=rs.filter(r=>r.kind==='active'&&!r.judgedVs&&fin(r.composite)).map(r=>r.composite);
+    for(const r of rs){if(!fin(r.composite))continue;r.pct=pctRank(r.composite,peers);r.rating=ratingLbl(r.pct);}
+  }
+}
+function liveMixDialog(){
+  const pw=prompt('Score mix password');if(pw===null)return;if(pw!=='1201'){alert('Wrong password');return;}
+  const w=liveMixW(),cw=LIVE_MIXW||{T:.2,C:.4,R:.2,K:.2,KX:0,P:0};
+  const opt=(k,l,d)=>`<label style="display:block;margin:8px 0;cursor:pointer"><input type="radio" name="lmx" value="${k}" ${LIVE_MIX===k?'checked':''}> <b>${l}</b><div class="lm-s" style="margin-left:22px">${d}</div></label>`;
+  const inp=(k,l)=>`<label style="display:inline-block;margin:4px 12px 4px 0">${l} <input id="lmx-${k}" type="number" min="0" max="100" step="5" value="${Math.round((cw[k]||0)*100)}" style="width:56px;padding:3px 5px;border:1px solid var(--border);border-radius:4px;background:var(--bg);color:var(--text)">%</label>`;
+  liveModal('⚖ Score mix',`<p class="lm-p">Changes how the four pillar scores are combined into the TCR Score and rating. Pillars themselves are unchanged; "Consistency + rolling" and "Protection" are added from the NAV history. Backtest results (2015–2026) are in the report.</p>
+  ${opt('classic','Classic: Trailing 20 · Calendar 40 · Risk 20 · Consistency 20','TCR as built.')}
+  ${opt('stable','Stable: Trailing 20 · Calendar 30 · Risk 10 · Consistency+rolling 40','Consistency = 50% your quartile points + 30% worst rolling 1-year vs category + 20% rolling 3-year quartile points. Most stable ratings: 71% of top funds still top 40% three years later (Classic 66%).')}
+  ${opt('protective','Protective: Trailing 15 · Calendar 25 · Protection 30 · Consistency 30','Protection = downside capture vs category 30% + pain index 25% + down months beating the category 25% + time more than 5% below its high 20%. Top-rated funds stop falling more than their category over 5 years (−0.47 → +0.06 pts) at about the same 5-year return.')}
+  ${opt('custom','Custom weights','')}
+  <div style="margin-left:22px">${inp('T','Trailing')}${inp('C','Calendar')}${inp('R','Risk')}${inp('K','Consistency')}${inp('KX','Consistency+rolling')}${inp('P','Protection')}</div>
+  <div style="margin-top:12px"><button class="lp-btn" onclick="liveMixApply()">Apply</button> <span class="lm-s">Ratings, ranks, signals and score history follow the chosen mix.</span></div>`);
+}
+async function liveMixApply(){
+  const v=document.querySelector('input[name=lmx]:checked')?.value||'classic';
+  if(v==='custom'){const g=k=>Math.max(0,+document.getElementById('lmx-'+k).value||0)/100;const w={T:g('T'),C:g('C'),R:g('R'),K:g('K'),KX:g('KX'),P:g('P')};
+    const sum=Object.values(w).reduce((a,b)=>a+b,0);if(!sum){alert('Give at least one pillar a weight');return;}for(const k in w)w[k]/=sum;LIVE_MIXW=w;lsSet('tcr_mixw',JSON.stringify(w));}
+  if(v!=='classic'&&!LIVE_HIST_READY){await liveLoadHistory();}
+  LIVE_MIX=v;lsSet('tcr_mix',v);document.getElementById('live-modal')?.remove();LIVE_MIXM=null;
+  if(cyRaw&&trRaw){await runModel(true);if(typeof applyFilters==='function')applyFilters();}
+}
+function liveMixBadge(){
+  const h=document.getElementById('hdr-meta');if(!h)return;h.querySelector('.live-mix')?.remove();
+  if(LIVE_MIX!=='classic'&&LIVE_ON)h.insertAdjacentHTML('beforeend',`<span class="hdr-n live-mix" title="Score mix: ${eh(LIVE_MIX==='custom'?'Custom':LIVE_MIXES[LIVE_MIX].label)}" style="background:rgba(230,150,40,.35)">Mix: ${LIVE_MIX==='custom'?'Custom':LIVE_MIX[0].toUpperCase()+LIVE_MIX.slice(1)}</span>`);
+}
+
 let LIVE_RR_KEY=null;
 const _liveRunModel=runModel;
 runModel=async function(keepView){
@@ -666,6 +756,7 @@ runModel=async function(keepView){
   try{await _liveRunModel(keepView);}finally{CY_ASON=savedAsOn;SLOTS.mo=savedMo;TS_CAPTURE=savedCap[0];TS_CAPTURE_NK=savedCap[1];}
   if(LIVE_SILENT)return;
   LIVE_INTEL_C={};
+  try{liveMixBadge();}catch(e){}
   try{
     const T=LIVE_T??(window.TCR_NAV?lday(window.TCR_NAV.latest_nav_date):0);
     const key=[LIVE_ON,T,LIVE_RR_LB,LIVE_HIST_READY,trRaw?trRaw.length:0].join('|');
