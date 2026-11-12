@@ -37,6 +37,12 @@ def patch(html: str, user: str) -> str:
     assert html.count(old_r) == 1, "render hook not found"
     html = html.replace(old_r, "    if(typeof LIVE_SILENT!=='undefined'&&LIVE_SILENT)return;\n" + old_r)
 
+    # 3c. methodology: live data, signals and diagnostics explained next to the scoring rules
+    meth_anchor = '<table class="ltbl" style="margin-top:14px">'
+    assert html.count(meth_anchor) == 1, "methodology anchor not found"
+    html = re.sub(r'<div id="live-method">.*?</div><!--/live-method-->\n?', "", html, flags=re.S)
+    html = html.replace(meth_anchor, (HERE / "methodology.html").read_text(encoding="utf-8") + "\n" + meth_anchor)
+
     # 4. header button + style
     btn = '<button class="icon-btn" id="dark-btn"'
     assert html.count(btn) == 1

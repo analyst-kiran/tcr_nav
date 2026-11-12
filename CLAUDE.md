@@ -76,5 +76,21 @@ forward with ETF NAV ratios (AMFI data). The vendor's trailing and calendar retu
    * Backtest (Nov 2026 run): top quartile beats category avg by +0.49 pts/yr (58% of cases);
      strong in Multi Asset, Flexi Cap, BAF; zero/negative in Large/Mid/Small Cap, Value, Technology.
    * Benchmark sources pop-up documents the benchmark data flow.
-6. NEXT: manager-change flag, AUM-flow signals (whitelist AUM history), behaviour in the last fall,
-   capture trend, style drift; weight tuning from the backtest.
+6. DONE (Nov 12 round):
+   * Top Schemes snapshots: every TS file with a FUND MANAGER column is saved in IndexedDB
+     ('tcr_live_ts', keyed by its NAV date) → manager changes, reported L/M/S vs SEBI minimums.
+     The owner uploads the FULL 60-column export monthly (the 46-column one has no FUND MANAGER).
+   * Style from NAV: daily returns (252 d) on Nifty 100 / Midcap 150 / Smallcap 250 TRI, weights ≥0
+     summing to 1 on a 5% grid via the 3×3 moment matrix; drift = half L1 distance now vs 1Y ago.
+     Signal needs ≥30 pts and R² ≥ 0.85 at both dates (weekly data was too unstable).
+   * Fund intelligence (drawer): rolling 1Y/3Y at MONTHLY entry points, pain index, down-month
+     behaviour, CAGR without best 10 days vs benchmark, style, manager; behaviour tags.
+   * Signals require return evidence and never pass on missing data; added Early deterioration,
+     Recovery leaders, Style drift, Manager change; "Driver" = pillar with largest weighted Δ.
+   * Look-ahead fix: fundAgeMonths is measured at the as-of date in calendar mode.
+   * Backtest: precision vs random, rising/falling market, by year, score-change lead table.
+     Result: top quartile +0.41 pts/12M (57%); 27% land in future top quartile (random 25%).
+     Score rising ≥10 over 3M → +1.26 pts next 12M; falling 5–10 → −0.97 (score momentum matters
+     more than score level). Methodology text in tcr/methodology.html (injected by patch_tcr.py).
+7. NEXT: AUM-flow signal (whitelist AUM history), capture trend, weight tuning from the backtest,
+   survivorship (closed funds are missing from mfapi universe — consider adding them for backtests).

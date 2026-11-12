@@ -300,7 +300,7 @@ async function liveIDBget(k){try{const db=await liveIDB();return await new Promi
 async function liveIDBput(k,v){try{const db=await liveIDB();await new Promise(r=>{const t=db.transaction('sh','readwrite');t.objectStore('sh').put(v,k);t.oncomplete=r;t.onerror=r;});}catch(e){}}
 function liveSHSig(){ // what the scores depend on: the uploaded files and the live settings
   const f=(LOADED_FILES||[]).map(x=>x.file.name+':'+x.file.size).sort().join('|');
-  return[f,trRaw?trRaw.length:0,cyRaw?cyRaw.length:0,LIVE_GRAN,LIVE_CAP,LIVE_RF_USER??'',INCLUDE_PASSIVE?1:0,INCLUDE_FOF?1:0].join('#');
+  return['v2',f,trRaw?trRaw.length:0,cyRaw?cyRaw.length:0,LIVE_GRAN,LIVE_CAP,LIVE_RF_USER??'',INCLUDE_PASSIVE?1:0,INCLUDE_FOF?1:0].join('#');
 }
 function liveSHDates(){
   const L=lday(window.TCR_NAV.latest_nav_date),t=ldate(L),out=[];
@@ -406,63 +406,245 @@ function liveBenchSources(){
 }
 // percentile of v in arr (0 worst … 1 best)
 const lpct=(v,arr)=>{const a=arr.filter(fin);if(!fin(v)||a.length<2)return NaN;return a.filter(x=>x<v).length/(a.length-1);};
+// ── as-of correctness: fund age is measured at the date being shown (no look-ahead) ──
+const _liveAge=fundAgeMonths;
+fundAgeMonths=function(name){
+  if(!LIVE_ON||LIVE_T==null)return _liveAge(name);
+  const d=getLaunchDate(name);if(!d)return null;const t=ldate(LIVE_T);
+  let m=(t.y-d.getFullYear())*12+(t.m-d.getMonth());if(t.d<d.getDate())m--;return Math.max(0,m);
+};
+
+// ── Top Schemes snapshots (one per monthly file, kept in this browser) ──
+let LIVE_TS={};                                   // {iso date: {fund: [manager, L, M, S, aum, er, uc, dc]}}
+function liveIDB2(){return new Promise((res,rej)=>{const q=indexedDB.open('tcr_live_ts',1);q.onupgradeneeded=()=>q.result.createObjectStore('ts');q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error);});}
+async function liveTSLoadAll(){try{const db=await liveIDB2();await new Promise(r=>{const st=db.transaction('ts').objectStore('ts'),q=st.openCursor();q.onsuccess=()=>{const c=q.result;if(c){LIVE_TS[c.key]=c.value;c.continue();}else r();};q.onerror=r;});}catch(e){}}
+async function liveTSSave(k,v){LIVE_TS[k]=v;delete LIVE_TSNK[k];try{const db=await liveIDB2();await new Promise(r=>{const t=db.transaction('ts','readwrite');t.objectStore('ts').put(v,k);t.oncomplete=r;t.onerror=r;});}catch(e){}}
+function liveTSSnap(rows){
+  const h=(rows||[]).findIndex(r=>(r||[]).some(v=>String(v||'').trim().toUpperCase()==='SCHEMES'));if(h<0)return;
+  const H=rows[h].map(v=>String(v||'').trim().toUpperCase()),col=n=>H.indexOf(n);
+  const c={n:col('SCHEMES'),m:col('FUND MANAGER'),l:col('LARGE CAP'),md:col('MID CAP'),s:col('SMALL CAP'),a:col('A U M')>=0?col('A U M'):col('AUM(CR)'),e:col('EXPENSE RATIO'),u:col('UP CAPTURE'),d:col('DOWN CAPTURE'),dt:col('NAV DATE')};
+  if(c.m<0)return; // only the full export (with FUND MANAGER) is kept as a snapshot
+  const snap={},dates={};
+  for(let i=h+1;i<rows.length;i++){const r=rows[i];if(!r||!r[c.n])continue;
+    snap[String(r[c.n]).trim()]=[String(r[c.m]||'').trim(),toN(r[c.l]),toN(r[c.md]),toN(r[c.s]),toN(r[c.a]),toN(r[c.e]),toN(r[c.u]),toN(r[c.d])].map(v=>typeof v==='number'&&!fin(v)?null:v);
+    const d=parseDMY(r[c.dt]);if(d){const k=liveKey(d);dates[k]=(dates[k]||0)+1;}}
+  const key=Object.entries(dates).sort((a,b)=>b[1]-a[1])[0]?.[0];if(key&&Object.keys(snap).length>100)liveTSSave(key,snap);
+}
+const _liveParseTS=parseTSFile;
+parseTSFile=function(rows){const out=_liveParseTS(rows);try{liveTSSnap(rows);}catch(e){console.warn('[live] TS snapshot',e);}return out;};
+const liveMgrSet=s=>String(s||'').toLowerCase().split(/[,&/]| and /).map(x=>x.trim()).filter(Boolean).sort().join(', ');
+const LIVE_TSNK={};
+function liveTSHistory(name){ // oldest → newest; exact name, else normalised name
+  const nk=normKey(name);
+  return Object.keys(LIVE_TS).sort().map(k=>{
+    if(!LIVE_TSNK[k]){LIVE_TSNK[k]={};for(const n of Object.keys(LIVE_TS[k]))LIVE_TSNK[k][normKey(n)]=n;}
+    return{k,v:LIVE_TS[k][name]||LIVE_TS[k][LIVE_TSNK[k][nk]]};
+  }).filter(x=>x.v);
+}
+function liveMgrChange(name){
+  const h=liveTSHistory(name);if(h.length<2)return null;
+  for(let i=h.length-1;i>0;i--)if(liveMgrSet(h[i].v[0])!==liveMgrSet(h[i-1].v[0]))return{when:h[i].k,from:h[i-1].v[0],to:h[i].v[0]};
+  return{none:true,months:h.length};
+}
+// SEBI minimums for the size categories (reported portfolio, latest snapshot)
+const LIVE_MANDATE={'Equity: Large Cap':[1,80,'large'],'Equity: Mid Cap':[2,65,'mid'],'Equity: Small Cap':[3,65,'small'],'Equity: Large & Mid Cap':[[1,35],[2,35]],'Equity: Multi Cap':[[1,25],[2,25],[3,25]]};
+
+// ── style from NAV: weekly returns regressed on Nifty 100 / Midcap 150 / Smallcap 250 (weights ≥0, sum 1) ──
+const LIVE_FAC=['NSE Nifty 100 TRI','NSE Nifty Midcap 150 TRI','NSE Nifty Smallcap 250 TRI'];
+let LIVE_FACS=null;
+function liveFactors(T){if(LIVE_FACS&&LIVE_FACS.T===T)return LIVE_FACS;const f=LIVE_FAC.map(n=>liveBenchSeries(n,T));return LIVE_FACS={T,f:f.every(Boolean)?f:null};}
+function liveStyleAt(s,end,days=252){ // daily returns over ~1 year; exact least squares on the 3×3 moments, weights on a 5% grid
+  const F=liveFactors(LIVE_T??lday(window.TCR_NAV.latest_nav_date)).f;if(!F||!s)return null;
+  const z=lidx(s,end);if(z<days||end-s.days[z]>10)return null;
+  const R=[],X=[[],[],[]];
+  for(let i=z-days+1;i<=z;i++){const a=s.days[i-1],b=s.days[i];const xs=F.map(f=>{const xa=lon(f,a),xb=lon(f,b);return fin(xa)&&fin(xb)&&xa>0?xb/xa-1:NaN;});
+    if(xs.some(x=>!fin(x)))continue;R.push(s.vals[i]/s.vals[i-1]-1);xs.forEach((x,j)=>X[j].push(x));}
+  const n=R.length;if(n<days*0.8)return null;
+  const mean=a=>a.reduce((p,q)=>p+q,0)/a.length,mr=mean(R),mx=X.map(mean);
+  const cov=(a,ma,b,mb)=>{let t=0;for(let k=0;k<n;k++)t+=(a[k]-ma)*(b[k]-mb);return t/n;};
+  const vR=cov(R,mr,R,mr),cR=X.map((x,j)=>cov(R,mr,x,mx[j])),S=X.map((x,i)=>X.map((y,j)=>cov(x,mx[i],y,mx[j])));
+  let best=null;
+  for(let i=0;i<=20;i++)for(let j=0;j<=20-i;j++){const w=[i/20,j/20,(20-i-j)/20];let q=vR;
+    for(let a=0;a<3;a++){q-=2*w[a]*cR[a];for(let b=0;b<3;b++)q+=w[a]*w[b]*S[a][b];}
+    if(!best||q<best.q)best={w,q};}
+  return{L:Math.round(best.w[0]*100),M:Math.round(best.w[1]*100),S:Math.round(best.w[2]*100),r2:vR>0?1-best.q/vR:0};
+}
+function liveStyle(code,T){const s=liveFund(code);if(!s)return null;const now=liveStyleAt(s,T),y1=liveStyleAt(s,lback(T,{years:1})),y3=liveStyleAt(s,lback(T,{years:3}));
+  const drift=(a,b)=>a&&b?(Math.abs(a.L-b.L)+Math.abs(a.M-b.M)+Math.abs(a.S-b.S))/2:null;return{now,y1,y3,d1:drift(now,y1),d3:drift(now,y3)};}
+
+// ── fund diagnostics from daily NAVs ──
+function liveMonthEnds(T,n){const t=ldate(T),o=[];for(let k=n;k>=1;k--){const mm=t.m-k+1,y=t.y+Math.floor(mm/12),m=((mm%12)+12)%12;o.push(LDAY(y,m,0));}return o;} // n month-ends before T's month
+function liveRollDist(s,bs,T,P,LB){ // monthly observation dates (independent-ish entry points)
+  const ends=liveMonthEnds(T,LB*12+1).filter(d=>lfwd(d,0)<=T),o=[],beat=[];
+  for(const st of ends){const en=lfwd(st,P);if(en>T||st<s.days[0])continue;const a=lon(s,st),z=lon(s,en);if(!fin(a)||!fin(z))continue;
+    const r=(P===1?z/a-1:Math.pow(z/a,1/P)-1)*100;o.push(r);
+    if(bs){const ba=lon(bs,st),bz=lon(bs,en);if(fin(ba)&&fin(bz)&&st>=bs.days[0]){const br=(P===1?bz/ba-1:Math.pow(bz/ba,1/P)-1)*100;beat.push(r>br);}}}
+  if(o.length<6)return null;const q=[...o].sort((a,b)=>a-b),pq=p=>q[Math.min(q.length-1,Math.floor(p*(q.length-1)))];
+  return{n:o.length,med:pq(.5),p25:pq(.25),p75:pq(.75),worst:q[0],avg:o.reduce((a,b)=>a+b,0)/o.length,pos:o.filter(x=>x>0).length/o.length*100,beat:beat.length?beat.filter(Boolean).length/beat.length*100:null};
+}
+function livePain(s,T,yrs=3){ // average fall below the running high, and share of days below it
+  const a=lidx(s,lback(T,{years:yrs})),z=lidx(s,T);if(a<0||z-a<100)return null;
+  let pk=s.vals[a],sum=0,under=0,n=0;for(let i=a;i<=z;i++){pk=Math.max(pk,s.vals[i]);const dd=s.vals[i]/pk-1;sum+=dd;if(dd<-0.02)under++;n++;}
+  return{pain:-sum/n*100,under:under/n*100};
+}
+function liveConcentration(s,T,yrs=3){ // CAGR with the best / worst days removed (diagnostic path, not investable)
+  const a=lidx(s,lback(T,{years:yrs})),z=lidx(s,T);if(a<0||z-a<250)return null;
+  const r=[];for(let i=a+1;i<=z;i++)r.push(Math.log(s.vals[i]/s.vals[i-1]));const tot=r.reduce((x,y)=>x+y,0),so=[...r].sort((x,y)=>y-x),yr=(s.days[z]-s.days[a])/365;
+  const cagr=lg=>(Math.exp(lg/yr)-1)*100,top=k=>so.slice(0,k).reduce((x,y)=>x+y,0),bot=k=>so.slice(-k).reduce((x,y)=>x+y,0);
+  return{cagr:cagr(tot),exBest5:cagr(tot-top(5)),exBest10:cagr(tot-top(10)),exWorst5:cagr(tot-bot(5))};
+}
+function liveDownside(s,bs,T,n=36){ // months the benchmark fell
+  if(!s||!bs)return null;const e=[...liveMonthEnds(T,n+1)];let down=0,less=0,pos=0,rel=0;
+  for(let i=1;i<e.length;i++){const f0=lon(s,e[i-1]),f1=lon(s,e[i]),b0=lon(bs,e[i-1]),b1=lon(bs,e[i]);if(![f0,f1,b0,b1].every(fin)||e[i-1]<s.days[0])continue;
+    const fr=f1/f0-1,br=b1/b0-1;if(br<0){down++;if(fr>br)less++;if(fr>0)pos++;rel+=(fr-br)*100;}}
+  return down>=4?{down,less,pos,relAvg:rel/down,share:less/down*100}:null;
+}
+function liveIntel(name){ // everything the drawer card and the signals need, at the date shown
+  const c=LIVE_MAP&&LIVE_MAP.get(name),s=c&&liveFund(c);if(!s)return null;
+  const T=LIVE_T??lday(window.TCR_NAV.latest_nav_date),res=RES[name];
+  const bn=res?benchKeyOf(fundBench(name,res.cat))||fundBench(name,res.cat):null,bs=bn?liveBenchSeries(bn,T):null;
+  const cy=liveCycles(s,T),bcy=bs?liveCycles(bs,T):null;
+  return{T,bn,r1:liveRollDist(s,bs,T,1,LIVE_RR_LB),r3:liveRollDist(s,bs,T,3,Math.max(LIVE_RR_LB,5)),pain:livePain(s,T),bpain:bs?livePain(bs,T):null,
+    conc:liveConcentration(s,T),bconc:bs?liveConcentration(bs,T):null,down:liveDownside(s,bs,T),cy,bcy,style:/^Equity/.test(res?.homeCat||res?.cat||'')?liveStyle(c,T):null,mgr:liveMgrChange(name)};
+}
+function liveTags(name,I){ // behaviour fingerprint (a description, not a score)
+  const t=[],d=RES[name]?.disp||{},uc=toN(d['UPSIDE CAPTURE']),dc=toN(d['DOWNSIDE CAPTURE']);
+  if(I.r1&&I.r1.pos>=85&&I.r1.beat!=null&&I.r1.beat>=60&&I.pain&&I.bpain&&I.pain.pain<=I.bpain.pain)t.push(['Consistent compounder','positive in '+I.r1.pos.toFixed(0)+'% of 1Y windows, beat its benchmark in '+I.r1.beat.toFixed(0)+'%, shallower falls than the benchmark']);
+  if((fin(dc)&&dc<85&&I.down&&I.down.share>=60)||(I.down&&I.down.share>=80))t.push(['Defensive','fell less than the benchmark in '+(I.down?I.down.less+' of '+I.down.down:'most')+' down months'+(fin(dc)?', downside capture '+dc.toFixed(0):'')]);
+  if(fin(uc)&&fin(dc)&&uc>=110&&dc>=105)t.push(['High beta','upside capture '+uc.toFixed(0)+', downside capture '+dc.toFixed(0)+': amplifies the market both ways']);
+  if(I.conc&&I.bconc){const f=I.conc.cagr-I.conc.exBest10,b=I.bconc.cagr-I.bconc.exBest10;  // CAGR lost without the 10 best days, fund vs benchmark
+    if(f>b+3)t.push(['Return concentrated','losing its 10 best days cuts 3Y CAGR by '+f.toFixed(1)+' pts vs '+b.toFixed(1)+' for the benchmark']);}
+  const last=I.cy?.cycles?.filter(x=>x.recovered).slice(-1)[0],blast=I.bcy?.cycles?.filter(x=>x.recovered).slice(-1)[0];
+  if(last&&blast&&Math.abs(last.peak-blast.peak)<120&&(last.recovered-last.trough)<(blast.recovered-blast.trough)*0.8)t.push(['Recovery specialist','recovered its last major fall in '+Math.round((last.recovered-last.trough)/30.44)+' months vs '+Math.round((blast.recovered-blast.trough)/30.44)+' for the benchmark']);
+  if(I.r1&&I.r1.beat!=null&&I.r1.beat<25&&RES[name]&&toN(RES[name].rawTr['3 YEARS'])>0)t.push(['Inconsistent','beat its benchmark in only '+I.r1.beat.toFixed(0)+'% of 1Y windows']);
+  if(I.style&&I.style.d1!=null&&I.style.d1>=30&&I.style.now.r2>=0.85&&I.style.y1&&I.style.y1.r2>=0.85)t.push(['Style drift','effective large/mid/small mix moved '+I.style.d1.toFixed(0)+' pts in a year']);
+  return t;
+}
+function liveIntelSection(name){
+  if(!LIVE_HIST_READY||!window.TCR_NAV)return'';const I=liveIntel(name);if(!I)return'';
+  const p=v=>fin(v)?v.toFixed(1)+'%':'—',col=v=>fin(v)&&v<0?'var(--red)':'var(--green)',tags=liveTags(name,I);
+  const tg=tags.length?tags.map(([a,b])=>`<span title="${eh(b)}" style="display:inline-block;margin:0 6px 6px 0;padding:2px 8px;border-radius:10px;background:var(--bluelt);color:var(--blue);font-size:.66rem;font-weight:600;cursor:help">${a}</span>`).join(''):'<span style="color:var(--muted);font-size:.66rem">No distinctive pattern.</span>';
+  const r=(x,l)=>x?dMini(l+' median',p(x.med),col(x.med))+dMini(l+' worst',p(x.worst),col(x.worst))+dMini(l+' positive',x.pos.toFixed(0)+'%')+dMini(l+' beat bench',x.beat!=null?x.beat.toFixed(0)+'%':'—'):'';
+  const st=I.style,sty=st&&st.now?`${st.now.L.toFixed(0)}/${st.now.M.toFixed(0)}/${st.now.S.toFixed(0)}`:'—',sty1=st&&st.y1?`${st.y1.L.toFixed(0)}/${st.y1.M.toFixed(0)}/${st.y1.S.toFixed(0)}`:'—',sty3=st&&st.y3?`${st.y3.L.toFixed(0)}/${st.y3.M.toFixed(0)}/${st.y3.S.toFixed(0)}`:'—';
+  const h=liveTSHistory(name),rep=h.length?h[h.length-1].v:null,mand=LIVE_MANDATE[RES[name]?.homeCat];
+  let mandTxt='';if(rep&&mand){const chk=Array.isArray(mand[0])?mand:[mand];const bad=chk.filter(([i,min])=>fin(rep[i])&&rep[i]<min);mandTxt=bad.length?`<span style="color:var(--red)">below SEBI minimum: ${bad.map(([i,min])=>['','large','mid','small'][i]+' '+rep[i].toFixed(1)+'% (min '+min+'%)').join(', ')}</span>`:'<span style="color:var(--green)">within SEBI minimums</span>';}
+  const mg=I.mgr?(I.mgr.none?`no change in ${I.mgr.months} monthly files`:`<b style="color:var(--orange)">changed ${I.mgr.when}</b>: ${eh(I.mgr.from)} → ${eh(I.mgr.to)}`):'needs two monthly Top Schemes files';
+  return`<div class="drw-sec"><div class="drw-sec-lbl">🧭 Fund intelligence <span style="font-weight:400;color:var(--muted)">(daily NAVs to ${liveISO(I.T)}${I.bn?' · vs '+eh(I.bn):''})</span></div>
+  <div style="margin-bottom:4px">${tg}</div>
+  <div style="font-size:.64rem;color:var(--muted);margin:4px 0">Rolling returns, monthly entry points, last ${LIVE_RR_LB} years (3Y: last ${Math.max(LIVE_RR_LB,5)})</div>
+  <div class="d-mini-grid">${r(I.r1,'1Y')}${r(I.r3,'3Y')}</div>
+  <div class="d-mini-grid" style="margin-top:6px">${dMini('Pain index 3Y',I.pain?I.pain.pain.toFixed(1)+'%':'—')}${dMini('Bench pain 3Y',I.bpain?I.bpain.pain.toFixed(1)+'%':'—')}
+  ${dMini('Days >2% below high',I.pain?I.pain.under.toFixed(0)+'%':'—')}${dMini('Down months fell less',I.down?I.down.less+' of '+I.down.down:'—')}
+  ${dMini('3Y CAGR · w/o 10 best days',I.conc?p(I.conc.cagr)+' · '+p(I.conc.exBest10):'—')}${dMini('Bench · w/o 10 best days',I.bconc?p(I.bconc.cagr)+' · '+p(I.bconc.exBest10):'—')}</div>
+  <div style="font-size:.68rem;margin-top:8px;line-height:1.6">
+   <div><span style="color:var(--muted)">Style from NAV (large/mid/small):</span> now <b>${sty}</b> · 1Y ago ${sty1} · 3Y ago ${sty3}${st&&st.now?` <span style="color:var(--muted)">(fit R² ${st.now.r2.toFixed(2)}${st.d1!=null?', drift '+st.d1.toFixed(0)+' pts in 1Y':''})</span>`:''}</div>
+   <div><span style="color:var(--muted)">Reported portfolio:</span> ${rep?`${fin(rep[1])?rep[1].toFixed(0):'—'}/${fin(rep[2])?rep[2].toFixed(0):'—'}/${fin(rep[3])?rep[3].toFixed(0):'—'} ${mandTxt}`:'—'}</div>
+   <div><span style="color:var(--muted)">Fund manager:</span> ${rep?eh(rep[0]):'—'} · ${mg}</div></div></div>`;
+}
+
+// ── signals ──
+function liveSignalRows(){
+  const D=LIVE_SH.dates,L=D[D.length-1],at=k=>{const t=lback(L,{months:k});let b=null;for(const d of D)if(d<=t)b=d;return b;};
+  const d6=at(6),d12=at(12),H=LIVE_SH.H,pos=v=>v&&v[5]&&v[6]>1?1-(v[5]-1)/(v[6]-1):NaN;
+  const byCat={};for(const r of allResults)if(fin(r.composite))(byCat[r.cat]=byCat[r.cat]||[]).push(r);
+  const T=L,mrows={};for(const x of liveMonthlyRows(T))mrows[x['SCHEME NAME']]=x;
+  const lastM=livePeriods(T,'M',7).slice(0,6).map(p=>p.key),pil=[['Trailing',1,LIVE_W.t],['Calendar',2,LIVE_W.c],['Risk',3,LIVE_W.r],['Consistency',4,LIVE_W.k]];
+  const rows=[];
+  for(const[cat,rs]of Object.entries(byCat)){
+    const r3=rs.map(r=>r.rawTr['3 YEARS']),r6=rs.map(r=>r.rawTr['6 MONTHS']),bn=getBench(cat),bm=mrows[benchKeyOf(bn)||bn];
+    for(const r of rs){
+      const now=H[L]?.[r.name],p6=d6!=null?H[d6]?.[r.name]:null,p12=d12!=null?H[d12]?.[r.name]:null;if(!now)continue;
+      const fm=mrows[r.name];let hits=null,ok=0,ex6=null;
+      if(fm&&bm){const ks=lastM.filter(k=>fin(fm[k])&&fin(bm[k]));if(ks.length>=6){ok=ks.length;hits=ks.filter(k=>fm[k]>bm[k]).length;
+        ex6=(ks.reduce((a,k)=>a*(1+fm[k]/100),1)-ks.reduce((a,k)=>a*(1+bm[k]/100),1))*100;}}
+      let drv='—';if(p6){const ds=pil.map(([l,i,w])=>fin(now[i])&&fin(p6[i])?[l,(now[i]-p6[i])*w]:null).filter(Boolean).sort((a,b)=>Math.abs(b[1])-Math.abs(a[1]));if(ds[0])drv=ds[0][0]+' '+(ds[0][1]>=0?'+':'')+ds[0][1].toFixed(1);}
+      rows.push({n:r.name,cat:r.catLbl||cat,s:now[0],ds6:p6?now[0]-p6[0]:NaN,ds12:p12?now[0]-p12[0]:NaN,pos:pos(now),pos6:pos(p6),pos12:pos(p12),
+        rk:now[5]+'/'+now[6],rk6:p6?p6[5]+'/'+p6[6]:'—',rk12:p12?p12[5]+'/'+p12[6]:'—',p3:lpct(r.rawTr['3 YEARS'],r3),p6m:lpct(r.rawTr['6 MONTHS'],r6),hits,ok,ex6,drv});
+    }
+  }
+  return rows;
+}
 function liveSignals(){
   if(!LIVE_SH||LIVE_SH.sig!==liveSHSig())
     return`<p class="lm-p">Signals need the score history (TCR re-scored at past month-ends).</p><button class="lp-btn" onclick="liveBuildScoreHistory().then(()=>liveModal('Signals',liveSignals()))">Build score history (~1 minute)</button>`;
-  const D=LIVE_SH.dates,L=D[D.length-1],at=k=>{const t=lback(L,{months:k});let b=null;for(const d of D)if(d<=t)b=d;return b;};
-  const d6=at(6),d12=at(12),H=LIVE_SH.H;
-  const pos=v=>v&&v[5]&&v[6]>1?1-(v[5]-1)/(v[6]-1):NaN;
-  const byCat={};for(const r of allResults)if(fin(r.composite))(byCat[r.cat]=byCat[r.cat]||[]).push(r);
-  const T=L,mrows={};for(const x of liveMonthlyRows(T))mrows[x['SCHEME NAME']]=x;
-  const lastM=livePeriods(T,'M',7).slice(0,6).map(p=>p.key); // last 6 complete months
-  const rows=[];
-  for(const[cat,rs]of Object.entries(byCat)){
-    const r3=rs.map(r=>r.rawTr['3 YEARS']),r6=rs.map(r=>r.rawTr['6 MONTHS']);
-    const bn=getBench(cat),bm=mrows[benchKeyOf(bn)||bn];
-    for(const r of rs){
-      const now=H[L]?.[r.name],p6=d6!=null?H[d6]?.[r.name]:null,p12=d12!=null?H[d12]?.[r.name]:null;if(!now)continue;
-      const fm=mrows[r.name];let hit=null;
-      if(fm&&bm){const ok=lastM.filter(k=>fin(fm[k])&&fin(bm[k]));if(ok.length>=4)hit=ok.filter(k=>fm[k]>bm[k]).length+'/'+ok.length;}
-      rows.push({n:r.name,cat:r.catLbl||cat,s:now[0],ds6:p6?now[0]-p6[0]:NaN,ds12:p12?now[0]-p12[0]:NaN,pos:pos(now),pos6:pos(p6),pos12:pos(p12),
-        rk:now[5]+'/'+now[6],rk6:p6?p6[5]+'/'+p6[6]:'—',rk12:p12?p12[5]+'/'+p12[6]:'—',p3:lpct(r.rawTr['3 YEARS'],r3),p6m:lpct(r.rawTr['6 MONTHS'],r6),hit,hitN:hit?+hit.split('/')[0]/+hit.split('/')[1]:NaN});
-    }
-  }
-  const rising=rows.filter(r=>r.ds6>=10&&r.pos>=0.6).sort((a,b)=>b.ds6-a.ds6).slice(0,25);
-  const turn=rows.filter(r=>r.p3<0.5&&(r.pos12<0.4||!fin(r.pos12))&&r.ds6>=8&&r.p6m>=0.75&&(r.hitN>=4/6||!fin(r.hitN))).sort((a,b)=>b.ds6-a.ds6).slice(0,25);
+  const rows=liveSignalRows(),L=LIVE_SH.dates[LIVE_SH.dates.length-1];
+  // every signal needs evidence from returns as well as from the score; missing data never qualifies
+  const rising=rows.filter(r=>r.ds6>=10&&r.pos>=0.6&&fin(r.p6m)&&r.p6m>=0.5&&r.ex6!=null&&r.ex6>0).sort((a,b)=>b.ds6-a.ds6).slice(0,25);
+  const turn=rows.filter(r=>fin(r.p3)&&r.p3<0.5&&fin(r.pos12)&&r.pos12<0.4&&r.ds6>=8&&fin(r.p6m)&&r.p6m>=0.75&&r.hits!=null&&r.hits>=4).sort((a,b)=>b.ds6-a.ds6).slice(0,25);
   const fading=rows.filter(r=>r.pos>=0.6&&r.ds6<=-10).sort((a,b)=>a.ds6-b.ds6).slice(0,25);
-  const tbl=(list,extra)=>list.length?`<table class="lm-t"><tr><th>Fund</th><th>Category</th><th>Score</th><th>Δ 6M</th><th>Δ 12M</th><th>Rank now</th><th>6M ago</th><th>12M ago</th>${extra?'<th>3Y pct</th><th>6M pct</th><th>Beat bench (6 mo)</th>':''}</tr>
-    ${list.map(r=>`<tr><td>${lnk(r.n)}</td><td>${eh(r.cat)}</td><td>${lf(r.s)}</td><td class="${r.ds6>=0?'lm-up':'lm-dn'}">${lf(r.ds6)}</td><td class="${r.ds12>=0?'lm-up':'lm-dn'}">${lf(r.ds12)}</td><td>${r.rk}</td><td>${r.rk6}</td><td>${r.rk12}</td>${extra?`<td>${fin(r.p3)?Math.round(r.p3*100):'—'}</td><td>${fin(r.p6m)?Math.round(r.p6m*100):'—'}</td><td>${r.hit||'—'}</td>`:''}</tr>`).join('')}</table>`:'<p class="lm-p">None right now.</p>';
-  // backtest: top vs bottom quartile by TCR score at each past month-end, next-12-month return vs category average
-  const bt=liveBacktest();
-  return`<p class="lm-p">From TCR's own scores at past month-ends (score history to ${liveISO(L)}). Click a fund to open it.</p>
-  <h4>🚀 Rising stars <span class="lm-s">score up ≥10 in 6 months, now in the top 40% of its category</span></h4>${tbl(rising)}
-  <h4>🔄 Turnaround candidates <span class="lm-s">weak 3Y record (bottom half), was bottom 40% a year ago, score up ≥8 in 6 months, top-quartile 6-month return, beat its benchmark in ≥4 of the last 6 months</span></h4>${tbl(turn,true)}
-  <h4>⚠️ Fading <span class="lm-s">still in the top 40% but score down ≥10 in 6 months</span></h4>${tbl(fading)}
-  <h4>🧪 Does TCR pick winners? <span class="lm-s">backtest of the score history</span></h4>${bt}`;
+  const early=[],recov=[],drift=[],mgr=[];
+  for(const r of rows){
+    const I=liveIntel(r.n);if(!I)continue;
+    if(r.pos>=0.6&&!(r.ds6<=-10)){const why=[];
+      if(fin(r.p6m)&&r.p6m<0.5)why.push('6M return below category median');
+      if(r.hits!=null&&r.hits<=2)why.push(`beat benchmark in only ${r.hits}/6 months`);
+      if(I.cy&&I.bcy&&I.cy.current<I.bcy.current-3)why.push(`${(-I.cy.current).toFixed(1)}% below its high vs ${(-I.bcy.current).toFixed(1)}% for the benchmark`);
+      if(I.down&&I.down.share<40)why.push(`fell less than the benchmark in only ${I.down.less}/${I.down.down} down months`);
+      if(why.length>=2)early.push({...r,why:why.join('; ')});}
+    const big=I.cy?.cycles?.filter(x=>x.fall<=-15&&x.peak>=lback(I.T,{years:3})).slice(-1)[0];
+    if(big){const s=liveFund(LIVE_MAP.get(r.n)),pk=lon(s,big.peak),tr=lon(s,big.trough),nw=lon(s,I.T),rec=(nw-tr)/(pk-tr)*100;
+      let brec=null;const bn=I.bn&&liveBenchSeries(I.bn,I.T);if(bn){const bp=lon(bn,big.peak),bt=lon(bn,big.trough),bw=lon(bn,I.T);if([bp,bt,bw].every(fin)&&bp>bt)brec=(bw-bt)/(bp-bt)*100;}
+      if(rec>=80&&(brec==null||rec>brec))recov.push({...r,fall:big.fall,rec,brec,mo:Math.round(((big.recovered||I.T)-big.trough)/30.44),done:!!big.recovered});}
+    if(I.style&&I.style.d1!=null&&I.style.d1>=30&&I.style.now.r2>=0.85&&I.style.y1&&I.style.y1.r2>=0.85)drift.push({...r,st:I.style});
+    if(I.mgr&&!I.mgr.none)mgr.push({...r,m:I.mgr});
+  }
+  const head=(extra)=>`<tr><th>Fund</th><th>Category</th><th>Score</th><th>Δ 6M</th><th>Driver</th><th>Rank now</th><th>6M ago</th><th>12M ago</th>${extra||''}</tr>`;
+  const base=r=>`<td>${lnk(r.n)}</td><td>${eh(r.cat)}</td><td>${lf(r.s)}</td><td class="${r.ds6>=0?'lm-up':'lm-dn'}">${lf(r.ds6)}</td><td>${r.drv}</td><td>${r.rk}</td><td>${r.rk6}</td><td>${r.rk12}</td>`;
+  const pc=v=>fin(v)?Math.round(v*100):'—',ex=r=>r.ex6!=null?((r.ex6>=0?'+':'')+r.ex6.toFixed(1)):'—';
+  const tbl=(list,ext,cell)=>list.length?`<table class="lm-t">${head(ext)}${list.map(r=>`<tr>${base(r)}${cell?cell(r):''}</tr>`).join('')}</table>`:'<p class="lm-p">None right now.</p>';
+  const st=x=>x?`${x.L.toFixed(0)}/${x.M.toFixed(0)}/${x.S.toFixed(0)}`:'—';
+  return`<p class="lm-p">Signals from TCR's own scores at past month-ends (to ${liveISO(L)}), each confirmed by the fund's actual returns. Click a fund to open it. "Driver" = the pillar that moved the score most over 6 months (points of final score).</p>
+  <h4>🚀 Rising stars <span class="lm-s">score up ≥10 in 6 months · now top 40% of category · 6M return at or above category median · ahead of benchmark over 6 months</span></h4>
+  ${tbl(rising,'<th>6M pct</th><th>6M vs bench</th>',r=>`<td>${pc(r.p6m)}</td><td class="${r.ex6>=0?'lm-up':'lm-dn'}">${ex(r)}</td>`)}
+  <h4>🔄 Turnaround candidates <span class="lm-s">weak 3Y record (bottom half) · was bottom 40% a year ago · score up ≥8 in 6 months · top-quartile 6M return · beat benchmark in ≥4 of the last 6 months</span></h4>
+  ${tbl(turn,'<th>3Y pct</th><th>6M pct</th><th>Months beat</th><th>6M vs bench</th>',r=>`<td>${pc(r.p3)}</td><td>${pc(r.p6m)}</td><td>${r.hits}/6</td><td class="${r.ex6>=0?'lm-up':'lm-dn'}">${ex(r)}</td>`)}
+  <h4>⚠️ Fading <span class="lm-s">still top 40% · score down ≥10 in 6 months</span></h4>${tbl(fading)}
+  <h4>🟠 Early deterioration <span class="lm-s">top 40%, not yet fading, but at least two warning signs in its returns</span></h4>
+  ${tbl(early.sort((a,b)=>a.ds6-b.ds6).slice(0,25),'<th>Warning signs</th>',r=>`<td style="white-space:normal;max-width:380px">${eh(r.why)}</td>`)}
+  <h4>💪 Recovery leaders <span class="lm-s">fell ≥15% in the last 3 years and has recovered ≥80% of it, faster than its benchmark</span></h4>
+  ${tbl(recov.sort((a,b)=>b.rec-a.rec).slice(0,25),'<th>Fall</th><th>Recovered</th><th>Bench recovered</th><th>Months</th>',r=>`<td class="lm-dn">${r.fall.toFixed(1)}%</td><td>${r.rec>=100?'new high':r.rec.toFixed(0)+'%'}</td><td>${r.brec!=null?(r.brec>=100?'new high':r.brec.toFixed(0)+'%'):'—'}</td><td>${r.mo}${r.done?'':'+'}</td>`)}
+  <h4>🧭 Style drift <span class="lm-s">effective large/mid/small mix from daily NAV returns moved ≥30 pts in a year (fit R² ≥ 0.85 at both dates)</span></h4>
+  ${tbl(drift.sort((a,b)=>b.st.d1-a.st.d1).slice(0,25),'<th>Now L/M/S</th><th>1Y ago</th><th>3Y ago</th><th>Drift</th>',r=>`<td>${st(r.st.now)}</td><td>${st(r.st.y1)}</td><td>${st(r.st.y3)}</td><td>${r.st.d1.toFixed(0)} pts</td>`)}
+  <h4>👤 Fund manager changes <span class="lm-s">between monthly Top Schemes files (${Object.keys(LIVE_TS).length} saved so far)</span></h4>
+  ${tbl(mgr,'<th>When</th><th>From → to</th>',r=>`<td>${r.m.when}</td><td style="white-space:normal">${eh(r.m.from)} → ${eh(r.m.to)}</td>`)}
+  <h4>🧪 Does TCR pick winners?</h4>${liveBacktest()}`;
 }
+
+// ── backtest: score levels, score changes, market conditions ──
 function liveBacktest(){
-  const D=LIVE_SH.dates,L=D[D.length-1],H=LIVE_SH.H;
-  const fwd=(n,d)=>{const c=LIVE_MAP.get(n),s=c&&liveFund(c);if(!s)return NaN;const a=lon(s,d),e=lfwd(d,1);if(e>L)return NaN;const z=lon(s,e);return fin(a)&&fin(z)&&a>0?(z/a-1)*100:NaN;};
-  const cat={};for(const r of allResults)cat[r.name]=r.catLbl||r.cat;
-  const per=[];const byCat={};
+  const D=LIVE_SH.dates,L=D[D.length-1],H=LIVE_SH.H,cat={};for(const r of allResults)cat[r.name]=r.catLbl||r.cat;
+  const fwd=(n,d,m)=>{const c=LIVE_MAP.get(n),s=c&&liveFund(c);if(!s)return NaN;const e=lback(d,{months:-m});if(e>L)return NaN;const a=lon(s,d),z=lon(s,e);return fin(a)&&fin(z)&&a>0?(z/a-1)*100:NaN;};
+  const mkt=liveBenchSeries('NSE Nifty 500 TRI',L),regime=d=>{if(!mkt)return'—';const a=lon(mkt,lback(d,{months:6})),z=lon(mkt,d);return fin(a)&&fin(z)?(z>a?'rising':'falling'):'—';};
+  const avg=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:NaN,pct=a=>a.length?Math.round(a.filter(Boolean).length/a.length*100):NaN;
+  const lvl=[],byReg={rising:[],falling:[]},byYear={},byCat={},chg=[];
   for(const d of D){
-    if(lfwd(d,1)>L)continue;const snap=H[d];if(!snap)continue;
-    const groups={};for(const[n,v]of Object.entries(snap)){if(!fin(v[0])||!cat[n])continue;const r=fwd(n,d);if(!fin(r))continue;(groups[cat[n]]=groups[cat[n]]||[]).push([v[0],r]);}
+    const snap=H[d];if(!snap||lback(d,{months:-12})>L)continue;
+    const groups={};for(const[n,v]of Object.entries(snap)){if(!fin(v[0])||!cat[n])continue;const r=fwd(n,d,12);if(fin(r))(groups[cat[n]]=groups[cat[n]]||[]).push({n,s:v[0],r});}
     for(const[c,g]of Object.entries(groups)){
-      if(g.length<8)continue;g.sort((a,b)=>b[0]-a[0]);const q=Math.max(2,Math.floor(g.length/4));
-      const avg=a=>a.reduce((x,y)=>x+y,0)/a.length,m=avg(g.map(x=>x[1])),top=avg(g.slice(0,q).map(x=>x[1]))-m,bot=avg(g.slice(-q).map(x=>x[1]))-m;
-      per.push({d,c,top,bot});(byCat[c]=byCat[c]||[]).push({top,bot});
+      if(g.length<8)continue;const m=avg(g.map(x=>x.r)),q=Math.max(2,Math.floor(g.length/4));
+      const byS=[...g].sort((a,b)=>b.s-a.s),byR=[...g].sort((a,b)=>b.r-a.r),futTop=new Set(byR.slice(0,q).map(x=>x.n)),futHalf=new Set(byR.slice(0,Math.ceil(g.length/2)).map(x=>x.n));
+      const top=byS.slice(0,q),bot=byS.slice(-q),o={d,c,top:avg(top.map(x=>x.r))-m,bot:avg(bot.map(x=>x.r))-m,prec:top.filter(x=>futTop.has(x.n)).length/q,half:top.filter(x=>futHalf.has(x.n)).length/q};
+      lvl.push(o);const rg=regime(d);if(byReg[rg])byReg[rg].push(o);(byYear[ldate(d).y]=byYear[ldate(d).y]||[]).push(o);(byCat[c]=byCat[c]||[]).push(o);
     }
   }
-  if(!per.length)return'<p class="lm-p">Not enough history yet.</p>';
-  const avg=a=>a.reduce((x,y)=>x+y,0)/a.length,hit=a=>Math.round(a.filter(x=>x>0).length/a.length*100);
-  const dates=new Set(per.map(p=>p.d)).size;
-  const cats=Object.entries(byCat).filter(([,v])=>v.length>=6).map(([c,v])=>({c,n:v.length,top:avg(v.map(x=>x.top)),bot:avg(v.map(x=>x.bot)),h:hit(v.map(x=>x.top))})).sort((a,b)=>b.top-a.top);
-  return`<p class="lm-p">At each of ${dates} past month-ends, within every category with 8+ funds: the top quarter by TCR score vs the bottom quarter, next-12-month return minus the category average.
-  <b>Top quarter: ${(avg(per.map(p=>p.top))>=0?'+':'')+avg(per.map(p=>p.top)).toFixed(2)} pts/yr</b> (beat the category in ${hit(per.map(p=>p.top))}% of cases) ·
-  <b>bottom quarter: ${(avg(per.map(p=>p.bot))>=0?'+':'')+avg(per.map(p=>p.bot)).toFixed(2)} pts/yr</b>.
-  <span class="lm-s">Caveats: only funds alive today are in the data (closed funds are missing), and past scores use today's file for corpus, ratings and categories.</span></p>
-  <table class="lm-t"><tr><th>Category</th><th>Month-ends</th><th>Top quarter vs avg</th><th>Beat avg</th><th>Bottom quarter vs avg</th></tr>${cats.map(x=>`<tr><td>${eh(x.c)}</td><td>${x.n}</td><td class="${x.top>=0?'lm-up':'lm-dn'}">${(x.top>=0?'+':'')+x.top.toFixed(2)}</td><td>${x.h}%</td><td class="${x.bot>=0?'lm-up':'lm-dn'}">${(x.bot>=0?'+':'')+x.bot.toFixed(2)}</td></tr>`).join('')}</table>`;
+  // score change over the previous 3 months → next 3/6/12-month return vs category average
+  for(let i=0;i<D.length;i++){const d=D[i],p=D.find(x=>x>=lback(d,{months:3})&&x<d);if(p==null||!H[d]||!H[p])continue;
+    const groups={};for(const[n,v]of Object.entries(H[d])){const pv=H[p][n];if(!pv||!fin(v[0])||!fin(pv[0])||!cat[n])continue;(groups[cat[n]]=groups[cat[n]]||[]).push({n,ds:v[0]-pv[0]});}
+    for(const g of Object.values(groups)){if(g.length<8)continue;
+      for(const h of[3,6,12]){const rs=g.map(x=>({...x,r:fwd(x.n,d,h)})).filter(x=>fin(x.r));if(rs.length<8)continue;const m=avg(rs.map(x=>x.r));for(const x of rs)chg.push({h,ds:x.ds,ex:x.r-m});}}}
+  if(!lvl.length)return'<p class="lm-p">Not enough history yet.</p>';
+  const s=v=>fin(v)?(v>=0?'+':'')+v.toFixed(2):'—',c=v=>v>=0?'lm-up':'lm-dn',sum=a=>({top:avg(a.map(x=>x.top)),bot:avg(a.map(x=>x.bot)),hit:pct(a.map(x=>x.top>0)),prec:avg(a.map(x=>x.prec))*100,half:avg(a.map(x=>x.half))*100,n:a.length});
+  const A=sum(lvl),row=(lbl,x)=>`<tr><td>${lbl}</td><td>${x.n}</td><td class="${c(x.top)}">${s(x.top)}</td><td>${x.hit}%</td><td>${x.prec.toFixed(0)}%</td><td>${x.half.toFixed(0)}%</td><td class="${c(x.bot)}">${s(x.bot)}</td></tr>`;
+  const th='<tr><th></th><th>Cases</th><th>Top quarter vs cat. avg (pts, next 12M)</th><th>Beat avg</th><th>Ended in future top quarter (random 25%)</th><th>Ended in top half (random 50%)</th><th>Bottom quarter vs avg</th></tr>';
+  const buckets=[['score fell ≥10',-1e9,-10],['fell 5–10',-10,-5],['roughly flat (±5)',-5,5],['rose 5–10',5,10],['rose ≥10',10,1e9]];
+  const ct=buckets.map(([l,a,b])=>{const cells=[3,6,12].map(h=>{const x=chg.filter(o=>o.h===h&&o.ds>=a&&o.ds<b);return x.length?`<td class="${c(avg(x.map(o=>o.ex)))}">${s(avg(x.map(o=>o.ex)))}</td>`:'<td>—</td>';}).join('');const n=chg.filter(o=>o.h===12&&o.ds>=a&&o.ds<b).length;return`<tr><td>${l}</td><td>${n}</td>${cells}</tr>`;}).join('');
+  const cats=Object.entries(byCat).filter(([,v])=>v.length>=6).map(([k,v])=>[k,sum(v)]).sort((a,b)=>b[1].top-a[1].top);
+  return`<p class="lm-p">Every past month-end with 12 months of future data, within each category of 8+ funds. <b>Top quarter by TCR score beat the category average by ${s(A.top)} pts over the next 12 months, in ${A.hit}% of cases</b>; ${A.prec.toFixed(0)}% of TCR's top quarter ended in the future top quarter (random: 25%) and ${A.half.toFixed(0)}% in the top half (random: 50%).
+  <span class="lm-s">Caveats: only funds alive today are in the data (closed funds missing, which flatters the bottom of each category); past scores use today's file for corpus, ratings and categories; fund age, returns, benchmarks and risk ratios are as of each date.</span></p>
+  <table class="lm-t">${th}${row('All',A)}${['rising','falling'].map(k=>byReg[k].length?row('Nifty 500 '+k+' over prior 6M',sum(byReg[k])):'').join('')}${Object.keys(byYear).sort().map(y=>row(y,sum(byYear[y]))).join('')}</table>
+  <h4>Does a changing score lead returns? <span class="lm-s">score change over the previous 3 months → return vs category average afterwards (pts)</span></h4>
+  <table class="lm-t"><tr><th>Score change (3M)</th><th>Cases</th><th>Next 3M</th><th>Next 6M</th><th>Next 12M</th></tr>${ct}</table>
+  <h4>By category</h4><table class="lm-t">${th}${cats.map(([k,x])=>row(eh(k),x)).join('')}</table>`;
 }
 
 let LIVE_RR_KEY=null;
@@ -496,7 +678,7 @@ const _liveOpenDrawer=openDrawer;
 openDrawer=function(name){
   _liveOpenDrawer(name);
   try{
-    const body=document.getElementById('drw-body'),h1=liveScoreSection(name),h2=liveDrawerSection(name);
+    const body=document.getElementById('drw-body'),h1=liveScoreSection(name)+liveIntelSection(name),h2=liveDrawerSection(name);
     // score history right after TCR's pillar block; corrections at the end
     const pil=[...body.children].find(el=>/pillar scores/i.test(el.textContent||''));
     if(h1){if(pil)pil.insertAdjacentHTML('afterend',h1);else body.insertAdjacentHTML('beforeend',h1);}
@@ -506,7 +688,7 @@ openDrawer=function(name){
 // After the feed loads, fetch the NAV history in the background, then re-run once so rolling
 // returns, blank ratios and drawdowns appear.
 LIVE_READY.then(async ok=>{
-  if(!ok)return;await liveLoadHistory();liveBadge();
+  if(!ok)return;await liveTSLoadAll();await liveLoadHistory();liveBadge();
   const wait=()=>new Promise(r=>{let n=0;const t=setInterval(()=>{n++;if((!LOAD_PENDING&&typeof allResults!=='undefined'&&allResults.length)||n>600){clearInterval(t);r();}},200);});
   await wait();
   if(LIVE_ON&&cyRaw&&trRaw&&document.getElementById('dashboard').style.display!=='none'){await runModel(true);if(typeof applyFilters==='function')applyFilters();}
