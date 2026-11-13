@@ -1,9 +1,9 @@
 {
   "seeded_at": "2026-11-11T13:59:41+05:30",
-  "latest_nav_date": "2026-11-12",
+  "latest_nav_date": "2026-11-15",
   "schemes": 1773,
   "history_source": "mfapi.in full history + AMFI history report",
-  "updated_at": "2026-11-13T14:31:04+05:30",
+  "updated_at": "2026-11-14T00:42:58+05:30",
   "source": "amfi-history+amfi-latest",
-  "rows_fetched": 7305
+  "rows_fetched": 8938
 }
