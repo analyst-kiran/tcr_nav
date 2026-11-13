@@ -3,7 +3,7 @@ code,name,amc,category,plan,option,last_seen
 100038,Aditya Birla Sun Life Medium to Long Term Fund - Growth - Regular Plan,Aditya Birla Sun Life Mutual Fund,Income/Debt Oriented Schemes - Medium to Long Term Fund,Regular Plan,GROWTH,2026-11-12
 100047,Aditya Birla Sun Life Liquid Fund - Growth,Aditya Birla Sun Life Mutual Fund,Income/Debt Oriented Schemes - Liquid Fund,Regular Plan,GROWTH,2026-11-12
 100058,Aditya Birla Sun Life Gilt Fund  - Growth - Regular Plan,Aditya Birla Sun Life Mutual Fund,Income/Debt Oriented Schemes - Gilt Fund,Regular Plan,GROWTH,2026-11-12
-100064,Aditya Birla Sun Life MNC Fund - Growth - Regular Plan,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,GROWTH,2026-11-11
+100064,Aditya Birla Sun Life MNC Fund - Growth - Regular Plan,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,GROWTH,2026-11-12
 100078,DSP Medium Term Fund - Growth,DSP Mutual Fund,Income/Debt Oriented Schemes - Medium Term Fund,Regular Plan,Growth,2026-11-12
 100081,DSP Aggressive Hybrid Fund- Regular Plan - Growth,DSP Mutual Fund,Hybrid Scheme - Aggressive Hybrid Fund,Regular Plan,Growth,2026-11-12
 100084,DSP Gilt Fund - Regular Plan - Growth,DSP Mutual Fund,Debt Scheme - Gilt Fund,Regular Plan,Growth,2026-11-12
@@ -29,7 +29,7 @@ code,name,amc,category,plan,option,last_seen
 100352,ICICI Prudential FMCG Fund - Growth,ICICI Prudential Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 100354,ICICI Prudential ELSS - Tax Saver Fund - Growth,ICICI Prudential Mutual Fund,Equity Schemes - ELSS- Tax Saver Fund,Regular Plan,Growth,2026-11-12
 100356,ICICI Prudential Aggressive Hybrid Fund - Growth,ICICI Prudential Mutual Fund,Hybrid Schemes - Aggressive Hybrid Fund,Regular Plan,Growth,2026-11-12
-100363,ICICI Prudential Technology Fund - Growth,ICICI Prudential Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-11
+100363,ICICI Prudential Technology Fund - Growth,ICICI Prudential Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 100365,ICICI Prudential Long Term Fund - Growth,ICICI Prudential Mutual Fund,Income/Debt Oriented Schemes - Long Term Fund,Regular Plan,Growth,2026-11-12
 100369,ICICI Prudential Gilt Fund - Growth,ICICI Prudential Mutual Fund,Debt Scheme - Gilt Fund,Regular Plan,Growth,2026-11-12
 100377,Nippon India Growth Mid Cap Fund-Growth Plan-Growth Option,Nippon India Mutual Fund,Equity Scheme - Mid Cap Fund,Regular Plan,Growth Option,2026-11-12
@@ -47,7 +47,7 @@ code,name,amc,category,plan,option,last_seen
 100493,Franklin India Government Securities Fund - Growth,Franklin Templeton Mutual Fund,Income/Debt Oriented Schemes - Gilt Fund,Regular Plan,Growth,2026-11-12
 100496,Templeton India Value Fund - Growth Plan,Franklin Templeton Mutual Fund,Equity Scheme - Value Fund,Regular Plan,Growth,2026-11-12
 100520,Franklin India Flexi Cap Fund - Growth,Franklin Templeton Mutual Fund,Equity Scheme - Flexi Cap Fund,Regular Plan,Growth,2026-11-12
-100522,Franklin India Technology Fund-Growth,Franklin Templeton Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-11
+100522,Franklin India Technology Fund-Growth,Franklin Templeton Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 100526,Franklin India ELSS Tax Saver Fund-Growth,Franklin Templeton Mutual Fund,Equity Scheme - ELSS,Regular Plan,Growth,2026-11-12
 100528,Franklin India Corporate Debt Fund - Growth,Franklin Templeton Mutual Fund,Income/Debt Oriented Schemes - Corporate Bond Fund,Regular Plan,Growth,2026-11-12
 100536,Franklin India Retirement Fund - Growth,Franklin Templeton Mutual Fund,Solution Oriented Scheme - Retirement Fund,Regular Plan,Growth,2026-11-12
@@ -88,10 +88,10 @@ code,name,amc,category,plan,option,last_seen
 101048,Franklin India Floating Rate Fund - Growth Plan,Franklin Templeton Mutual Fund,Income/Debt Oriented Schemes - Floating Interest Rates Fund,Regular Plan,Growth,2026-11-12
 101065,quant Mid Cap Fund - Growth Option - Regular Plan,quant Mutual Fund,Equity Scheme - Mid Cap Fund,Regular Plan,Growth Option,2026-11-12
 101070,quant Aggressive Hybrid Fund - Growth Option - Regular Plan,quant Mutual Fund,Hybrid Scheme - Aggressive Hybrid Fund,Regular Plan,Growth Option,2026-11-12
-101072,quant Multi Asset Allocation Fund-GROWTH OPTION - Regular Plan,quant Mutual Fund,Hybrid Scheme - Multi Asset Allocation,Regular Plan,Growth Option,2026-11-11
+101072,quant Multi Asset Allocation Fund-GROWTH OPTION - Regular Plan,quant Mutual Fund,Hybrid Scheme - Multi Asset Allocation,Regular Plan,Growth Option,2026-11-12
 101083,HDFC Gilt Fund - Growth Plan,HDFC Mutual Fund,Debt Scheme - Gilt Fund,Regular Plan,Growth Option,2026-11-12
 101127,ICICI Prudential Children's Fund - Regular Plan,ICICI Prudential Mutual Fund,Solution Oriented Scheme - Children’s Fund,Regular Plan,Growth,2026-11-12
-101144,ICICI Prudential Multi Asset Allocation Fund - Growth,ICICI Prudential Mutual Fund,Hybrid Schemes - Multi Asset Allocation Fund,Regular Plan,Growth,2026-11-11
+101144,ICICI Prudential Multi Asset Allocation Fund - Growth,ICICI Prudential Mutual Fund,Hybrid Schemes - Multi Asset Allocation Fund,Regular Plan,Growth,2026-11-12
 101161,Nippon India Multi Cap Fund-Growth Plan-Growth Option,Nippon India Mutual Fund,Equity Schemes - Multi Cap Fund,Regular Plan,Growth Option,2026-11-12
 101169,SBI Children's Fund - Savings Plan - REGULAR PLAN - GROWTH,SBI Mutual Fund,Solution Oriented Scheme - Children’s Fund,Regular Plan,Growth,2026-11-12
 101185,LIC MF Liquid Fund-Regular Plan-Growth,LIC Mutual Fund,Debt Scheme - Liquid Fund,Regular Plan,Growth,2026-11-12
@@ -121,12 +121,12 @@ code,name,amc,category,plan,option,last_seen
 101594,HSBC Large Cap Fund - Regular Growth,HSBC Mutual Fund,Equity Schemes - Large Cap Fund,Regular Plan,Growth,2026-11-12
 101619,ICICI Prudential Ultra Short to Short Term Fund - Growth,ICICI Prudential Mutual Fund,Income/Debt Oriented Schemes - Ultra Short to Short Term Fund,Regular Plan,Growth,2026-11-12
 101635,DSP Large Cap Fund - Regular Plan - Growth,DSP Mutual Fund,Equity Scheme - Large Cap Fund,Regular Plan,Growth,2026-11-12
-101656,Franklin India Dynamic Asset Allocation Active Fund of Funds-Growth,Franklin Templeton Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
+101656,Franklin India Dynamic Asset Allocation Active Fund of Funds-Growth,Franklin Templeton Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 101659,Tata Nifty 50 Index Fund -Regular Plan,Tata Mutual Fund,Other Scheme - Index Funds,Regular Plan,,2026-11-12
 101665,Nippon India Short Term Fund-Growth Plan,Nippon India Mutual Fund,Income/Debt Oriented Schemes - Short Term Fund,Regular Plan,Growth Option,2026-11-12
 101672,Tata Value Fund - Regular Plan -Growth Option,Tata Mutual Fund,Equity Scheme - Value Fund,Regular Plan,Growth Option,2026-11-12
 101685,HSBC Medium to Long Term Fund - Regular Growth,HSBC Mutual Fund,Income/Debt Oriented Schemes - Medium to Long Term Fund,Regular Plan,Growth,2026-11-12
-101738,Aditya Birla Sun Life Dividend Yield Fund - Growth - Regular Plan,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Dividend Yield Fund,Regular Plan,GROWTH,2026-11-11
+101738,Aditya Birla Sun Life Dividend Yield Fund - Growth - Regular Plan,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Dividend Yield Fund,Regular Plan,GROWTH,2026-11-12
 101746,Tata S&P BSE Sensex Index Fund -Regular Plan,Tata Mutual Fund,Other Scheme - Index Funds,Regular Plan,,2026-11-12
 101758,ICICI Prudential Short Term Fund - Growth Option,ICICI Prudential Mutual Fund,Debt Scheme - Short Duration Fund,Regular Plan,Growth,2026-11-12
 101762,HDFC Flexi Cap Fund - Growth Plan,HDFC Mutual Fund,Equity Scheme - Flexi Cap Fund,Regular Plan,Growth Option,2026-11-12
@@ -158,8 +158,8 @@ code,name,amc,category,plan,option,last_seen
 102020,Baroda BNP Paribas MULTI CAP FUND - Regular Plan - Growth Option,Baroda BNP Paribas Mutual Fund,Equity Scheme - Multi Cap Fund,Regular Plan,Growth Option,2026-11-12
 102053,SBI MEDIUM TERM FUND - REGULAR PLAN - GROWTH,SBI Mutual Fund,Income/Debt Oriented Schemes - Medium Term Fund,Regular Plan,Growth,2026-11-12
 102133,ICICI Prudential Multi Sector Passive FOF - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
-102135,ICICI Prudential Aggressive Hybrid Active FOF - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
-102137,ICICI Prudential Dynamic Asset Allocation Active FOF - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
+102135,ICICI Prudential Aggressive Hybrid Active FOF - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
+102137,ICICI Prudential Dynamic Asset Allocation Active FOF - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 102139,ICICI Prudential Income Plus Arbitrage Omni FOF - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 102141,ICICI Prudential Diversified Debt Strategy Active FOF - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 102142,Sundaram Consumption Fund(Formerly Known as Sundaram Rural and Consumption Fund Regular Plan - Growth),Sundaram Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,GROWTH,2026-11-12
@@ -176,7 +176,7 @@ code,name,amc,category,plan,option,last_seen
 102395,UTI Infrastructure Fund-Growth Option,UTI Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 102398,UTI-Transportation and Logistics  Fund-Growth Option,UTI Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth,2026-11-12
 102401,UTI Banking and Financial Services Fund - Regular Plan - Growth Option,UTI Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
-102414,SBI CONTRA FUND - REGULAR PLAN -GROWTH,SBI Mutual Fund,Equity Scheme - Contra Fund,Regular Plan,Growth,2026-11-11
+102414,SBI CONTRA FUND - REGULAR PLAN -GROWTH,SBI Mutual Fund,Equity Scheme - Contra Fund,Regular Plan,Growth,2026-11-12
 102431,Nippon India Pharma Fund-Growth Plan-Growth Option,Nippon India Mutual Fund,Equity Schemes - Sectoral Fund,Regular Plan,Growth Option,2026-11-12
 102434,DSP India T.I.G.E.R. Fund - Regular Plan - Growth,DSP Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth,2026-11-12
 102448,DSP Conservative Hybrid Fund- Regular Plan - Growth,DSP Mutual Fund,Hybrid Schemes - Conservative Hybrid Fund,Regular Plan,Growth,2026-11-12
@@ -189,14 +189,14 @@ code,name,amc,category,plan,option,last_seen
 102533,UTI Conservative Hybrd Fund - Regular Plan - Monthly Payment Option,UTI Mutual Fund,Hybrid Schemes - Conservative Hybrid Fund,Regular Plan,Monthly Payment Plan,2026-11-12
 102535,UTI Conservative Hybrid Fund - Regular Plan - Growth Option,UTI Mutual Fund,Hybrid Schemes - Conservative Hybrid Fund,Regular Plan,Growth,2026-11-12
 102544,UTI Ultra Short to Short Term Fund - Regular Plan - Growth Option,UTI Mutual Fund,Income/Debt Oriented Schemes - Ultra Short to Short Term Fund,Regular Plan,Growth,2026-11-12
-102574,Kotak Multi Asset Omni FOF - Growth- Regular,Kotak Mahindra Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
+102574,Kotak Multi Asset Omni FOF - Growth- Regular,Kotak Mahindra Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 102591,Kotak Ultra Short Term Fund -Growth,Kotak Mahindra Mutual Fund,Income/Debt Oriented Schemes - Ultra Short Term Fund,Regular Plan,Growth,2026-11-12
 102594,ICICI Prudential Value Fund (erstwhile Value Discovery Fund) - Growth,ICICI Prudential Mutual Fund,Equity Scheme - Value Fund,Regular Plan,Growth,2026-11-12
 102672,Tata Liquid Fund -Regular Plan - Growth Option,Tata Mutual Fund,Debt Scheme - Liquid Fund,Regular Plan,Growth Option,2026-11-12
 102673,Nippon India Floating Interest Rates  Fund - Growth Plan-Growth Option,Nippon India Mutual Fund,Income/Debt Oriented Schemes - Floating Interest Rates Fund,Regular Plan,Growth Option,2026-11-12
 102741,ICICI Prudential Medium Term Fund - Growth,ICICI Prudential Mutual Fund,Income/Debt Oriented Schemes - Medium Term Fund,Regular Plan,Growth,2026-11-12
 102751,Nippon India Consumption Fund-Growth Plan-Growth Option,Nippon India Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth Option,2026-11-12
-102756,SBI FOCUSED FUND - REGULAR PLAN -GROWTH,SBI Mutual Fund,Equity Scheme - Focused Fund,Regular Plan,Growth,2026-11-11
+102756,SBI FOCUSED FUND - REGULAR PLAN -GROWTH,SBI Mutual Fund,Equity Scheme - Focused Fund,Regular Plan,Growth,2026-11-12
 102760,HDFC Focused Fund - GROWTH PLAN,HDFC Mutual Fund,Equity Scheme - Focused Fund,Regular Plan,Growth Option,2026-11-12
 102767,Aditya Birla Sun Life Dynamic Term Fund - Growth - Regular Plan,Aditya Birla Sun Life Mutual Fund,Income/Debt Oriented Schemes - Dynamic Term Fund,Regular Plan,Growth,2026-11-12
 102823,SBI HEALTHCARE OPPORTUNITIES FUND - REGULAR PLAN -GROWTH,SBI Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
@@ -209,7 +209,7 @@ code,name,amc,category,plan,option,last_seen
 102920,CANARA ROBECO LARGE AND MID CAP FUND - REGULAR PLAN - GROWTH OPTION,Canara Robeco Mutual Fund,Equity Schemes - Large & Mid Cap Fund,Regular Plan,GROWTH OPTION,2026-11-12
 102941,SBI MIDCAP FUND - REGULAR PLAN - GROWTH,SBI Mutual Fund,Equity Scheme - Mid Cap Fund,Regular Plan,Growth,2026-11-12
 102948,HDFC Aggressive Hybrid Fund - Growth Plan,HDFC Mutual Fund,Hybrid Schemes - Aggressive Hybrid Fund,Regular Plan,Growth Option,2026-11-12
-103024,SBI LARGE & MIDCAP FUND- REGULAR PLAN -Growth,SBI Mutual Fund,Equity Scheme - Large & Mid Cap Fund,Regular Plan,Growth,2026-11-11
+103024,SBI LARGE & MIDCAP FUND- REGULAR PLAN -Growth,SBI Mutual Fund,Equity Scheme - Large & Mid Cap Fund,Regular Plan,Growth,2026-11-12
 103026,UTI-Dividend Yield Fund.-Growth,UTI Mutual Fund,Equity Schemes - Dividend Yield Fund,Regular Plan,Growth,2026-11-12
 103034,SBI MNC FUND - REGULAR PLAN -GROWTH,SBI Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 103040,Kotak Contra Fund - Regular Plan - Growth,Kotak Mahindra Mutual Fund,Equity Scheme - Contra Fund,Regular Plan,Growth,2026-11-12
@@ -220,11 +220,11 @@ code,name,amc,category,plan,option,last_seen
 103131,HDFC Multi Asset Allocation Fund - Growth Option,HDFC Mutual Fund,Hybrid Schemes - Multi Asset Allocation Fund,Regular Plan,Growth Option,2026-11-12
 103145,SBI COMMA Fund - REGULAR PLAN - Growth,SBI Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 103149,ICICI Prudential Infrastructure Fund - Growth,ICICI Prudential Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
-103151,Franklin India Opportunities Fund - Growth,Franklin Templeton Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-11
+103151,Franklin India Opportunities Fund - Growth,Franklin Templeton Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 103155,Aditya Birla Sun Life Aggressive Hybrid Fund - Regular Plan-Growth,Aditya Birla Sun Life Mutual Fund,Hybrid Schemes - Aggressive Hybrid Fund,Regular Plan,GROWTH,2026-11-12
 103159,Tata Treasury Advantage Fund - Regular Plan - Growth Option,Tata Mutual Fund,Income/Debt Oriented Schemes - Ultra Short to Short Term Fund,Regular Plan,Growth Option,2026-11-12
 103166,Aditya Birla Sun Life Flexi Cap Fund - Growth - Regular Plan,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Flexi Cap Fund,Regular Plan,GROWTH,2026-11-12
-103168,Aditya Birla Sun Life Digital India Fund - Growth - Regular Plan,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,GROWTH,2026-11-11
+103168,Aditya Birla Sun Life Digital India Fund - Growth - Regular Plan,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,GROWTH,2026-11-12
 103174,Aditya Birla Sun Life Large Cap Fund-Growth,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Large Cap Fund,Regular Plan,GROWTH,2026-11-12
 103178,Aditya Birla Sun Life Corporate Bond Fund - Growth - Regular Plan,Aditya Birla Sun Life Mutual Fund,Debt Scheme - Corporate Bond Fund,Regular Plan,GROWTH,2026-11-12
 103192,Aditya Birla Sun Life Ultra Short to Short Term Fund -Regular- Growth Plan,Aditya Birla Sun Life Mutual Fund,Income/Debt Oriented Schemes - Ultra Short to Short Term Fund,Regular Plan,GROWTH,2026-11-12
@@ -239,11 +239,11 @@ code,name,amc,category,plan,option,last_seen
 103347,DSP Liquid Fund - Regular Plan - Growth,DSP Mutual Fund,Income/Debt Oriented Schemes - Liquid Fund,Regular Plan,Growth,2026-11-12
 103360,Franklin India Small Cap Fund-Growth,Franklin Templeton Mutual Fund,Equity Scheme - Small Cap Fund,Regular Plan,Growth,2026-11-12
 103390,CANARA ROBECO INFRASTRUCTURE FUND - REGULAR PLAN - GROWTH OPTION,Canara Robeco Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,GROWTH OPTION,2026-11-12
-103408,SBI MULTI ASSET ALLOCATION FUND - REGULAR PLAN - GROWTH,SBI Mutual Fund,Hybrid Scheme - Multi Asset Allocation,Regular Plan,Growth,2026-11-11
+103408,SBI MULTI ASSET ALLOCATION FUND - REGULAR PLAN - GROWTH,SBI Mutual Fund,Hybrid Scheme - Multi Asset Allocation,Regular Plan,Growth,2026-11-12
 103476,Aditya Birla Sun Life Infrastructure Fund-Growth,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,GROWTH,2026-11-12
 103504,SBI Large Cap FUND-REGULAR PLAN GROWTH,SBI Mutual Fund,Equity Scheme - Large Cap Fund,Regular Plan,Growth,2026-11-12
 103633,ICICI Prudential Money Market Fund Option - Growth,ICICI Prudential Mutual Fund,Debt Scheme - Money Market Fund,Regular Plan,Growth,2026-11-12
-103678,Franklin India Dividend Yield Fund-Growth Plan,Franklin Templeton Mutual Fund,Equity Scheme - Dividend Yield Fund,Regular Plan,Growth,2026-11-11
+103678,Franklin India Dividend Yield Fund-Growth Plan,Franklin Templeton Mutual Fund,Equity Scheme - Dividend Yield Fund,Regular Plan,Growth,2026-11-12
 103780,JM Arbitrage Fund (Regular) - Growth Option,JM Financial Mutual Fund,Hybrid Schemes - Arbitrage Fund,Regular Plan,Growth Option,2026-11-12
 103819,DSP Large & Mid Cap Fund - Regular Plan - Growth,DSP Mutual Fund,Equity Scheme - Large & Mid Cap Fund,Regular Plan,Growth,2026-11-12
 104075,UTI Arbitrage Fund - Regular Plan - Growth Option,UTI Mutual Fund,Hybrid Schemes - Arbitrage Fund,Regular Plan,Growth,2026-11-12
@@ -291,15 +291,15 @@ code,name,amc,category,plan,option,last_seen
 106370,Sundaram Global Brand Theme-Equity Active FOF - Regular Growth,Sundaram Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,GROWTH,2026-11-06
 106425,UTI India Consumer Fund - Regular Plan - Growth Option,UTI Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth,2026-11-12
 106441,Kotak Global Emerging Market Overseas Equity Active FOF- Growth,Kotak Mahindra Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth,2026-11-11
-106597,DSP World Gold Mining Overseas Equity Omni FoF - Regular Plan - Growth,DSP Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-11
+106597,DSP World Gold Mining Overseas Equity Omni FoF - Regular Plan - Growth,DSP Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
 106624,UTI Short Term Fund - Regular Plan - Growth Option,UTI Mutual Fund,Income/Debt Oriented Schemes - Short Term Fund,Regular Plan,Growth,2026-11-12
 106654,Invesco India Infrastructure Fund - Regular Plan - Growth Option,Invesco Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth,2026-11-12
 106793,HDFC ARBITRAGE FUND - Regular Plan -Growth Option,HDFC Mutual Fund,Hybrid Scheme - Arbitrage Fund,Regular Plan,Growth Option,2026-11-12
 106823,ICICI Prudential Small Cap Fund - Growth,ICICI Prudential Mutual Fund,Equity Schemes - Small Cap Fund,Regular Plan,Growth,2026-11-12
 106841,HDFC Floating Interest Rates Fund - Growth Option,HDFC Mutual Fund,Income/Debt Oriented Schemes - Floating Interest Rates Fund,Regular Plan,Growth Option,2026-11-12
 106871,LIC MF Large Cap Fund-Regular Plan-Growth,LIC Mutual Fund,Equity Scheme - Large Cap Fund,Regular Plan,Growth,2026-11-12
-106873,Aditya Birla Sun Life International Equity Fund - Growth - Regular Plan,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,GROWTH,2026-11-11
-106979,Franklin Asian Equity Fund - Growth Plan,Franklin Templeton Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-11
+106873,Aditya Birla Sun Life International Equity Fund - Growth - Regular Plan,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,GROWTH,2026-11-12
+106979,Franklin Asian Equity Fund - Growth Plan,Franklin Templeton Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 107288,JM ELSS - Tax Saver Fund (Regular) - Growth option,JM Financial Mutual Fund,Equity Schemes - ELSS- Tax Saver Fund,Regular Plan,Growth Option,2026-11-12
 107353,Invesco India Multi Cap Fund - Regular Plan - Growth Option,Invesco Mutual Fund,Equity Schemes - Multi Cap Fund,Regular Plan,Growth,2026-11-12
 107410,JM Focused Fund (Regular) - Growth Option,JM Financial Mutual Fund,Equity Schemes - Focused Fund,Regular Plan,Growth Option,2026-11-12
@@ -309,9 +309,9 @@ code,name,amc,category,plan,option,last_seen
 107705,Mirae Asset Ultra Short to Short Term Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Income/Debt Oriented Schemes - Ultra Short to Short Term Fund,Regular Plan,Growth,2026-11-12
 107745,Aditya Birla Sun Life ELSS Tax Saver Fund - Growth Option,Aditya Birla Sun Life Mutual Fund,Equity Scheme - ELSS,Regular Plan,GROWTH,2026-11-12
 107763,LIC MF Infrastructure Fund-Regular Plan-Growth,LIC Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
-107988,HSBC Global Emerging Markets Fund - Growth,HSBC Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth,2026-11-11
+107988,HSBC Global Emerging Markets Fund - Growth,HSBC Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth,2026-11-12
 108167,Aditya Birla Sun Life Value Fund - Growth Option,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Value Fund,Regular Plan,GROWTH,2026-11-12
-108202,DSP Natural Resources And New Energy Fund - Regular - Growth,DSP Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth,2026-11-11
+108202,DSP Natural Resources And New Energy Fund - Regular - Growth,DSP Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth,2026-11-12
 108249,Nippon India Quant Fund -Growth Plan - Growth Option,Nippon India Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
 108273,Aditya Birla Sun Life Banking & PSU Debt Fund - Regular Plan-Growth,Aditya Birla Sun Life Mutual Fund,Income/Debt Oriented Schemes - Banking and PSU Debt Fund,Regular Plan,GROWTH,2026-11-12
 108378,Invesco India Financial Services Fund - Regular Plan - Growth,Invesco Mutual Fund,Equity Schemes - Sectoral Fund,Regular Plan,Growth,2026-11-12
@@ -375,13 +375,13 @@ code,name,amc,category,plan,option,last_seen
 112117,Edelweiss Balanced Advantage Fund - Regular Plan - Growth Option,Edelweiss Mutual Fund,Hybrid Scheme - Dynamic Asset Allocation or Balanced Advantage,Regular Plan,Growth,2026-11-12
 112120,Invesco India Money Market Fund - Regular - Growth,Invesco Mutual Fund,Income/Debt Oriented Schemes - Money Market Fund,Regular Plan,Growth,2026-11-12
 112123,Invesco India Money Market Fund - Growth,Invesco Mutual Fund,Income/Debt Oriented Schemes - Money Market Fund,Regular Plan,Growth,2026-11-12
-112126,DSP Global Clean Energy Overseas Equity Omni FoF - Regular Plan - Growth,DSP Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-11
+112126,DSP Global Clean Energy Overseas Equity Omni FoF - Regular Plan - Growth,DSP Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
 112152,CANARA ROBECO CONSUMPTION FUND - REGULAR PLAN - GROWTH OPTION,Canara Robeco Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,GROWTH OPTION,2026-11-12
 112171,Invesco India PSU Equity Fund - Regular Plan - Growth,Invesco Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth,2026-11-12
 112210,Axis Liquid Fund - Regular Plan - Growth Option,Axis Mutual Fund,Income/Debt Oriented Schemes - Liquid Fund,Regular Plan,Growth Option,2026-11-12
 112214,Axis Treasury Advantage Fund - Regular Plan - Growth Option,Axis Mutual Fund,Income/Debt Oriented Schemes - Ultra Short to Short Term Fund,Regular Plan,Growth Option,2026-11-12
 112277,Axis Large Cap Fund - Regular Plan - Growth,Axis Mutual Fund,Equity Schemes - Large Cap Fund,Regular Plan,Growth Option,2026-11-12
-112293,DSP World Mining Overseas Equity Omni FoF - Regular Plan - Growth,DSP Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-11
+112293,DSP World Mining Overseas Equity Omni FoF - Regular Plan - Growth,DSP Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
 112323,Axis ELSS Tax Saver Fund - Regular Plan - Growth,Axis Mutual Fund,Equity Schemes - ELSS- Tax Saver Fund,Regular Plan,Growth Option,2026-11-12
 112327,Bandhan Conservative Hybrid Passive FOF - Regular Plan - Growth,Bandhan Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 112329,Bandhan Multi-Asset Passive FOF - Regular Plan - Growth,Bandhan Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
@@ -402,7 +402,7 @@ code,name,amc,category,plan,option,last_seen
 112957,ICICI Prudential Nifty Next 50 Index Fund - Growth,ICICI Prudential Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 113036,Baroda BNP Paribas Short Term Fund - Regular Plan - Growth Option,Baroda BNP Paribas Mutual Fund,Income/Debt Oriented Schemes - Short Term Fund,Regular Plan,Growth Option,2026-11-12
 113047,HDFC Short Term Fund - Growth Option,HDFC Mutual Fund,Income/Debt Oriented Schemes - Short Term Fund,Regular Plan,Growth Option,2026-11-12
-113064,Axis Multi Asset Allocation Fund - Regular Plan - Growth Option,Axis Mutual Fund,Hybrid Schemes - Multi Asset Allocation Fund,Regular Plan,Growth Option,2026-11-11
+113064,Axis Multi Asset Allocation Fund - Regular Plan - Growth Option,Axis Mutual Fund,Hybrid Schemes - Multi Asset Allocation Fund,Regular Plan,Growth Option,2026-11-12
 113070,HDFC Corporate Bond Fund - Growth Option,HDFC Mutual Fund,Debt Scheme - Corporate Bond Fund,Regular Plan,Growth Option,2026-11-12
 113077,UTI Dynamic Term Fund - Regular Plan - Growth Option,UTI Mutual Fund,Income/Debt Oriented Schemes - Dynamic Term Fund,Regular Plan,Growth,2026-11-12
 113099,SBI PSU Fund - REGULAR PLAN -Growth,SBI Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
@@ -423,7 +423,7 @@ code,name,amc,category,plan,option,last_seen
 115068,Axis Dynamic Bond Fund - Regular Plan - Growth Option,Axis Mutual Fund,Income/Debt Oriented Schemes - Dynamic Term Fund,Regular Plan,Growth Option,2026-11-12
 115077,CANARA ROBECO SHORT TERM FUND - REGULAR PLAN - GROWTH OPTION,Canara Robeco Mutual Fund,Income/Debt Oriented Schemes - Short Term Fund,Regular Plan,GROWTH OPTION,2026-11-12
 115092,ICICI Prudential Ultra Short Term Fund - Growth,ICICI Prudential Mutual Fund,Debt Scheme - Ultra Short Duration Fund,Regular Plan,Growth,2026-11-12
-115116,HSBC Brazil Fund-Growth,HSBC Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth,2026-11-11
+115116,HSBC Brazil Fund-Growth,HSBC Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth,2026-11-12
 115270,Union Flexi Cap Fund - Growth Option,Union Mutual Fund,Equity Scheme - Flexi Cap Fund,Regular Plan,Growth Option,2026-11-12
 115398,Union Liquid Fund - Growth Option,Union Mutual Fund,Debt Scheme - Liquid Fund,Regular Plan,Growth Option,2026-11-12
 115676,SBI GOLD FUND REGULAR PLAN - GROWTH,SBI Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
@@ -440,28 +440,28 @@ code,name,amc,category,plan,option,last_seen
 116485,PGIM India Dynamic Term Fund - Growth Option,PGIM India Mutual Fund,Income/Debt Oriented Schemes - Dynamic Term Fund,Regular Plan,Regular Growth,2026-11-12
 116547,Groww Largecap Fund (formerly known as Indiabulls Blue Chip Fund) - Regular Plan- Growth Option,Groww Mutual Fund,Equity Schemes - Large Cap Fund,Regular Plan,Growth,2026-11-12
 116555,Union Dynamic Term Fund - Growth Option,Union Mutual Fund,Income/Debt Oriented Schemes - Dynamic Term Fund,Regular Plan,Growth Option,2026-11-12
-116633,Franklin U.S. Opportunities Equity Active Fund of Funds - Growth,Franklin Templeton Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-11
+116633,Franklin U.S. Opportunities Equity Active Fund of Funds - Growth,Franklin Templeton Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
 116796,Aditya Birla Sun Life Gold Fund-Growth,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,GROWTH,2026-11-12
 116894,Axis Strategic Bond Fund - Regular Plan - Growth Option,Axis Mutual Fund,Income/Debt Oriented Schemes - Medium Term Fund,Regular Plan,Growth Option,2026-11-12
 117312,Taurus Banking & Financial Services Fund - Regular Plan - Growth,Taurus Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 117446,Axis Banking & PSU Debt Fund - Regular Plan - Growth option,Axis Mutual Fund,Income/Debt Oriented Schemes - Banking and PSU Debt Fund,Regular Plan,Growth option,2026-11-12
 117549,Baroda BNP Paribas Banking and Financial Services Fund - Regular - Growth Option,Baroda BNP Paribas Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
 117560,Axis Focused Fund - Regular Plan - Growth Option,Axis Mutual Fund,Equity Schemes - Focused Fund,Regular Plan,Growth Option,2026-11-12
-117620,ICICI Prudential US Bluechip Equity Fund - Growth,ICICI Prudential Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-11
-117691,DSP US Specific Equity Omni FoF - Regular Plan - Growth Option,DSP Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-09
+117620,ICICI Prudential US Bluechip Equity Fund - Growth,ICICI Prudential Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
+117691,DSP US Specific Equity Omni FoF - Regular Plan - Growth Option,DSP Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
 117716,Kotak Credit Risk Fund - Growth,Kotak Mahindra Mutual Fund,Debt Scheme - Credit Risk Fund,Regular Plan,Growth,2026-11-12
 117981,UTI Credit Risk Fund  - Regular Plan - Growth Option,UTI Mutual Fund,Income/Debt Oriented Schemes - Credit Risk Fund,Regular Plan,Growth,2026-11-12
 118232,Invesco India Banking and PSU Debt Fund - Regular Plan - Growth Option,Invesco Mutual Fund,Income/Debt Oriented Schemes - Banking and PSU Debt Fund,Regular Plan,Growth,2026-11-12
 118902,HSBC Liquid Fund - Regular Growth,HSBC Mutual Fund,Income/Debt Oriented Schemes - Liquid Fund,Regular Plan,Growth,2026-11-12
 118907,HSBC Liquid Fund - Growth,HSBC Mutual Fund,Income/Debt Oriented Schemes - Liquid Fund,Regular Plan,Growth,2026-11-12
 120576,SBI CONSUMPTION OPPORTUNITIES FUND - REGULAR - GROWTH,SBI Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
-120577,SBI TECHNOLOGY OPPORTUNITIES FUND - REGULAR PLAN - GROWTH,SBI Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-11
+120577,SBI TECHNOLOGY OPPORTUNITIES FUND - REGULAR PLAN - GROWTH,SBI Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 121280,Bandhan Banking and PSU Debt Fund - Regular Growth,Bandhan Mutual Fund,Income/Debt Oriented Schemes - Banking and PSU Debt Fund,Regular Plan,Growth,2026-11-12
 122387,Motilal Oswal Focused Fund - Regular Plan Growth Option,Motilal Oswal Mutual Fund,Equity Scheme - Focused Fund,Regular Plan,Growth,2026-11-12
 122612,360 ONE Dynamic Term Fund - Regular Plan - Growth Option,360 ONE Mutual Fund,Income/Debt Oriented Schemes - Dynamic Term Fund,Regular Plan,GROWTH Option,2026-11-12
 122640,Parag Parikh Flexi Cap Fund - Regular Plan - Growth,PPFAS Mutual Fund,Equity Scheme - Flexi Cap Fund,Regular Plan,Growth,2026-11-12
 122644,Aditya Birla Sun Life Floating Interest Rate Fund-Regular Plan-Growth,Aditya Birla Sun Life Mutual Fund,Income/Debt Oriented Schemes - Floating Interest Rates Fund,Regular Plan,GROWTH,2026-11-12
-123651,ICICI Prudential Global Stable Equity Fund (FOF) - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-11
+123651,ICICI Prudential Global Stable Equity Fund (FOF) - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
 123690,Kotak Banking and PSU Debt - Growth,Kotak Mahindra Mutual Fund,Debt Scheme - Banking and PSU Fund,Regular Plan,Growth,2026-11-12
 123708,Groww Short Term Fund (formerly known as Indiabulls Short Term Fund )- Regular Plan - Growth Option,Groww Mutual Fund,Income/Debt Oriented Schemes - Short Term Fund,Regular Plan,Growth,2026-11-12
 124172,DSP Banking and PSU Debt Fund - Regular Plan - Growth,DSP Mutual Fund,Income/Debt Oriented Schemes - Banking and PSU Debt Fund,Regular Plan,Growth,2026-11-12
@@ -478,24 +478,24 @@ code,name,amc,category,plan,option,last_seen
 126687,CANARA ROBECO CORPORATE BOND FUND - REGULAR PLAN - GROWTH OPTION,Canara Robeco Mutual Fund,Income/Debt Oriented Schemes - Corporate Bond Fund,Regular Plan,GROWTH OPTION,2026-11-12
 126939,UTI Banking & PSU Debt Fund- Regular Plan - Growth Option,UTI Mutual Fund,Income/Debt Oriented Schemes - Banking and PSU Debt Fund,Regular Plan,Growth,2026-11-12
 127039,Motilal Oswal Midcap Fund-Regular Plan-Growth Option,Motilal Oswal Mutual Fund,Equity Scheme - Mid Cap Fund,,,2026-11-12
-127073,HSBC Asia Pacific (Ex Japan) Dividend Yield Fund - Growth,HSBC Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth,2026-11-11
+127073,HSBC Asia Pacific (Ex Japan) Dividend Yield Fund - Growth,HSBC Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth,2026-11-12
 127849,BANK OF INDIA BALANCED ADVANTAGE FUND REGULAR PLAN  GROWTH,Bank of India Mutual Fund,Hybrid Scheme - Dynamic Asset Allocation or Balanced Advantage,Regular Plan,Growth,2026-11-12
 128009,Kotak Medium Term Fund - Growth,Kotak Mahindra Mutual Fund,Debt Scheme - Medium Duration Fund,Regular Plan,Growth,2026-11-12
 128053,HDFC Credit Risk Fund - Growth Option,HDFC Mutual Fund,Income/Debt Oriented Schemes - Credit Risk Fund,Regular Plan,Growth Option,2026-11-12
 128628,HDFC Banking and PSU Debt Fund - Growth Option,HDFC Mutual Fund,Debt Scheme - Banking and PSU Fund,Regular Plan,Growth Option,2026-11-12
 129006,Franklin India Banking & PSU Debt Fund - Growth,Franklin Templeton Mutual Fund,Debt Scheme - Banking and PSU Fund,Regular Plan,Growth,2026-11-12
 129048,Motilal Oswal Flexi Cap Fund Regular Plan-Growth Option,Motilal Oswal Mutual Fund,Equity Scheme - Flexi Cap Fund,Regular Plan,Growth,2026-11-12
-129065,HSBC Aggressive Hybrid Active FOF - Growth,HSBC Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-11
+129065,HSBC Aggressive Hybrid Active FOF - Growth,HSBC Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 129187,Invesco India - Invesco Global Equity Income Fund of Fund - Regular Plan - Growth,Invesco Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth,2026-11-12
-129191,HSBC Multi Asset Active FOF - Growth,HSBC Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-11
-129195,HSBC Income Plus Arbitrage Active FOF - Growth,HSBC Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-11
+129191,HSBC Multi Asset Active FOF - Growth,HSBC Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
+129195,HSBC Income Plus Arbitrage Active FOF - Growth,HSBC Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 129213,Sundaram Infrastructure Advantage Fund Regular Plan - Growth,Sundaram Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,GROWTH,2026-11-12
 129310,ICICI Prudential Dividend Yield Fund Growth Option,ICICI Prudential Mutual Fund,Equity Schemes - Dividend Yield Fund,Regular Plan,Growth,2026-11-12
 129647,Union Small Cap Fund - Regular Plan - Growth Option,Union Mutual Fund,Equity Scheme - Small Cap Fund,Regular Plan,Growth Option,2026-11-12
 130037,Nippon India Medium Term Fund - Growth Option,Nippon India Mutual Fund,Income/Debt Oriented Schemes - Medium Term Fund,Regular Plan,Growth Option,2026-11-12
 130205,Edelweiss Arbitrage Fund- Regular Plan- Growth Option,Edelweiss Mutual Fund,Hybrid Scheme - Arbitrage Fund,Regular Plan,Growth,2026-11-12
 130309,Axis Credit Risk Fund - Regular Plan - Growth,Axis Mutual Fund,Income/Debt Oriented Schemes - Credit Risk Fund,Regular Plan,Growth Option,2026-11-12
-130492,DSP Income Plus Arbitrage Omni FoF - Regular Plan - Growth,DSP Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
+130492,DSP Income Plus Arbitrage Omni FoF - Regular Plan - Growth,DSP Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 130496,HDFC Large & Mid Cap Fund - Growth Option,HDFC Mutual Fund,Equity Schemes - Large & Mid Cap Fund,Regular Plan,Growth Option,2026-11-12
 130502,HDFC Small Cap Fund - Growth Option,HDFC Mutual Fund,Equity Scheme - Small Cap Fund,Regular Plan,Growth Option,2026-11-12
 130533,HDFC Income Plus Arbitrage Active FOF - Growth Option,HDFC Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth Option,2026-11-12
@@ -508,14 +508,14 @@ code,name,amc,category,plan,option,last_seen
 131372,Kotak Equity Savings Fund - Regular - Growth,Kotak Mahindra Mutual Fund,Hybrid Scheme - Equity Savings,Regular Plan,Growth,2026-11-12
 131578,360 ONE Focused Fund -Regular Plan - Growth,360 ONE Mutual Fund,Equity Schemes - Focused Fund,Regular Plan,GROWTH Option,2026-11-12
 131666,Aditya Birla Sun Life Balanced Advantage Fund - Regular Plan - Growth Option,Aditya Birla Sun Life Mutual Fund,Hybrid Scheme - Dynamic Asset Allocation or Balanced Advantage,Regular Plan,GROWTH,2026-11-12
-131864,Aditya Birla Sun Life Multi Asset Omni FoF- Regular Plan - Growth Option,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,GROWTH,2026-11-11
-131896,Aditya Birla Sun Life Income Plus Arbitrage Active FOF- Regular Plan - Growth Option,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,GROWTH,2026-11-11
+131864,Aditya Birla Sun Life Multi Asset Omni FoF- Regular Plan - Growth Option,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,GROWTH,2026-11-12
+131896,Aditya Birla Sun Life Income Plus Arbitrage Active FOF- Regular Plan - Growth Option,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,GROWTH,2026-11-12
 132138,Aditya Birla SUn Life Global Emerging Opportunities Fund - Regular Plan - Growth Option,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,GROWTH,2026-11-09
-132174,Aditya Birla Sun Life Aggressive Hybrid Omni FOF- Regular Plan - Growth Option,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,GROWTH,2026-11-11
-132178,Aditya Birla Sun Life Conservative Hybrid Active FOF- Regular Plan - Growth Option,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,GROWTH,2026-11-11
-132180,Aditya Birla Sun Life Dynamic Asset Allocation Omni FOF- Regular Plan - Growth Option,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,GROWTH,2026-11-11
+132174,Aditya Birla Sun Life Aggressive Hybrid Omni FOF- Regular Plan - Growth Option,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,GROWTH,2026-11-12
+132178,Aditya Birla Sun Life Conservative Hybrid Active FOF- Regular Plan - Growth Option,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,GROWTH,2026-11-12
+132180,Aditya Birla Sun Life Dynamic Asset Allocation Omni FOF- Regular Plan - Growth Option,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,GROWTH,2026-11-12
 132757,Tata ELSS Fund-Growth-Regular Plan,Tata Mutual Fund,Equity Schemes - ELSS- Tax Saver Fund,Regular Plan,Growth Option,2026-11-12
-132987,Franklin India Income Plus Arbitrage Active Fund of Funds- Growth Plan,Franklin Templeton Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
+132987,Franklin India Income Plus Arbitrage Active Fund of Funds- Growth Plan,Franklin Templeton Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 132998,Aditya Birla Sun Life Equity Savings Fund - Regular Plan - Growth,Aditya Birla Sun Life Mutual Fund,Hybrid Scheme - Equity Savings,Regular Plan,GROWTH,2026-11-12
 133036,Kotak Aggressive Hybrid Fund - Regular Plan -Growth,Kotak Mahindra Mutual Fund,Hybrid Scheme - Aggressive Hybrid Fund,Regular Plan,Growth,2026-11-12
 133051,ICICI Prudential Equity Savings Fund - Cumulative option,ICICI Prudential Mutual Fund,Hybrid Scheme - Equity Savings,Regular Plan,Cumulative,2026-11-12
@@ -538,7 +538,7 @@ code,name,amc,category,plan,option,last_seen
 134593,Nippon India Equity Savings Fund- Growth Plan- Growth Option,Nippon India Mutual Fund,Hybrid Scheme - Equity Savings,Regular Plan,Growth Option,2026-11-12
 134644,SBI Equity Savings Fund - Regular Plan - Growth,SBI Mutual Fund,Hybrid Scheme - Equity Savings,Regular Plan,Growth,2026-11-12
 134815,Mirae Asset Aggressive Hybrid Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Hybrid Schemes - Aggressive Hybrid Fund,Regular Plan,Growth,2026-11-12
-134922,Nippon India US Equity Opportunities Fund- Growth Plan- Growth Option,Nippon India Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth Option,2026-11-11
+134922,Nippon India US Equity Opportunities Fund- Growth Plan- Growth Option,Nippon India Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth Option,2026-11-12
 135122,Axis Equity Savings Fund - Regular Plan - Growth,Axis Mutual Fund,Hybrid Schemes - Equity Savings Fund,Regular Plan,Growth Option,2026-11-12
 135343,Groww Value Fund (formerly known as Indiabulls Value Fund) - Regular Plan - Growth Option,Groww Mutual Fund,Equity Schemes - Value Fund,Regular Plan,Growth,2026-11-12
 135598,PGIM India ELSS Tax Saver Fund - Regular Plan - Growth Option,PGIM India Mutual Fund,Equity Scheme - ELSS,Regular Plan,Regular Growth,2026-11-12
@@ -562,9 +562,9 @@ code,name,amc,category,plan,option,last_seen
 138343,PGIM India Ultra Short Term Fund - Growth,PGIM India Mutual Fund,Income/Debt Oriented Schemes - Ultra Short Term Fund,Regular Plan,Regular Growth,2026-11-12
 138372,PGIM India Equity Savings Fund - Growth Option,PGIM India Mutual Fund,Hybrid Scheme - Equity Savings,Regular Plan,Regular Growth,2026-11-12
 138382,PGIM India Aggressive Hybrid Equity Fund - Growth Option,PGIM India Mutual Fund,Hybrid Scheme - Aggressive Hybrid Fund,Regular Plan,Regular Growth,2026-11-12
-138453,PGIM India Emerging Markets Equity Fund of Fund- Growth,PGIM India Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Regular Growth,2026-11-09
+138453,PGIM India Emerging Markets Equity Fund of Fund- Growth,PGIM India Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Regular Growth,2026-11-12
 138470,PGIM India Gilt Fund - Growth,PGIM India Mutual Fund,Debt Scheme - Gilt Fund,Regular Plan,Regular Growth,2026-11-12
-138523,PGIM India Global Equity Opportunities Fund of Fund- Growth,PGIM India Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Regular Growth,2026-11-09
+138523,PGIM India Global Equity Opportunities Fund of Fund- Growth,PGIM India Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Regular Growth,2026-11-12
 138876,PGIM India Arbitrage Fund - Regular Plan - Growth,PGIM India Mutual Fund,Hybrid Scheme - Arbitrage Fund,,,2026-11-12
 139529,BANK OF INDIA AGGRESIVE HYBRID FUND - REGULAR  PLAN  GROWTH,Bank of India Mutual Fund,Hybrid Schemes - Aggressive Hybrid Fund,Regular Plan,Growth,2026-11-12
 139537,Mahindra Manulife Liquid Fund - Regular Plan - Growth,Mahindra Manulife Mutual Fund,Income/Debt Oriented Schemes - Liquid Fund,Regular Plan,Growth,2026-11-12
@@ -574,13 +574,13 @@ code,name,amc,category,plan,option,last_seen
 140182,Edelweiss Liquid Fund - Regular Plan - Growth Option,Edelweiss Mutual Fund,Debt Scheme - Liquid Fund,Regular Plan,Growth,2026-11-12
 140225,Edelweiss Mid Cap Fund - Regular Plan - Growth Option,Edelweiss Mutual Fund,Equity Scheme - Mid Cap Fund,Regular Plan,Growth,2026-11-12
 140229,Edelweiss Money Market Fund - Regular Plan - Growth Option,Edelweiss Mutual Fund,Debt Scheme - Money Market Fund,Regular Plan,Growth,2026-11-12
-140242,Edelweiss Greater China Equity Off-shore Fund - Regular Plan - Growth Option,Edelweiss Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-11
-140255,Edelweiss ASEAN Equity Off-shore Fund - Regular Plan - Growth Option,Edelweiss Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-11
-140273,Edelweiss US Value Equity Offshore Fund - Regular Plan - Growth Option,Edelweiss Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-11
+140242,Edelweiss Greater China Equity Off-shore Fund - Regular Plan - Growth Option,Edelweiss Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
+140255,Edelweiss ASEAN Equity Off-shore Fund - Regular Plan - Growth Option,Edelweiss Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
+140273,Edelweiss US Value Equity Offshore Fund - Regular Plan - Growth Option,Edelweiss Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
 140283,Edelweiss Banking and PSU Debt Fund - Regular Plan - Growth Option,Edelweiss Mutual Fund,Income/Debt Oriented Schemes - Banking and PSU Debt Fund,Regular Plan,Growth,2026-11-12
-140295,Edelweiss Europe Dynamic Equity Offshore Fund - Growth Option - Regular Plan,Edelweiss Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-11
+140295,Edelweiss Europe Dynamic Equity Offshore Fund - Growth Option - Regular Plan,Edelweiss Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
 140297,Edelweiss Gilt Fund - Regular Plan - Growth Option,Edelweiss Mutual Fund,Income/Debt Oriented Schemes - Gilt Fund,Regular Plan,Growth,2026-11-12
-140328,Edelweiss Emerging Markets Opportunities Equity Offshore Fund - Regular Plan - Growth Option,Edelweiss Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-11
+140328,Edelweiss Emerging Markets Opportunities Equity Offshore Fund - Regular Plan - Growth Option,Edelweiss Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
 140351,Edelweiss Equity Savings Fund - Regular Plan - Growth Option,Edelweiss Mutual Fund,Hybrid Scheme - Equity Savings,Regular Plan,Growth,2026-11-12
 140355,Edelweiss Flexi Cap Fund - Regular Plan - Growth Option,Edelweiss Mutual Fund,Equity Scheme - Flexi Cap Fund,Regular Plan,Growth,2026-11-12
 140381,Bandhan Aggressive Hybrid Fund-Regular Plan Growth,Bandhan Mutual Fund,Hybrid Scheme - Aggressive Hybrid Fund,Regular Plan,Growth,2026-11-12
@@ -589,12 +589,12 @@ code,name,amc,category,plan,option,last_seen
 140620,Mahindra Manulife Ultra Short to Short Term Fund - Regular Plan - Growth,Mahindra Manulife Mutual Fund,Income/Debt Oriented Schemes - Ultra Short to Short Term Fund,Regular Plan,Growth,2026-11-12
 140771,Mirae Asset Dynamic Term Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Income/Debt Oriented Schemes - Dynamic Term Fund,Regular Plan,Growth,2026-11-12
 141061,Quantum Dynamic Term Fund - Regular Plan Growth Option,Quantum Mutual Fund,Debt Scheme - Dynamic Bond,Regular Plan,Growth Option,2026-11-12
-141063,Quantum Diversified Equity All Cap Active FOF - Regular Plan Growth Option,Quantum Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth Option,2026-11-11
+141063,Quantum Diversified Equity All Cap Active FOF - Regular Plan Growth Option,Quantum Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth Option,2026-11-12
 141064,Quantum Gold ETF FOF - Regular Plan Growth Option,Quantum Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth Option,2026-11-12
 141066,Quantum Liquid Fund - Regular Plan Growth Option,Quantum Mutual Fund,Debt Scheme - Liquid Fund,Regular Plan,Growth Option,2026-11-12
 141068,Quantum Value Fund - Regular Plan Growth Option,Quantum Mutual Fund,Equity Scheme - Value Fund,Regular Plan,Growth Option,2026-11-12
 141070,Quantum ELSS Tax Saver Fund - Regular Plan Growth Option,Quantum Mutual Fund,Equity Scheme - ELSS,Regular Plan,Growth Option,2026-11-12
-141072,Quantum Multi Asset Active FOF - Regular Plan Growth Option,Quantum Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth Option,2026-11-11
+141072,Quantum Multi Asset Active FOF - Regular Plan Growth Option,Quantum Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth Option,2026-11-12
 141224,Mahindra Manulife Multi Cap Fund - Regular Plan - Growth,Mahindra Manulife Mutual Fund,Equity Schemes - Multi Cap Fund,Regular Plan,Growth,2026-11-12
 141247,Union Largecap Fund - Regular Plan - Growth Option,Union Mutual Fund,Equity Scheme - Large Cap Fund,Regular Plan,Growth Option,2026-11-12
 141593,Axis Corporate Bond Fund - Regular Plan Growth,Axis Mutual Fund,Income/Debt Oriented Schemes - Corporate Bond Fund,Regular Plan,Growth Option,2026-11-12
@@ -639,13 +639,13 @@ code,name,amc,category,plan,option,last_seen
 145040,HDFC Ultra Short Term Fund - Growth Option,HDFC Mutual Fund,Debt Scheme - Ultra Short Duration Fund,Regular Plan,Growth Option,2026-11-12
 145042,Sundaram Money Market Fund Regular Plan - Growth,Sundaram Mutual Fund,Debt Scheme - Money Market Fund,Regular Plan,GROWTH,2026-11-12
 145077,ICICI Prudential Manufacturing Fund - Cumulative Option,ICICI Prudential Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Cumulative,2026-11-12
-145112,Axis Large & Mid Cap Fund - Regular Plan - Growth,Axis Mutual Fund,Equity Schemes - Large & Mid Cap Fund,Regular Plan,Growth Option,2026-11-11
+145112,Axis Large & Mid Cap Fund - Regular Plan - Growth,Axis Mutual Fund,Equity Schemes - Large & Mid Cap Fund,Regular Plan,Growth Option,2026-11-12
 145139,Invesco India Small Cap Fund - Regular Plan - Growth,Invesco Mutual Fund,Equity Schemes - Small Cap Fund,Regular Plan,Growth,2026-11-12
 145208,Tata Small Cap Fund-Regular Plan-Growth,Tata Mutual Fund,Equity Scheme - Small Cap Fund,Regular Plan,Growth Option,2026-11-12
 145287,UTI Floating Interest Rates Fund - Regular Plan  - Growth Option,UTI Mutual Fund,Income/Debt Oriented Schemes - Floating Interest Rates Fund,Regular Plan,Growth,2026-11-12
 145355,Mahindra Manulife Consumption Fund- Regular Plan - Growth,Mahindra Manulife Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth,2026-11-12
 145387,Baroda BNP Paribas Balanced Advantage Fund-Regular Plan -Growth Option,Baroda BNP Paribas Mutual Fund,Hybrid Schemes - Balanced Advantage Fund/ Dynamic Asset Allocation,Regular Plan,Growth Option,2026-11-12
-145456,DSP Healthcare Fund - Regular Plan - Growth,DSP Mutual Fund,Equity Schemes - Sectoral Fund,Regular Plan,Growth,2026-11-11
+145456,DSP Healthcare Fund - Regular Plan - Growth,DSP Mutual Fund,Equity Schemes - Sectoral Fund,Regular Plan,Growth,2026-11-12
 145471,Union Value Fund - Regular Plan - Growth Option,Union Mutual Fund,Equity Scheme - Value Fund,Regular Plan,Growth Option,2026-11-12
 145481,ADITYA BIRLA SUNLIFE OVERNIGHT FUND-REGULAR PLAN-GROWTH,Aditya Birla Sun Life Mutual Fund,Debt Scheme - Overnight Fund,Regular Plan,GROWTH,2026-11-12
 145535,ICICI Prudential Overnight Fund - Growth,ICICI Prudential Mutual Fund,Debt Scheme - Overnight Fund,Regular Plan,Growth,2026-11-12
@@ -701,7 +701,7 @@ code,name,amc,category,plan,option,last_seen
 147290,HSBC Overnight Fund - Regular Growth,HSBC Mutual Fund,Income/Debt Oriented Schemes - Overnight Fund,Regular Plan,Growth,2026-11-12
 147303,DSP Quant Fund - Regular Plan - Growth,DSP Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth,2026-11-12
 147307,WhiteOak Capital Ultra Short Term Fund- Regular plan-Growth Option,WhiteOak Capital Mutual Fund,Income/Debt Oriented Schemes - Ultra Short Term Fund,Regular Plan,Growth Option,2026-11-12
-147345,ICICI Prudential MNC Fund - Growth Option,ICICI Prudential Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-11
+147345,ICICI Prudential MNC Fund - Growth Option,ICICI Prudential Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 147371,QUANTUM ESG BEST IN CLASS STRATEGY FUND - REGULAR PLAN - GROWTH OPTION,Quantum Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
 147382,Baroda BNP Paribas Money Market Fund-Regular Plan - Growth,Baroda BNP Paribas Mutual Fund,Income/Debt Oriented Schemes - Money Market Fund,Regular Plan,Growth Option,2026-11-12
 147405,Shriram Balanced Advantage Fund - Regular Growth,Shriram Mutual Fund,Hybrid Schemes - Balanced Advantage Fund/ Dynamic Asset Allocation,Regular Plan,Growth,2026-11-12
@@ -725,8 +725,8 @@ code,name,amc,category,plan,option,last_seen
 147621,Motilal Oswal Nifty Midcap 150 Index Fund - Regular Plan,Motilal Oswal Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 147624,Motilal Oswal Nifty Smallcap 250 Index - Regular Plan,Motilal Oswal Mutual Fund,Other Scheme - Index Funds,Regular Plan,GROWTH,2026-11-12
 147626,Motilal Oswal Nifty 500 Index Fund - Regular Plan,Motilal Oswal Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
-147647,ICICI Prudential Global Advantage Fund (FOF) - Growth Option,ICICI Prudential Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
-147661,ICICI Prudential Commodities Fund - Growth Option,ICICI Prudential Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-11
+147647,ICICI Prudential Global Advantage Fund (FOF) - Growth Option,ICICI Prudential Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
+147661,ICICI Prudential Commodities Fund - Growth Option,ICICI Prudential Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 147665,Axis Nifty 100 Index Fund - Regular Plan - Growth Option,Axis Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth Option,2026-11-12
 147701,Motilal Oswal Large and Midcap Fund - Regular Plan Growth,Motilal Oswal Mutual Fund,Equity Scheme - Large & Mid Cap Fund,Regular Plan,Growth,2026-11-12
 147714,ITI Overnight Fund - Regular Plan - Growth Option,ITI Mutual Fund,Debt Scheme - Overnight Fund,Regular Plan,Growth Option,2026-11-12
@@ -745,32 +745,32 @@ code,name,amc,category,plan,option,last_seen
 147836,JM Overnight Fund (Regular) - Growth,JM Financial Mutual Fund,Income/Debt Oriented Schemes - Overnight Fund,Regular Plan,Growth Option,2026-11-12
 147843,Mahindra Manulife Large & Mid Cap Fund - Regular Plan - Growth,Mahindra Manulife Mutual Fund,Equity Schemes - Large & Mid Cap Fund,Regular Plan,Growth,2026-11-12
 147846,Aditya Birla Sun Life PSU Equity Fund-Regular Plan-Growth,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,GROWTH,2026-11-12
-147854,Bharat Bond FOF - April 2030 - Regular Plan - Growth Option,Edelweiss Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
+147854,Bharat Bond FOF - April 2030 - Regular Plan - Growth Option,Edelweiss Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 147878,Invesco India Overnight Fund - Regular Plan - Growth,Invesco Mutual Fund,Income/Debt Oriented Schemes - Overnight Fund,Regular Plan,Growth,2026-11-12
-147890,Axis Income Plus Arbitrage Omni FOF - Regular Plan - Growth Option,Axis Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth Option,2026-11-11
+147890,Axis Income Plus Arbitrage Omni FOF - Regular Plan - Growth Option,Axis Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth Option,2026-11-12
 147907,HSBC Ultra Short Term Fund - Regular Growth,HSBC Mutual Fund,Income/Debt Oriented Schemes - Ultra Short Term Fund,,,2026-11-12
 147920,ITI Small Cap Fund - Regular Plan - Growth Option,ITI Mutual Fund,Equity Scheme - Small Cap Fund,Regular Plan,Growth Option,2026-11-12
 147929,Axis ESG Integration Strategy Fund - Regular Plan - Growth Option,Axis Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
 147936,BANK OF INDIA Overnight Fund Regular Plan Growth,Bank of India Mutual Fund,Debt Scheme - Overnight Fund,Regular Plan,Growth,2026-11-12
 147944,BANDHAN SMALL CAP FUND - REGULAR PLAN GROWTH,Bandhan Mutual Fund,Equity Scheme - Small Cap Fund,Regular Plan,Growth,2026-11-12
-148033,ICICI Prudential Diversified Equity All Cap Omni FOF - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
-148050,Tata Multi Asset Allocation Fund-Regular Plan-Growth,Tata Mutual Fund,Hybrid Scheme - Multi Asset Allocation,Regular Plan,Growth Option,2026-11-11
-148064,Edelweiss US Technology Equity Fund of Fund- Regular Plan- Growth,Edelweiss Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-11
+148033,ICICI Prudential Diversified Equity All Cap Omni FOF - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
+148050,Tata Multi Asset Allocation Fund-Regular Plan-Growth,Tata Mutual Fund,Hybrid Scheme - Multi Asset Allocation,Regular Plan,Growth Option,2026-11-12
+148064,Edelweiss US Technology Equity Fund of Fund- Regular Plan- Growth,Edelweiss Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
 148071,Union Midcap Fund - Regular Plan - Growth Option,Union Mutual Fund,Equity Scheme - Mid Cap Fund,Regular Plan,Growth Option,2026-11-12
 148159,PGIM India Money Market Fund - Regular Plan - Growth Option,PGIM India Mutual Fund,Debt Scheme - Money Market Fund,Regular Plan,Regular Growth,2026-11-12
 148351,ITI Large Cap Fund - Regular Plan - Growth Option,ITI Mutual Fund,Equity Scheme - Large Cap Fund,Regular Plan,Growth Option,2026-11-12
-148382,Motilal Oswal S&P 500 Index Fund - Regular Plan Growth,Motilal Oswal Mutual Fund,Other Scheme - Index Funds,Regular Plan,GROWTH,2026-11-11
+148382,Motilal Oswal S&P 500 Index Fund - Regular Plan Growth,Motilal Oswal Mutual Fund,Other Scheme - Index Funds,Regular Plan,GROWTH,2026-11-12
 148400,Mirae Asset Arbitrage Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Hybrid Schemes - Arbitrage Fund,Regular Plan,Growth,2026-11-12
 148405,BANK OF INDIA Flexi Cap Fund Regular Plan -Growth,Bank of India Mutual Fund,Equity Scheme - Flexi Cap Fund,Regular Plan,Growth,2026-11-12
 148409,HSBC Focused Fund - Regular Growth,HSBC Mutual Fund,Equity Schemes - Focused Fund,Regular Plan,Growth,2026-11-12
 148416,Mirae Asset Banking and PSU Debt Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Income/Debt Oriented Schemes - Banking and PSU Debt Fund,Regular Plan,Growth,2026-11-12
-148452,BHARAT Bond FOF- April 2031- Regular Plan- Growth Option,Edelweiss Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
-148459,Nippon India Multi Asset Allocation Fund - Regular Plan - Growth Option,Nippon India Mutual Fund,Hybrid Scheme - Multi Asset Allocation,Regular Plan,Growth Option,2026-11-11
+148452,BHARAT Bond FOF- April 2031- Regular Plan- Growth Option,Edelweiss Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
+148459,Nippon India Multi Asset Allocation Fund - Regular Plan - Growth Option,Nippon India Mutual Fund,Hybrid Scheme - Multi Asset Allocation,Regular Plan,Growth Option,2026-11-12
 148467,Mahindra Manulife Arbitrage Fund - Regular Plan - Growth,Mahindra Manulife Mutual Fund,Hybrid Schemes - Arbitrage Fund,Regular Plan,Growth,2026-11-12
 148471,Baroda BNP Paribas Large and Mid Cap Fund-Regular Plan-Growth Option,Baroda BNP Paribas Mutual Fund,Equity Scheme - Large & Mid Cap Fund,Regular Plan,Growth Option,2026-11-12
 148483,Invesco India Focused Fund - Regular Plan - Growth,Invesco Mutual Fund,Equity Schemes - Focused Fund,Regular Plan,Growth,2026-11-12
-148486,Axis Global Equity Alpha Fund of Fund - Regular Plan - Growth Option,Axis Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth Option,2026-11-11
-148489,SBI Children's Fund - Investment Plan - Regular Plan - Growth,SBI Mutual Fund,Solution Oriented Scheme - Children’s Fund,Regular Plan,Growth,2026-11-11
+148486,Axis Global Equity Alpha Fund of Fund - Regular Plan - Growth Option,Axis Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth Option,2026-11-12
+148489,SBI Children's Fund - Investment Plan - Regular Plan - Growth,SBI Mutual Fund,Solution Oriented Scheme - Children’s Fund,Regular Plan,Growth,2026-11-12
 148502,Mirae Asset Diversified Equity Allocator Passive FOF - Regular Plan - Growth,Mirae Asset Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 148504,Sundaram Large Cap Fund(Formerly Known as Sundaram Blue Chip Fund) Regular Plan - Growth,Sundaram Mutual Fund,Equity Scheme - Large Cap Fund,Regular Plan,GROWTH,2026-11-12
 148517,ICICI Prudential ESG Exclusionary Strategy Fund - Growth,ICICI Prudential Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
@@ -779,7 +779,7 @@ code,name,amc,category,plan,option,last_seen
 148535,ITI Banking & PSU Debt Fund - Regular Plan - Growth Option,ITI Mutual Fund,Debt Scheme - Banking and PSU Fund,Regular Plan,Growth Option,2026-11-12
 148537,Aditya Birla Sun Life Special Opportunities Fund-Regular Plan-Growth,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,GROWTH,2026-11-12
 148543,SBI Floating Interest Rates Fund - Regular Plan - Growth,SBI Mutual Fund,Income/Debt Oriented Schemes - Floating Interest Rates Fund,Regular Plan,Growth,2026-11-12
-148557,Edelweiss MSCI India Domestic & World Healthcare 45 index Fund Regular Plan - Growth,Edelweiss Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-11
+148557,Edelweiss MSCI India Domestic & World Healthcare 45 index Fund Regular Plan - Growth,Edelweiss Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 148560,quant ESG Integration Strategy Fund - Growth Option - Regular Plan,quant Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
 148571,Mahindra Manulife Focused Fund - Regular Plan - Growth,Mahindra Manulife Mutual Fund,Equity Schemes - Focused Fund,Regular Plan,Growth,2026-11-12
 148576,Mirae Asset Nifty 100 ESG Sector Leaders Fund of Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
@@ -791,19 +791,19 @@ code,name,amc,category,plan,option,last_seen
 148613,Invesco India - Invesco Global Consumer Trends Fund of Fund - Regular Plan - Growth,Invesco Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth,2026-11-12
 148617,UTI Small Cap Fund - Regular Plan - Growth Option,UTI Mutual Fund,Equity Schemes - Small Cap Fund,Regular Plan,Growth,2026-11-12
 148621,Mirae Asset Banking and Financial Services Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth,2026-11-12
-148631,Axis Innovation Fund - Regular Plan - Growth Option,Axis Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth Option,2026-11-11
+148631,Axis Innovation Fund - Regular Plan - Growth Option,Axis Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth Option,2026-11-12
 148635,Aditya Birla Sun Life ESG Integration Strategy Fund-Regular Plan-Growth,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,GROWTH,2026-11-12
 148641,Nippon India Diversified Equity Flexicap Passive FoF - Regular Plan - Growth Option,Nippon India Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth Option,2026-11-12
 148645,Kotak International REIT Overseas Equity Active FOF - Regular Plan - Growth,Kotak Mahindra Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth,2026-11-06
-148653,ICICI Prudential Business Cycle Fund Growth,ICICI Prudential Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-11
+148653,ICICI Prudential Business Cycle Fund Growth,ICICI Prudential Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 148657,PGIM India Balanced Advantage Fund - Regular Plan - Growth Option,PGIM India Mutual Fund,Hybrid Scheme - Dynamic Asset Allocation or Balanced Advantage,Regular Plan,Regular Growth,2026-11-12
-148661,Kotak US Specific Equity Passive FOF - Regular Plan - Growth,Kotak Mahindra Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-11
+148661,Kotak US Specific Equity Passive FOF - Regular Plan - Growth,Kotak Mahindra Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
 148663,Nippon India Multi - Asset Omni FoF - Regular Plan - Growth Option,Nippon India Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth Option,2026-11-12
 148692,SBI Retirement Benefit Fund - Conservative Hybrid Plan - Regular Plan - Growth,SBI Mutual Fund,Solution Oriented Scheme - Retirement Fund,Regular Plan,Growth,2026-11-12
 148695,SBI Retirement Benefit Fund - Aggressive Hybrid Plan - Regular Plan - Growth,SBI Mutual Fund,Solution Oriented Scheme - Retirement Fund,Regular Plan,Growth,2026-11-12
 148696,SBI Retirement Benefit Fund - Conservative Plan - Regular Plan - Growth,SBI Mutual Fund,Solution Oriented Scheme - Retirement Fund,Regular Plan,Growth,2026-11-12
 148698,SBI Retirement Benefit Fund - Aggressive Plan - Regular Plan - Growth,SBI Mutual Fund,Solution Oriented Scheme - Retirement Fund,Regular Plan,Growth,2026-11-12
-148701,Axis Greater China Equity Fund of Fund - Regular Plan - Growth Option,Axis Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth Option,2026-11-11
+148701,Axis Greater China Equity Fund of Fund - Regular Plan - Growth Option,Axis Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth Option,2026-11-12
 148704,UTI Nifty 200 Momentum 30 Index Fund - Regular Plan - Growth Option,UTI Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
 148705,BANDHAN FLOATING INTEREST RATES FUND  - REGULAR PLAN GROWTH,Bandhan Mutual Fund,Income/Debt Oriented Schemes - Floating Interest Rates Fund,Regular Plan,Growth,2026-11-12
 148719,Nippon India Nifty 50 Value 20 Index Fund - Regular Plan - Growth Option,Nippon India Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth Option,2026-11-12
@@ -811,11 +811,11 @@ code,name,amc,category,plan,option,last_seen
 148727,Mahindra Manulife Short Term Fund - Regular Plan - Growth,Mahindra Manulife Mutual Fund,Income/Debt Oriented Schemes - Short Term Fund,Regular Plan,Growth,2026-11-12
 148732,ITI Mid Cap Fund - Regular Plan - Growth Option,ITI Mutual Fund,Equity Scheme - Mid Cap Fund,Regular Plan,Growth Option,2026-11-12
 148743,Kotak Nifty Next 50 Index Fund - Regular Plan - Growth Option,Kotak Mahindra Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
-148748,Motilal Oswal Multi Asset Passive Fund of Fund - Regular Growth,Motilal Oswal Mutual Fund,Other Scheme - FoF Domestic,,,2026-11-11
-148749,Motilal Oswal Asset Allocation FOF- C- Regular Growth,Motilal Oswal Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
+148748,Motilal Oswal Multi Asset Passive Fund of Fund - Regular Growth,Motilal Oswal Mutual Fund,Other Scheme - FoF Domestic,,,2026-11-12
+148749,Motilal Oswal Asset Allocation FOF- C- Regular Growth,Motilal Oswal Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 148753,Invesco India ESG Integration Strategy Fund - Regular Plan - Growth,Invesco Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth,2026-11-12
 148757,Mirae Asset Corporate Bond Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Income/Debt Oriented Schemes - Corporate Bond Fund,Regular Plan,Growth,2026-11-12
-148762,SBI US Specific Equity Active FoF- Regular Plan - Growth,SBI Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-09
+148762,SBI US Specific Equity Active FoF- Regular Plan - Growth,SBI Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
 148768,DSP Floating Interest Rates Fund - Regular Plan - Growth,DSP Mutual Fund,Income/Debt Oriented Schemes - Floating Interest Rates Fund,Regular Plan,Growth,2026-11-12
 148786,BANDHAN CRISIL IBX Gilt June 2027 Index Fund Regular Plan-Growth,Bandhan Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 148790,BANDHAN CRISIL IBX Gilt April 2028 Index Fund Regular Plan-Growth,Bandhan Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
@@ -828,10 +828,10 @@ code,name,amc,category,plan,option,last_seen
 148906,ITI Ultra Short Term Fund - Regular Plan - Growth Option,ITI Mutual Fund,Income/Debt Oriented Schemes - Ultra Short Term Fund,Regular Plan,Growth Option,2026-11-12
 148918,Aditya Birla Sun Life Multi-Cap Fund-Regular Growth,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Multi Cap Fund,Regular Plan,GROWTH,2026-11-12
 148923,quant Quantamental Fund - Growth Option - Regular Plan,quant Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
-148929,Mirae Asset NYSE FANG + ETF Fund of Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-11
+148929,Mirae Asset NYSE FANG + ETF Fund of Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 148943,SBI Nifty Next 50 Index Fund - Regular Plan - Growth,SBI Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 148948,Tata Dividend Yield Fund-Regular Plan-Growth,Tata Mutual Fund,Equity Scheme - Dividend Yield Fund,Regular Plan,Growth Option,2026-11-12
-148953,Axis Global Innovation Fund of Fund - Regular Plan - Growth,Axis Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth Option,2026-11-11
+148953,Axis Global Innovation Fund of Fund - Regular Plan - Growth,Axis Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth Option,2026-11-12
 148959,Parag Parikh Conservative Hybrid Fund - Regular Plan - Growth,PPFAS Mutual Fund,Hybrid Scheme - Conservative Hybrid Fund,Regular Plan,Growth,2026-11-12
 148965,Aditya Birla Sun Life Nifty 50 Equal Weight Index Fund-Regular Growth,Aditya Birla Sun Life Mutual Fund,Index Funds - Equity Funds,Regular Plan,GROWTH,2026-11-12
 148973,ITI Value Fund - Regular Plan - Growth Option,ITI Mutual Fund,Equity Scheme - Value Fund,Regular Plan,Growth Option,2026-11-12
@@ -861,11 +861,11 @@ code,name,amc,category,plan,option,last_seen
 149140,Baroda BNP Paribas Business Cycle Fund - Regular Plan - Growth,Baroda BNP Paribas Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
 149157,ICICI Prudential Nifty Alpha Low - Volatility 30 ETF FOF - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 149167,Axis Value Fund - Regular Plan - Growth,Axis Mutual Fund,Equity Schemes - Value Fund,Regular Plan,Growth Option,2026-11-12
-149171,Mirae Asset S&P 500 Top 50 ETF Fund of Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-11
+149171,Mirae Asset S&P 500 Top 50 ETF Fund of Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 149181,HDFC Developed World Overseas Equity Passive FOF - Growth Option,HDFC Mutual Fund,Other Scheme - FoF Overseas,,,2026-11-11
 149182,Kotak Multi Cap Fund-Regular Plan-Growth,Kotak Mahindra Mutual Fund,Equity Schemes - Multi Cap Fund,Regular Plan,Growth,2026-11-12
 149208,ICICI Prudential Nifty PSU Bond Plus SDL Sep 2027 40:60 Index Fund - Growth,ICICI Prudential Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
-149218,ICICI Prudential NASDAQ 100 Index Fund - Growth,ICICI Prudential Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-11
+149218,ICICI Prudential NASDAQ 100 Index Fund - Growth,ICICI Prudential Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 149228,Mahindra Manulife Asia Pacific REITs FOF - Regular Plan - Growth,Mahindra Manulife Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
 149241,Motilal Oswal 5 Year G-Sec Fund Of Fund Regular -Growth,Motilal Oswal Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 149249,Edelweiss NIFTY PSU Bond Plus SDL Apr 2027 50:50 Index Fund - Regular Plan - Growth,Edelweiss Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
@@ -876,9 +876,9 @@ code,name,amc,category,plan,option,last_seen
 149270,ITI Pharma and Healthcare Fund - Regular Plan - Growth Option,ITI Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
 149281,ICICI Prudential Nifty Smallcap 250 Index Fund - Growth,ICICI Prudential Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 149287,HDFC NIFTY Next 50 Index Fund - Growth Option,HDFC Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth Option,2026-11-12
-149290,Aditya Birla Sun Life US Equity Passive FOF-Regular Growth,Aditya Birla Sun Life Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,GROWTH,2026-11-11
-149296,Aditya Birla Sun Life Business Cycle Fund-Regular-Growth,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,GROWTH,2026-11-11
-149299,PGIM India Global Select Real Estate Securities Fund of Fund - Regular Plan - Growth Option,PGIM India Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Regular Growth,2026-11-09
+149290,Aditya Birla Sun Life US Equity Passive FOF-Regular Growth,Aditya Birla Sun Life Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,GROWTH,2026-11-12
+149296,Aditya Birla Sun Life Business Cycle Fund-Regular-Growth,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,GROWTH,2026-11-12
+149299,PGIM India Global Select Real Estate Securities Fund of Fund - Regular Plan - Growth Option,PGIM India Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Regular Growth,2026-11-12
 149305,BANDHAN MULTI CAP FUND - GROWTH - REGULAR PLAN,Bandhan Mutual Fund,Equity Scheme - Multi Cap Fund,Regular Plan,Growth,2026-11-12
 149317,360 ONE QUANT FUND REGULAR GROWTH,360 ONE Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,GROWTH Option,2026-11-12
 149324,ITI Banking and Financial Services Fund -Regular Plan - Growth Option,ITI Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
@@ -892,12 +892,12 @@ code,name,amc,category,plan,option,last_seen
 149380,Mirae Asset Hang Seng TECH ETF Fund of Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 149382,Axis Multicap Fund - Regular Plan - Growth,Axis Mutual Fund,Equity Schemes - Multi Cap Fund,Regular Plan,Growth Option,2026-11-12
 149390,ICICI Prudential Nifty Midcap 150 Index Fund - Growth,ICICI Prudential Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
-149399,BHARAT Bond ETF FOF - April 2032 Regular Plan Growth,Edelweiss Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
+149399,BHARAT Bond ETF FOF - April 2032 Regular Plan Growth,Edelweiss Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 149404,Mahindra Manulife Balanced Advantage Fund - Regular Plan - Growth,Mahindra Manulife Mutual Fund,Hybrid Schemes - Balanced Advantage Fund/ Dynamic Asset Allocation,Regular Plan,Growth,2026-11-12
-149439,ICICI Prudential Passive Multi-Asset Fund of Funds - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
+149439,ICICI Prudential Passive Multi-Asset Fund of Funds - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 149448,Navi Nifty Next 50 Index Fund- Regular Plan- Growth,Navi Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 149449,Samco Flexi Cap Fund - Regular Plan - Growth Option,Samco Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth,2026-11-12
-149456,ICICI Prudential Strategic Metal and Energy Equity Fund of Fund - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-11
+149456,ICICI Prudential Strategic Metal and Energy Equity Fund of Fund - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
 149467,Axis Nifty Next 50 Index Fund - Regular Plan - Growth,Axis Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth Option,2026-11-12
 149481,Sundaram Nifty 100 Equal Weight Fund (Formerly Known as Principal Nifty 100 Equal Weight Fund)-Growth,Sundaram Mutual Fund,Other Scheme - Index Funds,Regular Plan,GROWTH,2026-11-12
 149519,Sundaram Ultra Short to Short Term Fund Regular Plan - Growth,Sundaram Mutual Fund,Income/Debt Oriented Schemes - Ultra Short to Short Term Fund,Regular Plan,GROWTH,2026-11-12
@@ -923,7 +923,7 @@ code,name,amc,category,plan,option,last_seen
 149802,UTI BSE Sensex Index Fund - Regular Plan  -Growth Option,UTI Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
 149805,Navi Nifty Bank Index Fund- Regular Plan- Growth,Navi Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 149817,DSP Global Innovation Overseas Equity Omni FoF - Regular - Growth,DSP Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-11
-149831,Navi Total Stock Market US Specific Equity Passive FoF- Regular Plan- Growth,Navi Mutual Fund,Other Scheme - FoF Overseas,,,2026-11-11
+149831,Navi Total Stock Market US Specific Equity Passive FoF- Regular Plan- Growth,Navi Mutual Fund,Other Scheme - FoF Overseas,,,2026-11-12
 149833,BANDHAN NIFTY 100 INDEX FUND - REGULAR PLAN - GROWTH,Bandhan Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 149837,Aditya Birla Sun Life Nifty Next 50 Index Fund-Regular Growth,Aditya Birla Sun Life Mutual Fund,Index Funds - Equity Funds,Regular Plan,GROWTH,2026-11-12
 149840,Kotak Manufacture in India Fund - Regular Plan Growth,Kotak Mahindra Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
@@ -938,7 +938,7 @@ code,name,amc,category,plan,option,last_seen
 149886,SBI Multicap Fund- Regular Plan- Growth Option,SBI Mutual Fund,Equity Scheme - Multi Cap Fund,Regular Plan,Growth,2026-11-12
 149893,Navi Nifty Midcap 150 Index Fund Regular Plan- Growth,Navi Mutual Fund,Other Scheme - Index Funds,,,2026-11-12
 149896,Axis Nifty Smallcap 50 Index Fund - Regular Plan - Growth Option,Axis Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth Option,2026-11-12
-149911,Navi NASDAQ100 US Specific Equity Passive FOF- Regular- Growth,Navi Mutual Fund,Other Scheme - FoF Overseas,,,2026-11-11
+149911,Navi NASDAQ100 US Specific Equity Passive FOF- Regular- Growth,Navi Mutual Fund,Other Scheme - FoF Overseas,,,2026-11-12
 149920,Motilal Oswal BSE Low Volatility Index Fund-Regular plan,Motilal Oswal Mutual Fund,Other Scheme - Index Funds,,,2026-11-12
 149938,Axis Nifty Midcap 50 Index Fund - Regular Plan - Growth Option,Axis Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth Option,2026-11-12
 149960,Invesco India - Invesco EQQQ Nasdaq-100 ETF Fund of Fund - Regular Plan - Growth,Invesco Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth,2026-11-12
@@ -960,7 +960,7 @@ code,name,amc,category,plan,option,last_seen
 150258,Baroda BNP Paribas Aggressive Hybrid Fund- REGULAT PLAN -GROWTH OPTION,Baroda BNP Paribas Mutual Fund,Hybrid Schemes - Aggressive Hybrid Fund,Regular Plan,Growth Option,2026-11-12
 150263,BARODA BNP PARIBAS Focused Fund - Regular Plan-Growth Option,Baroda BNP Paribas Mutual Fund,Equity Scheme - Focused Fund,Regular Plan,Growth Option,2026-11-12
 150268,BARODA BNP PARIBAS India Consumption Fund - Regular Plan - Growth Option,Baroda BNP Paribas Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
-150284,Baroda BNP Paribas Aqua Fund of Fund - Regular Plan Growth,Baroda BNP Paribas Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth Option,2026-11-11
+150284,Baroda BNP Paribas Aqua Fund of Fund - Regular Plan Growth,Baroda BNP Paribas Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth Option,2026-11-12
 150308,ICICI PRUDENTIAL HOUSING OPPORTUNITIES FUND - Growth,ICICI Prudential Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 150312,UTI Nifty Midcap 150 Quality 50 Index Fund - Regular Plan - Growth Option,UTI Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
 150330,Tata Nifty SDL Plus AAA PSU Bond Dec 6040 Index Fund-Regular Plan -Growth,Tata Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth Option,2026-11-12
@@ -972,7 +972,7 @@ code,name,amc,category,plan,option,last_seen
 150368,NJ Overnight Fund - Regular Plan - Growth Option,NJ Mutual Fund,Income/Debt Oriented Schemes - Overnight Fund,Regular Plan,Growth Option,2026-11-12
 150382,Edelweiss Focused Fund - Regular Plan - Growth,Edelweiss Mutual Fund,Equity Scheme - Focused Fund,Regular Plan,Growth,2026-11-12
 150385,Baroda BNP Paribas Flexi Cap Fund - Regular Plan - Growth Option,Baroda BNP Paribas Mutual Fund,Equity Scheme - Flexi Cap Fund,Regular Plan,Growth Option,2026-11-12
-150389,Quantum Nifty 50 ETF FOF - Regular Plan - Growth,Quantum Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth Option,2026-11-11
+150389,Quantum Nifty 50 ETF FOF - Regular Plan - Growth,Quantum Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth Option,2026-11-12
 150393,LIC MF Money Market Fund-Regular Plan-Growth,LIC Mutual Fund,Debt Scheme - Money Market Fund,Regular Plan,Growth,2026-11-12
 150402,BANDHAN MID CAP FUND - GROWTH - REGULAR PLAN,Bandhan Mutual Fund,Equity Schemes - Mid Cap Fund,Regular Plan,Growth,2026-11-12
 150405,Union Gilt Fund - Regular Plan - Growth Option,Union Mutual Fund,Debt Scheme - Gilt Fund,Regular Plan,Growth Option,2026-11-12
@@ -1000,8 +1000,8 @@ code,name,amc,category,plan,option,last_seen
 150583,WhiteOak Capital Mid Cap Fund Regular Plan Growth,WhiteOak Capital Mutual Fund,Equity Schemes - Mid Cap Fund,Regular Plan,Growth Option,2026-11-12
 150589,WhiteOak Capital ELSS Tax Saver Fund Regular Plan Growth,WhiteOak Capital Mutual Fund,Equity Schemes - ELSS- Tax Saver Fund,Regular Plan,Growth Option,2026-11-12
 150592,BANDHAN NIFTY200 MOMENTUM 30 INDEX FUND - GROWTH - REGULAR PLAN,Bandhan Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
-150594,Mirae Asset Global Electric & Autonomous Vehicles Equity Passive FOF - Regular Plan - Growth,Mirae Asset Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth,2026-11-11
-150596,Mirae Asset Global X Artificial Intelligence & Technology ETF Fund of Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth,2026-11-11
+150594,Mirae Asset Global Electric & Autonomous Vehicles Equity Passive FOF - Regular Plan - Growth,Mirae Asset Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth,2026-11-12
+150596,Mirae Asset Global X Artificial Intelligence & Technology ETF Fund of Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth,2026-11-12
 150617,Axis Silver Fund of Fund -Regular Plan- Growth Option,Axis Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth Option,2026-11-12
 150626,Kotak Business Cycle Fund-Regular Plan--Growth,Kotak Mahindra Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 150632,Samco Overnight Fund - Regular Plan - Growth Option,Samco Mutual Fund,Income/Debt Oriented Schemes - Overnight Fund,Regular Plan,Growth,2026-11-12
@@ -1014,7 +1014,7 @@ code,name,amc,category,plan,option,last_seen
 150676,SBI Nifty Smallcap 250 Index Fund - Regular Plan - Growth,SBI Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 150683,SBI CRISIL IBX Gilt Index - June 2036 Fund - Regular Plan - Growth,SBI Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 150684,ICICI PRUDENTIAL TRANSPORTATION AND LOGISTICS FUND - Growth,ICICI Prudential Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
-150690,Aditya Birla Sun Life Multi-Asset Passive FOF-Regular Growth,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,GROWTH,2026-11-11
+150690,Aditya Birla Sun Life Multi-Asset Passive FOF-Regular Growth,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,GROWTH,2026-11-12
 150703,Aditya Birla Sun Life Crisil IBX 50:50 Gilt Plus SDL Apr 2028 Index Fund-Regular Growth,Aditya Birla Sun Life Mutual Fund,Other Scheme - Index Funds,Regular Plan,GROWTH,2026-11-12
 150707,SBI CRISIL IBX Gilt Index - April 2029 Fund - Regular Plan - Growth,SBI Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 150712,SBI CRISIL IBX SDL Index - September 2027 Fund - Regular Plan - Growth,SBI Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
@@ -1026,7 +1026,7 @@ code,name,amc,category,plan,option,last_seen
 150732,ICICI Prudential Nifty G-Sec Dec 2030 Index Fund - Growth,ICICI Prudential Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 150736,HDFC Silver ETF Fund of Fund - Growth Option,HDFC Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth Option,2026-11-12
 150741,Tata Nifty Midcap 150 Momentum 50 Index Fund - Growth - Regular Plan,Tata Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth Option,2026-11-12
-150750,Axis NASDAQ 100 US Specific Equity Passive FOF - Regular Plan - Growth,Axis Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth Option,2026-11-11
+150750,Axis NASDAQ 100 US Specific Equity Passive FOF - Regular Plan - Growth,Axis Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth Option,2026-11-12
 150771,Edelweiss CRISIL IBX 50:50 Gilt Plus SDL June 2027 Index Fund - Regular Plan - Growth,Edelweiss Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 150777,Aditya Birla Sun Life Crisil IBX Gilt-Apr 2029 Index Fund-Regular Growth,Aditya Birla Sun Life Mutual Fund,Other Scheme - Index Funds,Regular Plan,GROWTH,2026-11-12
 150790,Mirae Asset CRISIL IBX Gilt Index - April 2033 Index Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Index Funds - Debt Funds,Regular Plan,Growth,2026-11-12
@@ -1052,7 +1052,7 @@ code,name,amc,category,plan,option,last_seen
 150912,Mahindra Manulife Small Cap Fund - Regular Plan - Growth,Mahindra Manulife Mutual Fund,Equity Schemes - Small Cap Fund,Regular Plan,Growth,2026-11-12
 150923,Nippon India Nifty G-Sec Jun 2036 Maturity Index Fund-Regular Plan-Growth Option,Nippon India Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth Option,2026-11-12
 150929,ICICI Prudential Nifty Pharma Index Fund - Growth,ICICI Prudential Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
-150991,BHARAT Bond ETF FOF - April 2033 - Regular Plan - Growth,Edelweiss Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
+150991,BHARAT Bond ETF FOF - April 2033 - Regular Plan - Growth,Edelweiss Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 150992,HSBC Corporate Bond Fund - Regular Growth,HSBC Mutual Fund,Income/Debt Oriented Schemes - Corporate Bond Fund,Regular Plan,Growth,2026-11-12
 151013,HSBC Gilt Fund - Regular Growth,HSBC Mutual Fund,Income/Debt Oriented Schemes - Gilt Fund,Regular Plan,Growth,2026-11-12
 151034,HSBC Midcap Fund - Regular Growth,HSBC Mutual Fund,Equity Schemes - Mid Cap Fund,Regular Plan,Growth,2026-11-12
@@ -1133,7 +1133,7 @@ code,name,amc,category,plan,option,last_seen
 151729,HDFC BSE 500 Index Fund - Regular Plan - Growth Option,HDFC Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth Option,2026-11-12
 151732,UTI Silver ETF Fund of Fund - Regular Plan - Growth Option,UTI Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 151738,UTI Nifty 500 Value 50 Index Fund - Regular Plan - Growth Option,UTI Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
-151746,WhiteOak Capital Multi Asset Allocation Fund Regular Plan Growth,WhiteOak Capital Mutual Fund,Hybrid Schemes - Multi Asset Allocation Fund,Regular Plan,Growth Option,2026-11-11
+151746,WhiteOak Capital Multi Asset Allocation Fund Regular Plan Growth,WhiteOak Capital Mutual Fund,Hybrid Schemes - Multi Asset Allocation Fund,Regular Plan,Growth Option,2026-11-12
 151747,Baroda BNP Paribas Value Fund - Regular Plan - Growth option,Baroda BNP Paribas Mutual Fund,Equity Scheme - Value Fund,Regular Plan,Growth Option,2026-11-12
 151751,HDFC Defence Fund - Growth Option,HDFC Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth Option,2026-11-12
 151752,Samco Active Momentum Fund - Regular Plan - Growth Option,Samco Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth,2026-11-12
@@ -1179,17 +1179,17 @@ code,name,amc,category,plan,option,last_seen
 152043,Bandhan Nifty IT Index Fund - Regular Plan - Growth,Bandhan Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 152046,Mahindra Manulife Business Cycle Fund-  Regular Plan - Growth,Mahindra Manulife Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth,2026-11-12
 152052,Shriram Multi Asset Allocation Fund - Regular Growth,Shriram Mutual Fund,Hybrid Schemes - Multi Asset Allocation Fund,Regular Plan,Growth,2026-11-12
-152053,DSP Multi Asset Allocation Fund - Regular - Growth,DSP Mutual Fund,Hybrid Schemes - Multi Asset Allocation Fund,Regular Plan,Growth,2026-11-11
+152053,DSP Multi Asset Allocation Fund - Regular - Growth,DSP Mutual Fund,Hybrid Schemes - Multi Asset Allocation Fund,Regular Plan,Growth,2026-11-12
 152058,HDFC Technology Fund - Growth Option,HDFC Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth Option,2026-11-12
 152061,NAVI BSE SENSEX INDEX FUND - REGULAR PLAN - GROWTH,Navi Mutual Fund,Other Scheme - Index Funds,Regular Plan,GROWTH,2026-11-12
-152065,Kotak Multi Asset Allocation Fund - Regular Plan - Growth Option,Kotak Mahindra Mutual Fund,Hybrid Scheme - Multi Asset Allocation,Regular Plan,Growth Option,2026-11-11
+152065,Kotak Multi Asset Allocation Fund - Regular Plan - Growth Option,Kotak Mahindra Mutual Fund,Hybrid Scheme - Multi Asset Allocation,Regular Plan,Growth Option,2026-11-12
 152070,quant Teck Fund - Growth Option - Regular Plan,quant Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
 152072,WhiteOak Capital Multi Cap Fund Regular Plan Growth,WhiteOak Capital Mutual Fund,Equity Schemes - Multi Cap Fund,Regular Plan,Growth Option,2026-11-12
 152075,360 ONE Balanced Hybrid Fund - Regular Plan - Growth,360 ONE Mutual Fund,Hybrid Schemes - Balanced Hybrid Fund,Regular Plan,GROWTH Option,2026-11-12
 152078,Bajaj Finserv Arbitrage Fund- Regular Plan-Growth,Bajaj Finserv Mutual Fund,Hybrid Scheme - Arbitrage Fund,Regular Plan,Growth,2026-11-12
 152084,HDFC Pharma and Healthcare Fund - Growth Option,HDFC Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
 152086,UTI Innovation Fund - Regular Plan - Growth Option,UTI Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth,2026-11-12
-152091,Motilal Oswal Developed Market Ex US ETFs Fund of Funds Regular Plan Growth,Motilal Oswal Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-11
+152091,Motilal Oswal Developed Market Ex US ETFs Fund of Funds Regular Plan Growth,Motilal Oswal Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
 152095,Edelweiss Multi Cap Fund - Regular Plan - Growth,Edelweiss Mutual Fund,Equity Scheme - Multi Cap Fund,Regular Plan,Growth,2026-11-12
 152100,Kotak Nifty G-Sec July 2033 Index Fund - Regular Plan - Growth,Kotak Mahindra Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 152103,Bandhan Retirement Fund - Regular Plan - Growth,Bandhan Mutual Fund,Solution Oriented Scheme - Retirement Fund,Regular Plan,Growth,2026-11-12
@@ -1199,8 +1199,8 @@ code,name,amc,category,plan,option,last_seen
 152130,Baroda BNP Paribas Small Cap Fund - Regular Plan - Growth option,Baroda BNP Paribas Mutual Fund,Equity Scheme - Small Cap Fund,Regular Plan,Growth Option,2026-11-12
 152133,WhiteOak Capital Balanced Hybrid Fund Regular Plan Growth,WhiteOak Capital Mutual Fund,Hybrid Schemes - Balanced Hybrid Fund,Regular Plan,Growth Option,2026-11-12
 152136,Helios Flexi Cap Fund - Regular Plan - Growth Option,Helios Mutual Fund,Equity Schemes - Flexi Cap Fund,Regular Plan,Growth,2026-11-12
-152142,Aditya Birla Sun Life US Treasury 1-3 Year Bond ETFs Fund Of Funds-Regular Growth,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,GROWTH,2026-11-11
-152147,Aditya Birla Sun Life US Treasury 3-10 Year Bond ETFs Fund Of Funds-Regular Growth,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,GROWTH,2026-11-11
+152142,Aditya Birla Sun Life US Treasury 1-3 Year Bond ETFs Fund Of Funds-Regular Growth,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,GROWTH,2026-11-12
+152147,Aditya Birla Sun Life US Treasury 3-10 Year Bond ETFs Fund Of Funds-Regular Growth,Aditya Birla Sun Life Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,GROWTH,2026-11-12
 152153,Helios Overnight Fund - Regular Plan - Growth Option,Helios Mutual Fund,Income/Debt Oriented Schemes - Overnight Fund,Regular Plan,Growth,2026-11-12
 152161,Aditya Birla Sun Life Transportation and Logistics Fund-Regular Growth,Aditya Birla Sun Life Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,GROWTH,2026-11-12
 152165,Bajaj Finserv Banking and PSU Debt Fund- Regular Plan- Growth,Bajaj Finserv Mutual Fund,Income/Debt Oriented Schemes - Banking and PSU Debt Fund,Regular Plan,Growth,2026-11-12
@@ -1216,7 +1216,7 @@ code,name,amc,category,plan,option,last_seen
 152217,Union Children's Fund - Regular Plan - Growth Option,Union Mutual Fund,Solution Oriented Scheme - Children’s Fund,Regular Plan,Growth Option,2026-11-12
 152225,Whiteoak Capital Large & Mid Cap Fund Regular Plan Growth,WhiteOak Capital Mutual Fund,Equity Schemes - Large & Mid Cap Fund,Regular Plan,Growth Option,2026-11-12
 152232,Motilal Oswal Small Cap Fund - Regular - Growth,Motilal Oswal Mutual Fund,Equity Scheme - Small Cap Fund,Regular Plan,Growth,2026-11-12
-152239,Axis US Specific Treasury Dynamic Debt Passive FOF - Regular Plan - Growth Option,Axis Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth Option,2026-11-11
+152239,Axis US Specific Treasury Dynamic Debt Passive FOF - Regular Plan - Growth Option,Axis Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth Option,2026-11-12
 152245,DSP Nifty Smallcap250 Quality 50 Index Fund - Regular - Growth,DSP Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 152256,quant Commodities Fund - Growth Option - Regular Plan,quant Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
 152266,BANDHAN Nifty Smallcap 250 Index Fund - Regular Plan - Growth,Bandhan Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
@@ -1248,12 +1248,12 @@ code,name,amc,category,plan,option,last_seen
 152421,Axis BSE Sensex Index Fund - Regular Plan - Growth,Axis Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth Option,2026-11-12
 152429,HDFC NIFTY200 Momentum 30 Index Fund - Regular Plan,HDFC Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth Option,2026-11-12
 152433,Groww Nifty Smallcap 250 Index Fund - Regular Plan - Growth,Groww Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
-152439,Edelweiss Technology Fund - Regular Plan - Growth,Edelweiss Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-11
+152439,Edelweiss Technology Fund - Regular Plan - Growth,Edelweiss Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 152441,Mahindra Manulife Multi Asset Allocation Fund- Regular Plan - Growth,Mahindra Manulife Mutual Fund,Hybrid Schemes - Multi Asset Allocation Fund,Regular Plan,Growth,2026-11-12
 152447,Canara Robeco Manufacturing Fund - Regular Plan - Growth Option,Canara Robeco Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth Option,2026-11-12
 152448,Canara Robeco Manufacturing Fund -Regular Plan - IDWC Option,Canara Robeco Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,IDWC Option,2026-11-12
 152457,Mirae Asset Nifty Smallcap 250 Momentum Quality 100 ETF Fund of Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
-152460,Kotak Technology Fund - Regular Plan - Growth Option,Kotak Mahindra Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-11
+152460,Kotak Technology Fund - Regular Plan - Growth Option,Kotak Mahindra Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 152464,Parag Parikh Dynamic Asset Allocation Fund - Regular Plan Growth,PPFAS Mutual Fund,Hybrid Scheme - Dynamic Asset Allocation or Balanced Advantage,Regular Plan,Growth,2026-11-12
 152472,Baroda BNP Paribas Innovation Fund Regular plan - Growth Option,Baroda BNP Paribas Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
 152475,Quantum Multi Asset Allocation Fund - Regular Plan Growth Option,Quantum Mutual Fund,Hybrid Scheme - Multi Asset Allocation,Regular Plan,Growth Option,2026-11-12
@@ -1262,7 +1262,7 @@ code,name,amc,category,plan,option,last_seen
 152512,Helios Balanced Advantage Fund- Regular Plan- Growth Option,Helios Mutual Fund,Hybrid Schemes - Balanced Advantage Fund/ Dynamic Asset Allocation,Regular Plan,Growth,2026-11-12
 152518,Bandhan Long Term Fund - Regular Plan - Growth,Bandhan Mutual Fund,Income/Debt Oriented Schemes - Long Term Fund,Regular Plan,Growth,2026-11-12
 152522,HDFC NIFTY Reality Index Fund - Regular Plan,HDFC Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth Option,2026-11-12
-152527,DSP US Specific Debt Passive FoF - Regular - Growth,DSP Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-11
+152527,DSP US Specific Debt Passive FoF - Regular - Growth,DSP Mutual Fund,Other Scheme - FoF Overseas,Regular Plan,Growth,2026-11-12
 152536,Navi NiftyIT Index Fund - Regular Plan -Growth,Navi Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 152538,PGIM India Retirement Fund - Regular Plan - Growth Option,PGIM India Mutual Fund,Solution Oriented Scheme - Retirement Fund,Regular Plan,Regular Growth,2026-11-12
 152560,Tata Nifty Auto Index Fund - Regular Plan - Growth,Tata Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth Option,2026-11-12
@@ -1390,7 +1390,7 @@ code,name,amc,category,plan,option,last_seen
 153087,UTI Nifty Alpha Low-Volatility 30 Index Fund - Regular Plan - Growth Option,UTI Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
 153088,UTI Nifty Midcap 150 Index Fund - Regular Plan - Growth Option,UTI Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
 153091,Samco Arbitrage Fund - Regular Plan - Growth,Samco Mutual Fund,Hybrid Schemes - Arbitrage Fund,Regular Plan,Growth,2026-11-12
-153093,Samco Multi Asset Allocation Fund - Regular Plan - Growth,Samco Mutual Fund,Hybrid Schemes - Multi Asset Allocation Fund,Regular Plan,Growth,2026-11-11
+153093,Samco Multi Asset Allocation Fund - Regular Plan - Growth,Samco Mutual Fund,Hybrid Schemes - Multi Asset Allocation Fund,Regular Plan,Growth,2026-11-12
 153095,Quantum Ethical Fund - Regular Plan Growth Option,Quantum Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
 153096,HDFC Nifty India Digital Index Fund - Growth Option - Regular,HDFC Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth Option,2026-11-12
 153100,Groww Multicap Fund - Regular - Growth,Groww Mutual Fund,Equity Schemes - Multi Cap Fund,Regular Plan,Growth,2026-11-12
@@ -1529,7 +1529,7 @@ code,name,amc,category,plan,option,last_seen
 153700,360 ONE Overnight Fund - Regular Plan - Growth,360 ONE Mutual Fund,Income/Debt Oriented Schemes - Overnight Fund,Regular Plan,GROWTH Option,2026-11-12
 153707,quant Equity Savings Fund - Growth Option - Regular Plan,quant Mutual Fund,Hybrid Scheme - Equity Savings,Regular Plan,Growth Option,2026-11-12
 153710,Groww Nifty 50 Index Fund Regular Growth,Groww Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
-153713,Edelweiss Income Plus Arbitrage Active Fund of Funds - Regular-Growth,Edelweiss Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
+153713,Edelweiss Income Plus Arbitrage Active Fund of Funds - Regular-Growth,Edelweiss Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 153716,SBI Nifty100 Low Volatility 30 Index Fund- Regular Plan- Growth,SBI Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 153721,Bandhan Multi-Factor Fund - Regular Plan - Growth,Bandhan Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth,2026-11-12
 153726,Bank of India Mid Cap Fund - Regular Plan Growth,Bank of India Mutual Fund,Equity Schemes - Mid Cap Fund,Regular Plan,Growth,2026-11-12
@@ -1541,7 +1541,7 @@ code,name,amc,category,plan,option,last_seen
 153751,Motilal Oswal Special Opportunities Fund-Regular Plan-Growth,Motilal Oswal Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 153769,BAJAJ FINSERV EQUITY SAVINGS FUND - REGULAR - GROWTH,Bajaj Finserv Mutual Fund,Hybrid Scheme - Equity Savings,Regular Plan,Growth,2026-11-12
 153772,360 ONE Multi Asset Allocation Fund - Regular Plan - Growth,360 ONE Mutual Fund,Hybrid Schemes - Multi Asset Allocation Fund,Regular Plan,GROWTH Option,2026-11-12
-153779,Edelweiss Multi Asset Omni Fund of Fund- Regular Plan - Growth,Edelweiss Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
+153779,Edelweiss Multi Asset Omni Fund of Fund- Regular Plan - Growth,Edelweiss Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 153784,Kotak Nifty Alpha 50 Index Fund - Regular Plan - Growth,Kotak Mahindra Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 153794,Baroda BNP Paribas Gold ETF Fund of Funds Regular Growth,Baroda BNP Paribas Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth Option,2026-11-12
 153798,Groww Nifty Next 50 Index Fund Regular Growth,Groww Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
@@ -1549,11 +1549,11 @@ code,name,amc,category,plan,option,last_seen
 153805,TRUSTMF ARBITRAGE FUND -REGULAR PLAN-GROWTH,Trust Mutual Fund,Hybrid Scheme - Arbitrage Fund,Regular Plan,Growth,2026-11-12
 153809,Nippon India Nifty India Manufacturing Index-Regular Plan-Growth Option,Nippon India Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth Option,2026-11-12
 153814,Mirae Asset Gold Silver Passive FoF - Regular Plan - Growth,Mirae Asset Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
-153818,Mirae Asset Multi Factor Passive FOF - Regular Plan - Growth,Mirae Asset Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-11
+153818,Mirae Asset Multi Factor Passive FOF - Regular Plan - Growth,Mirae Asset Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 153822,Union Diversified Equity All Cap Active FOF - Regular Plan - Growth Option,Union Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth Option,2026-11-12
 153828,ANGEL ONE GOLD ETF FOF - REGULAR GROWTH,Angel One Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 153830,Axis Nifty500 Quality 50 Index Fund - Regular Plan - Growth Option,Axis Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth Option,2026-11-12
-153831,SBI Dynamic Asset Allocation Active FoF - Regular Plan - Growth,SBI Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
+153831,SBI Dynamic Asset Allocation Active FoF - Regular Plan - Growth,SBI Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 153839,Bandhan BSE India Sector Leaders Index Fund - Regular Plan - Growth,Bandhan Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 153844,Baroda BNP Paribas Business Conglomerates Fund Regular Growth Option,Baroda BNP Paribas Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
 153851,Groww Multi Asset Allocation Fund Regular Growth,Groww Mutual Fund,Hybrid Schemes - Multi Asset Allocation Fund,Regular Plan,Growth,2026-11-12
@@ -1572,14 +1572,14 @@ code,name,amc,category,plan,option,last_seen
 153916,Motilal Oswal Consumption Fund-Regular-Growth,Motilal Oswal Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 153918,Groww Nifty Capital Markets ETF FOF Regular Growth,Groww Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 153922,Kotak Gold Silver Passive FOF - Regular Plan - Growth,Kotak Mahindra Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
-153927,Axis Income Plus Arbitrage Passive FOF - Regular Plan - Growth Option,Axis Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth Option,2026-11-11
+153927,Axis Income Plus Arbitrage Passive FOF - Regular Plan - Growth Option,Axis Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth Option,2026-11-12
 153935,Bajaj Finserv Banking and Financial Services Fund - Regular - Growth,Bajaj Finserv Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 153943,Franklin India Multi-Factor Fund- Growth,Franklin Templeton Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 153950,LIC MF Consumption Fund-Regular Plan-Growth,LIC Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 153953,Groww Nifty Midcap 150 Index Fund Regular Growth,Groww Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
 153955,ANGEL ONE NIFTY TOTAL MARKET MOMENTUM QUALITY 50 INDEX FUND - REGULAR GROWTH,Angel One Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 153958,HDFC BSE India Sector Leaders Index Fund - Regular Plan - Growth Option,HDFC Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth Option,2026-11-12
-153963,Axis Multi-Asset Omni FoF - Regular Plan - Growth,Axis Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth Option,2026-11-11
+153963,Axis Multi-Asset Omni FoF - Regular Plan - Growth,Axis Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth Option,2026-11-12
 153969,Kotak Rural Opportunities Fund - Regular Plan - Growth,Kotak Mahindra Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 153974,Bandhan Healthcare Fund - Regular Plan - Growth,Bandhan Mutual Fund,Equity Schemes - Sectoral Fund,Regular Plan,Growth,2026-11-12
 153977,Old Bridge Arbitrage Fund Regular Growth,Old Bridge Mutual Fund,Hybrid Scheme - Arbitrage Fund,Regular Plan,Regular Growth,2026-11-12
@@ -1596,7 +1596,7 @@ code,name,amc,category,plan,option,last_seen
 154030,Kotak Nifty500 Momentum 50 Index Fund - Regular Plan - Growth,Kotak Mahindra Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
 154041,Abakkus Flexi Cap Fund - Regular - Growth,Abakkus Mutual Fund,Equity Scheme - Flexi Cap Fund,Regular Plan,Growth,2026-11-12
 154047,Abakkus Liquid Fund - Regular Plan - Growth,Abakkus Mutual Fund,Income/Debt Oriented Schemes - Liquid Fund,Regular Plan,Growth,2026-11-12
-154057,Groww Multi Asset Omni FOF Regular Growth,Groww Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-11
+154057,Groww Multi Asset Omni FOF Regular Growth,Groww Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 154064,Tata BSE Multicap Consumption 50:30:20 Index Fund - Regular Plan Growth Option,Tata Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth Option,2026-11-12
 154075,Edelweiss Silver ETF Fund of Fund - Regular Plan Growth Option,Edelweiss Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 154077,Axis Gold and Silver Passive FOF - Regular Plan - Growth,Axis Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth Option,2026-11-12
@@ -1619,10 +1619,10 @@ code,name,amc,category,plan,option,last_seen
 154154,Parag Parikh Large Cap Fund - Regular Plan - Growth,PPFAS Mutual Fund,Equity Scheme - Large Cap Fund,Regular Plan,Growth,2026-11-12
 154159,ITI Business Cycle Fund- Regular Plan- Growth,ITI Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth Option,2026-11-12
 154162,WhiteOak Capital Consumption Opportunities Fund Regular Plan Growth,WhiteOak Capital Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth Option,2026-11-12
-154165,DSP Multi Asset Omni Fund of Funds - Regular - Growth,DSP Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
+154165,DSP Multi Asset Omni Fund of Funds - Regular - Growth,DSP Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 154170,Axis BSE India Sectors Leaders Index Fund- Regular Plan- Growth Option,Axis Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth Option,2026-11-12
 154173,Groww Nifty PSE ETF FOF Regular Growth,Groww Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
-154175,SBI Quality Fund - Regular Plan - Growth,SBI Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-11
+154175,SBI Quality Fund - Regular Plan - Growth,SBI Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
 154180,HDFC Nifty India Consumption Index  Fund - Regular Growth Plan,HDFC Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth Option,2026-11-12
 154183,The Wealth Company Balanced Advantage Fund - Regular Growth,The Wealth Company Mutual Fund,Hybrid Scheme - Dynamic Asset Allocation or Balanced Advantage,Regular Plan,Growth,2026-11-12
 154189,Mirae Asset BSE India Defence ETF FOF - Regular Plan - Growth,Mirae Asset Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
@@ -1636,7 +1636,7 @@ code,name,amc,category,plan,option,last_seen
 154218,Mirae Asset Nifty Metal ETF FOF - Regular Plan - Growth,Mirae Asset Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 154223,Groww BSE Hospitals ETF FOF Regular Growth,Groww Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 154226,Old Bridge Flexi Cap Fund Regular Growth,Old Bridge Mutual Fund,Equity Scheme - Flexi Cap Fund,Regular Plan,Regular Growth,2026-11-12
-154231,Capitalmind Multi Asset Allocation Fund-Regular-Growth,Capitalmind Mutual Fund,Hybrid Scheme - Multi Asset Allocation,Regular Plan,Growth,2026-11-11
+154231,Capitalmind Multi Asset Allocation Fund-Regular-Growth,Capitalmind Mutual Fund,Hybrid Scheme - Multi Asset Allocation,Regular Plan,Growth,2026-11-12
 154233,Capitalmind Arbitrage Fund-regular-Growth,Capitalmind Mutual Fund,Hybrid Scheme - Arbitrage Fund,Regular Plan,Growth,2026-11-12
 154238,Motilal Oswal Multi Factor Passive Fund of Funds - Regular,Motilal Oswal Mutual Fund,Other Scheme - FoF Domestic,,,2026-11-12
 154247,LIC MF Technology Fund-Regular Plan-Growth,LIC Mutual Fund,Equity Scheme - Sectoral/ Thematic,Regular Plan,Growth,2026-11-12
@@ -1651,12 +1651,12 @@ code,name,amc,category,plan,option,last_seen
 154281,Mirae Asset Silver ETF FOF - Regular Plan - Growth,Mirae Asset Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 154284,Groww Nifty PSU Bank Index Fund Regular Growth,Groww Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
 154286,Kotak Quality Overseas Equity Active FOF - Regular Plan - Growth,Kotak Mahindra Mutual Fund,Overseas Fund of Funds - Fund of Funds investing overseas,Regular Plan,Growth,2026-11-11
-154298,HSBC Gold ETF Fund of fund - Regular Growth,HSBC Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-11
+154298,HSBC Gold ETF Fund of fund - Regular Growth,HSBC Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 154302,Choice Nifty 50 Index Fund - Regular Plan Growth,Choice Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
 154303,Choice Nifty Next 50 Index Fund - Regular Plan Growth,Choice Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
 154309,HDFC CRISIL-IBX Financial Services 9-12 Months Debt Index Fund - Regular Growth Plan,HDFC Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth Option,2026-11-12
 154312,Edelweiss Nifty LargeMidcap 250 Plus 8-13 yr G-Sec 70-30 Index Fund Regular Plan Growth,Edelweiss Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
-154319,Kotak Multi Asset Active FOF - Regular - Growth,Kotak Mahindra Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-11
+154319,Kotak Multi Asset Active FOF - Regular - Growth,Kotak Mahindra Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 154325,Groww Arbitrage Fund Regular Growth,Groww Mutual Fund,Hybrid Schemes - Arbitrage Fund,Regular Plan,Growth,2026-11-12
 154327,Axis Nifty India Defence Index Fund - Regular Plan - Growth,Axis Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth Option,2026-11-12
 154328,SBI CRISIL - IBX Financial Services 9-12 Months Debt Index Fund - Regular Plan - Growth,SBI Mutual Fund,Other Scheme - Index Funds,Regular Plan,Growth,2026-11-12
@@ -1683,7 +1683,7 @@ code,name,amc,category,plan,option,last_seen
 154428,HDFC Nifty Auto Index Fund- Growth Option,HDFC Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth Option,2026-11-12
 154434,TRUSTMF LARGE & MIDCAP FUND - REGULAR PLAN - GROWTH,Trust Mutual Fund,Equity Schemes - Large & Mid Cap Fund,Regular Plan,Growth,2026-11-12
 154440,ALPHAGREP MULTI ASSET ALLOCATION FUND-REGULAR-GROWTH,AlphaGrep Mutual Fund,Hybrid Schemes - Multi Asset Allocation Fund,Regular Plan,Growth,2026-11-12
-154450,ICICI Prudential Multi-Asset Active FOF - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-11
+154450,ICICI Prudential Multi-Asset Active FOF - Growth,ICICI Prudential Mutual Fund,Other Scheme - FoF Domestic,Regular Plan,Growth,2026-11-12
 154452,NJ Momentum Fund - Regular Growth,NJ Mutual Fund,Equity Schemes - Thematic Fund,Regular Plan,Growth Option,2026-11-12
 154458,NJ Value Fund - Regular Growth,NJ Mutual Fund,Equity Schemes - Value Fund,Regular Plan,Growth Option,2026-11-12
 154459,Axis Nifty50 Equal Weight Index Fund-Regular Plan- Growth Option,Axis Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth Option,2026-11-12
@@ -1705,7 +1705,7 @@ code,name,amc,category,plan,option,last_seen
 154563,ICICI Prudential Life Cycle Fund 2031 - Growth,ICICI Prudential Mutual Fund,Life Cycle Funds - Life Cycle Fund with Maturity of 5 Years,,,2026-11-12
 154567,AlphaGrep Liquid Omni FoF- Regular Growth,AlphaGrep Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 154570,Kotak Nifty Bank Index Fund - Regular - Growth,Kotak Mahindra Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
-154576,Kotak Diversified Equity All Cap Omni FOF - Regular - Growth,Kotak Mahindra Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-11
+154576,Kotak Diversified Equity All Cap Omni FOF - Regular - Growth,Kotak Mahindra Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 154577,ICICI Prudential Life Cycle Fund 2036 - Growth,ICICI Prudential Mutual Fund,Life Cycle Funds - Life Cycle Fund with Maturity of 10 Years,,,2026-11-12
 154579,ICICI Prudential Life Cycle Fund 2041 - Growth,ICICI Prudential Mutual Fund,Life Cycle Funds - Life Cycle Fund with Maturity of 15 Years,,,2026-11-12
 154581,ASK Liquid Fund Regular Growth,ASK MUTUAL FUND,Income/Debt Oriented Schemes - Liquid Fund,Regular Plan,Growth,2026-11-12
@@ -1743,17 +1743,17 @@ code,name,amc,category,plan,option,last_seen
 154713,Invesco India Nifty India Defence Index Fund - Regular Plan - Growth,Invesco Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
 154716,Invesco India Nifty Chemical Index Fund - Regular Plan - Growth,Invesco Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
 154722,Mirae Asset BSE Information Technology Index Fund - Regular Plan - Growth,Mirae Asset Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
-154724,Shriram Gold ETF Passive FOF-Regular-Growth,Shriram Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-11
-154731,Kotak Multi Sector Omni FOF - Regular Plan - Growth,Kotak Mahindra Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-11
+154724,Shriram Gold ETF Passive FOF-Regular-Growth,Shriram Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
+154731,Kotak Multi Sector Omni FOF - Regular Plan - Growth,Kotak Mahindra Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 154737,LAKSHYA OVERNIGHT FUND-Regular,Lakshya Mutual Fund,Income/Debt Oriented Schemes - Overnight Fund,Regular Plan,GROWTH,2026-11-12
 154739,Axis Nifty500 Low Volatility 50 Index Fund - Regular Plan - Growth Option,Axis Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
-154741,ICICI Prudential Contra Fund - Growth,ICICI Prudential Mutual Fund,Equity Schemes - Contra Fund,Regular Plan,Growth,2026-11-11
+154741,ICICI Prudential Contra Fund - Growth,ICICI Prudential Mutual Fund,Equity Schemes - Contra Fund,Regular Plan,Growth,2026-11-12
 154744,Tata CRISIL-IBX Financial Services 3-6 Months Debt Index Fund-Regular Plan-Growth,Tata Mutual Fund,Index Funds - Debt Funds,Regular Plan,Growth Option,2026-11-12
 154752,HDFC BSE REITS and Commercial Real Estate Index Fund-Growth Option,HDFC Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth Option,2026-11-12
 154756,Kotak Nifty Capital Markets Index Fund - Regular Plan - Growth,Kotak Mahindra Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
 154758,SBI Nifty200 Value 30 ETF FOF - Regular Plan - Growth,SBI Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 154763,Motilal Oswal Nifty REITs & Realty Index Fund - Regular,Motilal Oswal Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
-154769,WhiteOak Capital Diversified Equity Small Cap Active FOF Regular Plan Growth,WhiteOak Capital Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-11
+154769,WhiteOak Capital Diversified Equity Small Cap Active FOF Regular Plan Growth,WhiteOak Capital Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth,2026-11-12
 154772,Aditya Birla Sun Life BSE Toatl Market Index Fund - Regular Plan - Growth Option,Aditya Birla Sun Life Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth Option,2026-11-12
 154777,Mirae Asset Life Cycle Fund 2056 - Regular Plan - Growth,Mirae Asset Mutual Fund,Life Cycle Funds - Life Cycle Fund with Maturity of 30 Years,Regular Plan,Growth,2026-11-12
 154780,Carnelian Liquid Fund - Regular Plan - Growth,Carnelian Mutual Fund,Income/Debt Oriented Schemes - Liquid Fund,Regular Plan,Growth,2026-11-12
@@ -1769,6 +1769,6 @@ code,name,amc,category,plan,option,last_seen
 154823,quant Nifty 100 Index Fund - Growth Option - Regular Plan,quant Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth Option,2026-11-12
 154839,Axis Nifty EV & New Automotive Index Fund,Axis Mutual Fund,Index Funds - Equity Funds,Regular Plan,Growth,2026-11-12
 154840,Choice Large & Mid Cap Fund - Growth - Regular Plan,Choice Mutual Fund,Equity Schemes - Large & Mid Cap Fund,Regular Plan,Growth,2026-11-12
-154854,Navi Multi Asset Omni Funf of Fund Regular Growth,Navi Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),,Growth,2026-11-11
+154854,Navi Multi Asset Omni Funf of Fund Regular Growth,Navi Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),,Growth,2026-11-12
 154867,UTI Financial Services Debt Fund - Regular Plan Growth Option,UTI Mutual Fund,Income/Debt Oriented Schemes - Sectoral Fund,Regular Plan,Growth Option,2026-11-12
 154883,quant Silver ETF FOF- Growth Option - Regular Plan,quant Mutual Fund,Fund of Funds Scheme (Domestic) - Fund of Funds Scheme (Domestic),Regular Plan,Growth Option,2026-11-12
