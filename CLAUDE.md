@@ -1,0 +1,124 @@
+# Notes for Claude (project handover)
+
+This repo is the data layer for the owner's TCR fund-rating model (a single HTML file kept
+**private, not in this repo**: the owner re-uploads it, plus the monthly vendor Excel exports,
+in each new chat). This repo is public, so never commit the TCR html, vendor files or
+anything derived from them that identifies the owner.
+
+## What exists (working, in production)
+* `scripts/update.py`: GitHub Actions runs it 3×/day (`.github/workflows/daily-nav.yml`).
+  AMFI NAV history report (catch-up from last stored date − 5 days) + NAVAll.txt (newest day);
+  mfapi.in fallback. Classification (Regular + Growth + open-ended, no ETFs) uses only the
+  history report's full scheme name. NAVAll short names can't tell Direct from Regular.
+* `data/nav/YYYY/YYYY-MM.parquet`: code, date, nav. ~1,770 schemes, 2006 → today, from
+  mfapi.in full history (the Kaggle dump was rejected: about a third of days missing).
+* `scripts/compute.py` → `docs/nav_data.js`, `docs/bench_px.js`, `docs/hist/<year>.js` (Pages only):
+  https://analyst-kiran.github.io/tcr_nav/nav_data.js
+* `tcr/live_nav.js` + `tcr/patch_tcr.py`: patch for the TCR html. It loads the feed, matches
+  vendor rows to AMFI codes by NAV on the vendor's NAV date plus a name/AMC check, and
+  overlays NAV, trailing and calendar returns before `runModel` scores.
+
+## Verified conventions (match the vendor exports, 98–99% exact to 0.01%)
+* NAV on a date = last NAV on/before it. As-of = latest fully published NAV date.
+* ≤2Y: start = asof − period; <1Y absolute, 1–2Y CAGR ^(1/y).
+* ≥3Y: start = asof − period + 1 day; CAGR ^(365/inclusive days).
+* Calendar year: NAV on/before 1 Jan → NAV on/before 31 Dec (current year to as-of).
+* Vendor risk-free rate backs out to 5.63% for every AMC (Mean − Sharpe×SD). Vendor gives
+  no ratios (zeros) for ~58% of funds. Their SD looks like 3Y monthly, annualised
+  (corr 0.998), but the exact window is not yet pinned down.
+
+## Benchmarks: in production (ETF roll-forward)
+No free official daily index feed (NSE/BSE refuse automated access; do not bypass bot checks).
+Approach tested: anchor each benchmark at the vendor's exact month-end level, then roll
+forward with ETF NAV ratios (AMFI data). The vendor's trailing and calendar returns imply
+~15 true index levels, used to backtest anchor→target windows of 1–5 months:
+* ETFs need **unit-split adjustment** (69 ETFs have ×0.1 / ×0.01 jumps).
+* Strict index-name matching only (loose matching paired BSE indices with Nifty ETFs).
+* Price-index benchmarks: optional dividend drift estimated from calendar 2024.
+* Composites: LargeMidcap 250 = 50% Nifty 100 ETF + 50% Midcap 150 ETF (0.018%/30d);
+  CRISIL hybrids = Nifty 50 ETF + debt leg (~0.10–0.15%/30d); Arbitrage ≈ arbitrage fund.
+* 21 of the 24 benchmarks TCR uses are covered, median error ~0.02%/30 days. No passive tracker
+  exists for Nifty Services Sector, Nifty 100 ESG or Nifty Transportation & Logistics.
+* Production: `data/benchmark_map.json` (built by `scripts/build_bench_map.py` from vendor files,
+  run locally), tracker NAVs in `data/proxy/` (seeded by `scripts/seed_proxies.py`, appended
+  daily by update.py), published as `docs/bench_px.js`. `tcr/live_nav.js` anchors each benchmark
+  at the vendor-implied levels (exact there), follows the tracker between anchors (residual spread
+  geometrically), and uses tracker + last-year drift after the last anchor.
+* VENDOR QUIRK: benchmark rows' "2 YEARS" is an ABSOLUTE return; fund rows' "2 YEARS" is CAGR.
+  Anchors read it as absolute; live output publishes benchmark 2Y as CAGR (like funds).
+  Verified on 1,171 values: everything else is reproduced exactly at the vendor date.
+* Correction & recovery cycle analysis (idea from debpal/BharatFinTrack, MIT) is wanted later,
+  alongside rolling returns.
+
+## Owner's roadmap (in order)
+1. ~~Benchmarks~~ DONE (ETF roll-forward live in the job and in TCR).
+2. ~~Ratios~~ DONE. Vendor method pinned (99.3–100% exact): 36 month-end returns ending the
+   month-end BEFORE the as-of month; SD = sample SD×√12; Mean = avg×12; Sharpe = (Mean−RF)/SD;
+   Sortino = (Mean−RF)/(sample SD of months below the fund's mean ×√12). RF = median(Mean−Sharpe×SD)
+   of the file (5.63% in Oct 2026) or user override. Blank ratios filled from ≥12 months.
+3. ~~Rolling returns~~ DONE: `tcr/live_engine.js` builds RR_RAW (1/2/3/5/7/10Y, daily starts,
+   N-year window, default 5) and calls TCR's own computeRollingRatings() → Rolling tab.
+4. ~~Calendar~~ DONE (option B): NAV button → panel (as-of date, live on/off, RF, rolling window).
+   Rebuilding at the vendor date reproduces the file 99–100% (funds) / 100% (benchmarks).
+   CY_ASON is set to the shown date during runs (the file title's date would mark years complete).
+4b. ~~Correction & recovery cycles~~ DONE (fund drawer section; falls ≥10%, max fall 3Y/5Y vs benchmark).
+5. DONE this round (tcr/live_engine.js):
+   * Captures: panel "Capture source" = Investwell Top Schemes (default, latest) or NAV/TCR formula
+     (36 months vs category benchmark, all funds; always used for past dates). Investwell's own method
+     could not be reproduced (no variant matched exactly); NAV values land close (usually within a few pts).
+   * Calendar periods: Y / H / Q / M (9/10/12/36 complete + running), funds and benchmarks from history.
+   * Benchmark trackers now splice up to 2 older trackers of the same index (data/benchmark_map.json
+     "history"), so series reach back far enough for captures/drawdowns (Smallcap 250 ETF alone had ~1y).
+   * Score history: quiet runModel at 60 month-ends + quarter-ends since 2015 (patch adds an early
+     return before rendering when LIVE_SILENT); ~35 s, cached in IndexedDB per files+settings.
+     Drawer: score now / 1Y avg / all-time avg / deviation / σ / rank, why (pillar Δ × TCR weights
+     T20 C40 R20 Cons20), sparkline. Signals pop-up: rising stars, turnarounds, fading, backtest.
+   * Backtest (Nov 2026 run): top quartile beats category avg by +0.49 pts/yr (58% of cases);
+     strong in Multi Asset, Flexi Cap, BAF; zero/negative in Large/Mid/Small Cap, Value, Technology.
+   * Benchmark sources pop-up documents the benchmark data flow.
+6. DONE (Nov 12 round):
+   * Top Schemes snapshots: every TS file with a FUND MANAGER column is saved in IndexedDB
+     ('tcr_live_ts', keyed by its NAV date) → manager changes, reported L/M/S vs SEBI minimums.
+     The owner uploads the FULL 60-column export monthly (the 46-column one has no FUND MANAGER).
+   * Style from NAV: daily returns (252 d) on Nifty 100 / Midcap 150 / Smallcap 250 TRI, weights ≥0
+     summing to 1 on a 5% grid via the 3×3 moment matrix; drift = half L1 distance now vs 1Y ago.
+     Signal needs ≥30 pts and R² ≥ 0.85 at both dates (weekly data was too unstable).
+   * Fund intelligence (drawer): rolling 1Y/3Y at MONTHLY entry points, pain index, down-month
+     behaviour, CAGR without best 10 days vs benchmark, style, manager; behaviour tags.
+   * Signals require return evidence and never pass on missing data; added Early deterioration,
+     Recovery leaders, Style drift, Manager change; "Driver" = pillar with largest weighted Δ.
+   * Look-ahead fix: fundAgeMonths is measured at the as-of date in calendar mode.
+   * Backtest: precision vs random, rising/falling market, by year, score-change lead table.
+     Result: top quartile +0.41 pts/12M (57%); 27% land in future top quartile (random 25%).
+     Score rising ≥10 over 3M → +1.26 pts next 12M; falling 5–10 → −0.97 (score momentum matters
+     more than score level). Methodology text in tcr/methodology.html (injected by patch_tcr.py).
+7. Adviser-objective backtest (Nov 12): owner rejected trailing-led weights (churn; retail-like).
+   Panel of 38k fund-months (scratch only), category percentiles, outcomes next 3Y/12M, forward max
+   fall, 12M rating stability. Findings: nothing predicts 3Y well (rank corr ≤0.09); current score's
+   top−bottom 3Y spread −0.07 pts/yr; best single separators: worst rolling 1Y vs category (+0.40),
+   TCR Consistency (+0.29), Trailing (+0.27); TCR Risk is inverse for returns (−0.39); down-month hit
+   rate and pain predict smaller future falls (+0.64 pts) at a return cost; rolling 3Y measures most
+   stable (96% stay top-40% after 12M vs 89% for TCR score). Candidate consistency "Kx" =
+   50% TCR consistency + 30% worst rolling 1Y vs category + 20% rolling 3Y quartile points; best mix
+   I = T20 C30 R10 Kx40 (spread +0.07, top20 +0.17, same stability). Not yet wired; owner decides.
+   UI: 🧬 Behaviour tab (tri-state style filters within left-side categories), drawer readings folded
+   into TCR's Rolling and Corrections sections, ⚠ Watch box only when something happened, score
+   chart hover dates. Fund-intelligence block and repeated FM line removed.
+8. 5-year backtest + Score mix (Nov 12): at a 5Y hold NO measure predicts returns (top-20% land in
+   top half 46–50%); TCR Consistency is the only small positive (+0.27 pts/yr). Protection measures
+   (downside capture vs category avg, pain 3Y, down months beating category, time >5% under high 5Y)
+   predict ~1.1 pts smaller 5Y max fall at no 5Y return cost. Classic top-20% falls MORE (−0.47).
+   TCR Risk fails because Sortino has past return in the numerator + upside capture rewards
+   aggression. Score mix (Actions → ⚖ Score mix, password 1201 — client-side soft lock only):
+   classic / stable (T20 C30 R10 KX40) / protective (T15 C25 P30 K30) / custom; liveRescore() runs
+   inside runModel before the silent-return hook, so history/signals follow the mix.
+9. NEXT: AUM-flow signal (whitelist AUM history), capture trend, weight tuning from the backtest,
+   survivorship (closed funds are missing from mfapi universe — consider adding them for backtests).
+
+## Repo housekeeping
+* `.github/workflows/monthly-squash.yml` (1st of each month, 09:20 IST, same concurrency group as the
+  daily job): collapses the whole git history into one snapshot commit (same files). Daily runs
+  re-save the current month parquet 3×/day and git kept every copy (~10–15 MB/month); the month
+  files already hold all NAVs. Between clean-ups the daily commits are a ≤1-month undo. Code
+  commit history is collapsed too, so record notable code changes here in CLAUDE.md.
+* Daily workflow retries the Pages deploy once after 90 s (GitHub-side "artifact metadata" errors).

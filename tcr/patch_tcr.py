@@ -1,0 +1,89 @@
+"""Add the live-NAV feed to a TCR html file.
+
+  python tcr/patch_tcr.py <TCR.html> <github-username> [out.html]
+
+Idempotent: a file that already has the patch is re-patched with the current version.
+"""
+import re
+import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+BEGIN, END = "// ═══ LIVE NAV ═", "// ═══ end LIVE ENGINE ═══"
+
+
+def patch(html: str, user: str) -> str:
+    js = (HERE / "live_nav.js").read_text(encoding="utf-8") + "\n" + (HERE / "live_engine.js").read_text(encoding="utf-8")
+    js = js.replace("__LIVE_URL__", f"https://{user}.github.io/tcr_nav/nav_data.js")
+
+    # 1. drop any earlier copy of the patch
+    html = re.sub(re.escape(BEGIN) + r".*?" + re.escape(END) + r"\n?", "", html, flags=re.S)
+    html = re.sub(r'<button class="icon-btn" id="live-btn"[^>]*>.*?</button>\n?', "", html)
+    html = re.sub(r"<style id=\"live-css\">.*?</style>\n?", "", html, flags=re.S)
+
+    # 2. code, right before runModel
+    anchor = "async function runModel(keepView){"
+    assert html.count(anchor) == 1, "runModel not found"
+    html = html.replace(anchor, js + "\n" + anchor)
+
+    # 3. use the live rows (and wait briefly for the feed) at the start of each run
+    old = "    const cyCl=cleanData(cyRaw),trCl=cleanData(trRaw);"
+    assert html.count(old) == 1, "cleanData hook not found"
+    html = html.replace(old, "    await LIVE_READY;\n"
+                             "    const cyCl=cleanData(liveApply(cyRaw,'cy')),trCl=cleanData(liveApply(trRaw,'tr'));liveBadge();")
+
+    # 3b. quiet runs (score history): stop after scoring, before drawing
+    old_r = "    buildHeatMaps();\n    setLoadMsg('Rendering…');await tick();"
+    assert html.count(old_r) == 1, "render hook not found"
+    html = html.replace(old_r, "    if(typeof liveRescore==='function')try{liveRescore();}catch(e){console.warn('[live] mix',e);}\n"
+                               "    if(typeof LIVE_SILENT!=='undefined'&&LIVE_SILENT)return;\n" + old_r)
+
+    # 3d. Actions menu: password-protected score mix
+    edit_btn = '<button class="mi" role="menuitem" id="btn-edit-data"'
+    assert html.count(edit_btn) == 1
+    html = re.sub(r'\n?<button class="mi" role="menuitem" id="btn-score-mix".*?</button>', "", html, flags=re.S)
+    i = html.index(edit_btn); j = html.index("</button>", i) + len("</button>")
+    html = html[:j] + '\n        <button class="mi" role="menuitem" id="btn-score-mix" onclick="hdrMenu();liveMixDialog()">⚖ Score mix<small>Change how pillars combine (password)</small></button>' + html[j:]
+
+    # 3c. methodology: live data, signals and diagnostics explained next to the scoring rules
+    meth_anchor = '<table class="ltbl" style="margin-top:14px">'
+    assert html.count(meth_anchor) == 1, "methodology anchor not found"
+    html = re.sub(r'<div id="live-method">.*?</div><!--/live-method-->\n?', "", html, flags=re.S)
+    html = html.replace(meth_anchor, (HERE / "methodology.html").read_text(encoding="utf-8") + "\n" + meth_anchor)
+
+    # 4. header button + style
+    btn = '<button class="icon-btn" id="dark-btn"'
+    assert html.count(btn) == 1
+    html = html.replace(btn, '<button class="icon-btn" id="live-btn" onclick="livePanel()" '
+                             'title="Live NAV">NAV …</button>\n    ' + btn)
+    # 5. header: "Data 02 NOV" → "Files 02 NOV" (the vendor files' date; the NAV button shows the live date)
+    html = html.replace("innerHTML=`Data <b>${eh(String(dt).toUpperCase())}</b>", "innerHTML=`Files <b>${eh(String(dt).toUpperCase())}</b>")
+    css = ('<style id="live-css">#live-btn{width:auto;padding:0 8px;font-size:.72rem;font-weight:600;white-space:nowrap}'
+           '#live-btn[data-state=on]{background:rgba(46,160,90,.35);border-color:rgba(120,220,150,.6)}'
+           '#live-btn[data-state=paused]{opacity:.7}#live-btn[data-state=off]{background:rgba(200,60,60,.3)}'
+           '#live-btn[data-state=past]{background:rgba(230,150,40,.45);border-color:rgba(255,200,120,.7)}'
+           '#live-panel{position:fixed;z-index:9999;width:300px;background:var(--card);color:var(--text);border:1px solid var(--border);'
+           'border-radius:8px;box-shadow:var(--shadow);padding:12px 14px;font:13px var(--sans)}'
+           '#live-panel .lp-h{font-weight:700;margin-bottom:8px}#live-panel .lp-row{display:flex;align-items:center;gap:8px;margin:7px 0}'
+           '#live-panel .lp-row>span{width:96px;color:var(--muted);font-size:.78rem}#live-panel input,#live-panel select{flex:1;min-width:0;'
+           'padding:4px 6px;border:1px solid var(--border);border-radius:5px;background:var(--bg);color:var(--text);font:inherit}'
+           '#live-panel input[type=checkbox]{flex:0 0 auto;appearance:auto;-webkit-appearance:checkbox;width:16px;height:16px;opacity:1;position:static;display:inline-block;margin:0}#live-panel .lp-btn{padding:4px 10px;border:1px solid var(--border);border-radius:5px;'
+           'background:var(--card2);color:var(--text);cursor:pointer;font:inherit}#live-panel .lp-go{width:100%;margin-top:6px;background:var(--navy);color:#fff}'
+           '#live-panel .lp-note{font-size:.72rem;color:var(--muted);margin-top:6px}'
+           '#live-modal{position:fixed;inset:0;z-index:10000;background:rgba(10,15,30,.45);display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto}'
+           '#live-modal .lm-box{background:var(--card);color:var(--text);border-radius:10px;box-shadow:var(--shadow);width:min(1150px,100%);max-height:calc(100vh - 80px);display:flex;flex-direction:column;font:13px var(--sans)}'
+           '#live-modal .lm-h{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border);font-size:1rem}'
+           '#live-modal .lm-h button{border:0;background:none;color:var(--text);font-size:1.1rem;cursor:pointer}#live-modal .lm-b{padding:12px 16px;overflow:auto}'
+           '#live-modal h4{margin:16px 0 6px;font-size:.9rem}#live-modal .lm-s{font-weight:400;color:var(--muted);font-size:.75rem}#live-modal .lm-p{color:var(--text2);line-height:1.45;margin:6px 0}'
+           '#live-modal .lm-t{width:100%;border-collapse:collapse;font-size:.78rem}#live-modal .lm-t th{text-align:left;color:var(--muted);font-weight:600;border-bottom:1px solid var(--border);padding:5px 6px;position:sticky;top:0;background:var(--card)}'
+           '#live-modal .lm-t td{border-bottom:1px solid var(--border);padding:5px 6px}#live-modal .lm-dim td{color:var(--muted)}#live-modal .lm-up{color:var(--green)}#live-modal .lm-dn{color:var(--red)}'
+           '#live-modal a{color:var(--blue);text-decoration:none}#live-modal .lp-btn{padding:5px 12px;border:1px solid var(--border);border-radius:5px;background:var(--card2);color:var(--text);cursor:pointer}</style>')
+    html = html.replace("</head>", css + "\n</head>", 1)
+    return html
+
+
+if __name__ == "__main__":
+    src, user = sys.argv[1], sys.argv[2]
+    out = sys.argv[3] if len(sys.argv) > 3 else src
+    Path(out).write_text(patch(Path(src).read_text(encoding="utf-8"), user), encoding="utf-8")
+    print("patched →", out)

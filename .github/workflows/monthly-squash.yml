@@ -1,0 +1,34 @@
+name: Monthly history clean-up
+
+# Every daily run saves a fresh copy of the current month's NAV file, and git keeps every old
+# copy in the repo history. The month files already hold every NAV, so once a month the history
+# is collapsed into one snapshot commit: same files, old copies gone. Between clean-ups the daily
+# commits act as an "undo" for up to a month.
+on:
+  schedule:
+    - cron: "50 3 1 * *"     # 09:20 IST on the 1st, between the morning and afternoon NAV runs
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nav-update          # same group as the daily job, so the two never overlap
+  cancel-in-progress: false
+
+jobs:
+  squash:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Collapse history into one snapshot
+        run: |
+          git config user.name "tcr-nav bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          old=$(git rev-parse HEAD)
+          latest=$(python -c 'import json;print(json.load(open("data/state.json"))["latest_nav_date"])')
+          git checkout --orphan snapshot
+          git commit -q -m "Snapshot: code and NAV store as of ${latest} (history collapsed $(date -u +%F))"
+          # only replace main if nothing was pushed since checkout
+          git push --force-with-lease=main:${old} origin snapshot:main
+          git count-objects -vH

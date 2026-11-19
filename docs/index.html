@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TCR NAV Feed</title>
+<style>
+  :root{--bg:#f6f7fb;--card:#fff;--text:#18192a;--muted:#5a6388;--line:#e3e6ef;--ok:#14703e;--bad:#b81c1c}
+  @media (prefers-color-scheme:dark){:root{--bg:#121318;--card:#1b1d24;--text:#ececec;--muted:#a1a1a1;--line:#2c2f3a;--ok:#5fd18f;--bad:#ff7b7b}}
+  body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:32px 16px}
+  h1{font-size:1.4rem;margin:0 0 4px} p{color:var(--muted);margin:0 0 20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:14px}
+  .big{font-size:1.6rem;font-weight:700} .ok{color:var(--ok)} .bad{color:var(--bad)}
+  input{width:100%;box-sizing:border-box;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text);font:inherit}
+  table{width:100%;border-collapse:collapse;margin-top:10px;font-size:.88rem}
+  th,td{text-align:right;padding:5px 6px;border-bottom:1px solid var(--line);white-space:nowrap} th:first-child,td:first-child{text-align:left;white-space:normal}
+  .wrap{overflow-x:auto}
+</style>
+</head>
+<body>
+<main>
+  <h1>TCR NAV Feed</h1>
+  <p>Daily AMFI NAVs for open-ended Regular Growth schemes, updated automatically every night.</p>
+  <div class="card"><div id="status">Loading…</div></div>
+  <div class="card">
+    <input id="q" placeholder="Search a scheme (e.g. parag parikh flexi)">
+    <div class="wrap"><table id="t"></table></div>
+  </div>
+</main>
+<script>
+function render(){
+  const D=window.TCR_NAV,st=document.getElementById('status');
+  if(!D){st.innerHTML='<span class="bad">Data file not found yet — the first run may still be in progress.</span>';return;}
+  const age=(Date.now()-new Date(D.latest_nav_date+'T18:30:00+05:30'))/864e5;
+  st.innerHTML=`<div class="big ${age<4?'ok':'bad'}">NAVs as of ${D.latest_nav_date}</div>
+    <div>${D.count.toLocaleString()} schemes · refreshed ${D.generated.replace('T',' ').slice(0,16)} IST · source: ${D.source}</div>`;
+  const q=document.getElementById('q'),t=document.getElementById('t');
+  const rows=Object.entries(D.schemes);
+  const draw=()=>{
+    const s=q.value.toLowerCase().split(/\s+/).filter(Boolean);
+    const hit=rows.filter(([c,f])=>s.every(w=>(f.name+' '+c).toLowerCase().includes(w))).slice(0,40);
+    const n=v=>v==null?'–':v.toFixed(2);
+    t.innerHTML='<tr><th>Scheme</th><th>NAV</th><th>1Y</th><th>3Y</th><th>5Y</th></tr>'+
+      hit.map(([c,f])=>`<tr><td>${f.name}<br><small style="color:var(--muted)">${c} · ${f.category}</small></td><td>${f.nav}</td><td>${n(f.tr['1 YEAR'])}</td><td>${n(f.tr['3 YEARS'])}</td><td>${n(f.tr['5 YEARS'])}</td></tr>`).join('');
+  };
+  q.oninput=draw;draw();
+}
+</script>
+<script src="nav_data.js" onload="render()" onerror="render()"></script>
+</body>
+</html>
