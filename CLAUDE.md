@@ -114,6 +114,13 @@ forward with ETF NAV ratios (AMFI data). The vendor's trailing and calendar retu
    inside runModel before the silent-return hook, so history/signals follow the mix.
 9. NEXT: AUM-flow signal (whitelist AUM history), capture trend, weight tuning from the backtest,
    survivorship (closed funds are missing from mfapi universe — consider adding them for backtests).
+10. "What is the score good for" backtest (Nov 21, classic score, scratch only): NOT a 5Y winner-picker
+   (top-2 buy&hold ≈ random; 5Y average flat). Works as a 1–3Y risk/monitoring tool: top-20% end in
+   the bottom quarter over 3Y 18.7% vs 26.0% for bottom-20%; next-3Y Sharpe rank 50.7→57.7 by quintile;
+   6M score DIRECTION strongest (up >20: +0.79 next 1Y, +0.40/yr 3Y; down >20: −1.00, −0.33/yr);
+   bottom-40% & rising ≥10 → +0.91/yr 3Y; bottom-40% & falling ≥10 → −1.09 next 1Y, 29% bad.
+   Works in hybrids/Flexi/Large/Value/Banking; inverse in Mid/Small/Focused/Tech/Multi Cap.
+   4-pillar proposal (R20 K40 S20 P20 = Calendar/Consistency/Vol/Down-month hit) awaiting owner.
 
 ## Repo housekeeping
 * `.github/workflows/monthly-squash.yml` (1st of each month, 09:20 IST, same concurrency group as the
